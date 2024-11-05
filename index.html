@@ -5,89 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matcha Sushi Stop</title>
     <style>
-        /* Basic reset */
-        * {
+        /* Set full-screen background image */
+        body, html {
+            height: 100%;
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Body and background styling */
-        body {
             font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            background-color: #1a1a1a; /* Dark background to match logo */
-            color: #ffffff; /* White text color */
-        }
-
-        /* Header styling */
-        header {
-            background-color: #3B8C45; /* Green shade matching the logo */
-            width: 100%;
-            padding: 20px;
-            color: white;
-            text-align: center;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Logo styling */
-        .logo {
-            margin-top: 20px;
+            justify-content: center;
+            overflow: hidden;
         }
         
-        /* Additional content styling */
+        .background {
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
         .content {
             text-align: center;
+            color: white;
+        }
+
+        .header-text {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .logo-container {
+            position: absolute;
+            width: 100%;
             padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            top: 10px;
         }
 
-        /* Additional image styling */
-        .additional-image {
-            margin-top: 40px;
-            width: 80%;
-            max-width: 600px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        .logo-container img {
+            height: 50px;
+            width: auto;
         }
 
-        /* Text heading styling */
-        h2 {
-            color: #9ACD32; /* Lighter green to add contrast */
-            margin-top: 20px;
+        .footer-logo {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
         }
 
-        /* Paragraph styling */
-        p {
-            color: #CCCCCC; /* Light gray text for readability */
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-            padding: 10px;
+        .footer-logo img {
+            height: 50px;
+            width: auto;
         }
     </style>
 </head>
 <body>
-    <!-- Header section -->
-    <header>
-        <h1>Welcome to Matcha Sushi Stop</h1>
-    </header>
+    <!-- Background Image -->
+    <div class="background"></div>
 
-    <!-- Logo section -->
-    <div class="logo">
-        <img src="final.png" alt="Matcha Sushi Stop Logo" width="300">
-    </div>
-
-    <!-- Content section -->
+    <!-- Logo and Text Content -->
     <div class="content">
-        <h2>Discover Our Delicious Vegan Sushi and Matcha!</h2>
-        <p>Matcha Sushi Stop is dedicated to providing fresh, carefully prepared vegan sushi with an emphasis on quality and flavor. We invite you to experience our unique blend of vegan cuisine and vibrant matcha drinks.</p>
-    </div>
-
-    <!-- Additional image section -->
-    <div class="additional-image">
-        <img src="additional-image.jpg" alt="Additional image showcasing sushi" width="100%">
+        <div class="logo-container">
+            <img src="next.png" alt="Left Logo">
+            <img src="logo.png" alt="Right Logo">
+        </div>
+        <div class="header-text">Welcome to Matcha Sushi Stop</div>
+        <div class="footer-logo">
+            <img src="underconstruction.jpg" alt="Under Construction">
+        </div>
     </div>
 </body>
 </html>
