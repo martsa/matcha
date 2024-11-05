@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matcha Sushi Stop</title>
     <style>
+        /* Reset margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         /* Set full-screen background image */
         body, html {
             height: 100%;
@@ -17,7 +24,7 @@
         }
         
         .background {
-            background-image: url('background2.jpg');
+            background-image: url('background2.jpg'); /* Ensure the image file path is correct */
             background-size: cover;
             background-position: center;
             position: absolute;
@@ -31,6 +38,7 @@
         .content {
             text-align: center;
             color: white;
+            z-index: 1;
         }
 
         .header-text {
@@ -72,3 +80,23 @@
         }
     </style>
 </head>
+<body>
+    <!-- Background Image -->
+    <div class="background"></div>
+
+    <!-- Logo and Text Content -->
+    <div class="content">
+        <div class="header-text">Welcome to Matcha Sushi Stop</div>
+    </div>
+
+    <!-- Logo Container -->
+    <div class="logo-container">
+        <img src="logo.png" alt="Logo"> <!-- Ensure the logo image path is correct -->
+    </div>
+
+    <!-- Footer Logo -->
+    <div class="footer-logo">
+        <img src="footer-logo.png" alt="Footer Logo"> <!-- Ensure the footer logo path is correct -->
+    </div>
+</body>
+</html>
