@@ -12,7 +12,7 @@
             box-sizing: border-box;
         }
 
-        /* Set full-screen background image */
+        /* Full-screen styling */
         body, html {
             height: 100%;
             margin: 0;
@@ -21,10 +21,12 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            background-color: #000; /* Fallback background color */
         }
-        
+
+        /* Background styling */
         .background {
-            background-image: url('background2.jpg'); /* Ensure the image file path is correct */
+            background-image: url('./background2.jpg'); /* Confirming with ./ path */
             background-size: cover;
             background-position: center;
             position: absolute;
@@ -46,33 +48,7 @@
             margin-bottom: 20px;
         }
 
-        .logo-container {
-            position: absolute;
-            width: 100%;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            top: 10px;
-        }
-
-        .logo-container img {
-            height: 100px;
-            width: auto;
-        }
-
-        .footer-logo {
-            position: absolute;
-            bottom: 10px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .footer-logo img {
-            height: 100px;
-            width: auto;
-        }
-
-        /* Media query to zoom out the background image to 50% of its original size on mobile */
+        /* Media query to zoom out the background image on mobile */
         @media (max-width: 768px) {
             .background {
                 background-size: 50%;
@@ -87,16 +63,6 @@
     <!-- Logo and Text Content -->
     <div class="content">
         <div class="header-text">Welcome to Matcha Sushi Stop</div>
-    </div>
-
-    <!-- Logo Container -->
-    <div class="logo-container">
-        <img src="logo.png" alt="Logo"> <!-- Ensure the logo image path is correct -->
-    </div>
-
-    <!-- Footer Logo -->
-    <div class="footer-logo">
-        <img src="footer-logo.png" alt="Footer Logo"> <!-- Ensure the footer logo path is correct -->
     </div>
 </body>
 </html>
