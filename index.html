@@ -48,7 +48,7 @@
         }
 
         .logo-container img {
-            height: 100px; /* Doubled height */
+            height: 100px;
             width: auto;
         }
 
@@ -60,27 +60,15 @@
         }
 
         .footer-logo img {
-            height: 100px; /* Doubled height */
+            height: 100px;
             width: auto;
         }
 
-        /* Media query to zoom background image out to 50% of its original size on mobile */
-      
+        /* Media query to zoom out the background image to 50% of its original size on mobile */
+        @media (max-width: 768px) {
+            .background {
+                background-size: 50%;
+            }
+        }
     </style>
 </head>
-<body>
-    <!-- Background Image -->
-    <div class="background"></div>
-
-    <!-- Logo and Text Content -->
-    <div class="content">
-        <div class="logo-container">
-            <img src="veg.png" alt="Left Logo">
-            <img src="logo.png" alt="Right Logo">
-        </div>
-        <div class="footer-logo">
-            <img src="underconstruction.jpg" alt="Under Construction">
-        </div>
-    </div>
-</body>
-</html>
