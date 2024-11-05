@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matcha Sushi Stop</title>
     <style>
-        /* Set full-screen background image */
+        /* Reset margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Full-screen styling */
         body, html {
             height: 100%;
             margin: 0;
@@ -14,10 +21,12 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            background-color: #000; /* Fallback background color */
         }
-        
+
+        /* Background styling */
         .background {
-            background-image: url('background2.jpg');
+            background-image: url('background2.jpg'); /* Confirming with ./ path */
             background-size: cover;
             background-position: center;
             position: absolute;
@@ -31,6 +40,7 @@
         .content {
             text-align: center;
             color: white;
+            z-index: 1;
         }
 
         .header-text {
@@ -38,36 +48,10 @@
             margin-bottom: 20px;
         }
 
-        .logo-container {
-            position: absolute;
-            width: 100%;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            top: 10px;
-        }
-
-        .logo-container img {
-            height: 100px; /* Doubled height */
-            width: auto;
-        }
-
-        .footer-logo {
-            position: absolute;
-            bottom: 10px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .footer-logo img {
-            height: 100px; /* Doubled height */
-            width: auto;
-        }
-
-        /* Media query to zoom background image out to 50% of its original size on mobile */
+        /* Media query to zoom out the background image on mobile */
         @media (max-width: 768px) {
             .background {
-                background-size: 50%; /* Zoom background out to show more */
+                background-size: 50%;
             }
         }
     </style>
@@ -78,13 +62,7 @@
 
     <!-- Logo and Text Content -->
     <div class="content">
-        <div class="logo-container">
-            <img src="veg.png" alt="Left Logo">
-            <img src="logo.png" alt="Right Logo">
-        </div>
-        <div class="footer-logo">
-            <img src="underconstruction.jpg" alt="Under Construction">
-        </div>
+        <div class="header-text">Welcome to Matcha Sushi Stop</div>
     </div>
 </body>
 </html>
