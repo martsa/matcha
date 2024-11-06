@@ -19,7 +19,6 @@
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             overflow: hidden;
         }
 
@@ -46,11 +45,14 @@
 
         /* Optional content styling */
         .content {
-            text-align: center;
-            color: white;
-            z-index: 1; /* Ensure content is above background */
-        }
-
+    flex: 1; /* Takes up available space */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    text-align: center;
+    color: white;
+    z-index: 1; /* Ensure content is above background */
+}
         
 
         /* Contact section styling */
