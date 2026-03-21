@@ -6,6 +6,14 @@
   <title>Matcha Energy</title>
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     :root {
       --bg-main: #fcfdfb;
       --bg-soft: #f4f8f2;
@@ -15,6 +23,7 @@
       --text-soft: #5f6a61;
       --green: #2f6f46;
       --green-dark: #25573a;
+      --green-soft: #6e866f;
       --line: rgba(0, 0, 0, 0.08);
       --shadow-soft: 0 18px 50px rgba(34, 55, 41, 0.08);
       --shadow-card: 0 12px 26px rgba(0, 0, 0, 0.05);
@@ -22,14 +31,6 @@
       --radius-lg: 22px;
       --radius-md: 16px;
       --max-width: 1180px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
@@ -70,7 +71,15 @@
       display: block;
     }
 
-    /* HERO */
+    html[lang="de"] [data-lang-flex="de"] {
+      display: flex;
+    }
+
+    html[lang="en"] [data-lang-flex="en"] {
+      display: flex;
+    }
+
+    /* ---------- HERO ---------- */
     .home-screen {
       position: relative;
       min-height: 100vh;
@@ -162,12 +171,12 @@
     }
 
     .hero-title {
-      font-size: clamp(2.9rem, 5vw, 5rem);
-      line-height: 0.95;
+      font-size: clamp(2.7rem, 5vw, 4.9rem);
+      line-height: 0.98;
       margin: 0 0 18px;
-      letter-spacing: -0.05em;
+      letter-spacing: -0.045em;
       font-weight: 800;
-      max-width: 680px;
+      max-width: 720px;
     }
 
     .hero-title .accent {
@@ -176,17 +185,17 @@
 
     .hero-text {
       margin: 0 0 28px;
-      max-width: 580px;
+      max-width: 640px;
       color: var(--text-soft);
-      line-height: 1.75;
-      font-size: 1.02rem;
+      line-height: 1.8;
+      font-size: 1.05rem;
     }
 
     .hero-actions {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
     }
 
     .enter-button,
@@ -273,7 +282,7 @@
       position: absolute;
       left: -24px;
       bottom: 26px;
-      max-width: 230px;
+      max-width: 240px;
       background: rgba(255,255,255,0.93);
       border: 1px solid rgba(0,0,0,0.05);
       border-radius: 18px;
@@ -293,7 +302,7 @@
       line-height: 1.55;
     }
 
-    /* SITE */
+    /* ---------- MAIN ---------- */
     .site-content {
       display: none;
     }
@@ -362,11 +371,11 @@
     }
 
     .section-text {
-      max-width: 700px;
+      max-width: 760px;
       margin: 0 auto;
       color: var(--text-soft);
-      line-height: 1.8;
-      font-size: 1rem;
+      line-height: 1.85;
+      font-size: 1.02rem;
     }
 
     .alt-section {
@@ -382,14 +391,14 @@
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 22px;
     }
 
     .card {
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.9);
       border: 1px solid rgba(0,0,0,0.05);
       border-radius: var(--radius-lg);
-      padding: 28px;
+      padding: 26px;
       box-shadow: var(--shadow-card);
     }
 
@@ -398,51 +407,163 @@
       font-size: 1.22rem;
     }
 
+    .card h4 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      color: var(--green);
+    }
+
     .card p {
       margin: 0;
       color: var(--text-soft);
       line-height: 1.75;
     }
 
-    .meta {
-      color: var(--green);
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .product-card .meta {
+      color: var(--green-soft);
       font-size: 0.92rem;
       font-weight: 700;
       line-height: 1.6;
-      margin-bottom: 10px;
     }
 
-    .tagline {
-      color: var(--text-main);
-      font-size: 1.35rem;
+    .product-card .tagline {
+      color: var(--green);
+      font-size: 1.5rem;
       line-height: 1.25;
       margin: 8px 0 14px;
       font-weight: 700;
     }
 
-    .simple-list {
-      margin: 16px 0 0;
+    .product-card ul,
+    .benefit-list,
+    .use-list {
+      margin: 14px 0 0;
       padding-left: 18px;
       color: var(--text-soft);
       line-height: 1.8;
     }
 
-    .menu-list {
-      max-width: 700px;
-      margin: 34px auto 0;
+    .highlight {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 20px 0 22px;
+    }
+
+    .mini-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .mini-box {
+      padding: 16px;
+      border-radius: 14px;
+      background: var(--bg-soft);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .mini-box strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.98rem;
+    }
+
+    .mini-box span {
+      color: var(--text-soft);
+      line-height: 1.6;
+      font-size: 0.94rem;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .benefit-item {
+      padding: 22px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: var(--shadow-card);
+    }
+
+    .benefit-item h3 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+    }
+
+    .benefit-item p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    .process-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .step-number {
+      flex: 0 0 42px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--bg-soft);
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    .process-step:last-child {
+      border-bottom: none;
+    }
+
+    .process-step h4 {
+      margin: 2px 0 6px;
+      font-size: 1.05rem;
+    }
+
+    .process-step p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    .menu-list {
+      max-width: 560px;
+      margin: 34px auto 0;
+      text-align: left;
+      display: grid;
       gap: 14px;
     }
 
     .menu-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
       padding: 16px 18px;
       border-radius: 14px;
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.9);
       border: 1px solid rgba(0,0,0,0.05);
       box-shadow: 0 8px 18px rgba(0,0,0,0.03);
-      text-align: center;
-      font-weight: 600;
     }
 
     .back-home {
@@ -469,7 +590,8 @@
     @media (max-width: 1100px) {
       .hero-shell,
       .grid-3,
-      .grid-2 {
+      .grid-2,
+      .benefits-grid {
         grid-template-columns: 1fr;
       }
 
@@ -479,18 +601,46 @@
 
       .poster-floating-card {
         left: 16px;
+        right: 16px;
         bottom: 16px;
-        max-width: 240px;
-      }
-
-      .menu-list {
-        grid-template-columns: 1fr 1fr;
+        max-width: none;
       }
     }
 
-    @media (max-width: 760px) {
-      .menu-list {
+    @media (max-width: 700px) {
+      .home-screen {
+        padding: 24px 16px 30px;
+      }
+
+      section {
+        padding: 82px 16px;
+      }
+
+      .hero-title,
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .hero-text,
+      .section-text {
+        font-size: 0.98rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .enter-button,
+      .secondary-button {
+        width: 100%;
+      }
+
+      .mini-grid {
         grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        gap: 16px;
       }
     }
   </style>
@@ -508,21 +658,25 @@
         </div>
 
         <div class="hero-badge">
-          <span data-lang="de">Premium Bio Matcha • Pure Matcha</span>
-          <span data-lang="en">Premium Organic Matcha • Pure Matcha</span>
+          <span data-lang="de">Premium Bio Matcha • Ruhige Energie • Elegantes tägliches Ritual</span>
+          <span data-lang="en">Premium Organic Matcha • Calm Energy • Elegant Daily Ritual</span>
         </div>
 
         <h1 class="hero-title">
-          <span data-lang="de">Pure <span class="accent">Matcha</span></span>
-          <span data-lang="en">Pure <span class="accent">Matcha</span></span>
+          <span data-lang="de">Entdecke ein <span class="accent">professionelles Premium-Matcha</span> Erlebnis</span>
+          <span data-lang="en">Discover a <span class="accent">professional premium matcha</span> experience</span>
         </h1>
 
         <p class="hero-text">
           <span data-lang="de">
-            Premium Bio Matcha, elegante Drinks und feine Desserts.
+            Willkommen bei Matcha Energy. Ein modernes und elegantes Matcha-Konzept rund um
+            hochwertigen Zeremonien- und Culinary-Matcha, raffinierte Getränke, Desserts und
+            eine ruhige, saubere Alternative zu Kaffee.
           </span>
           <span data-lang="en">
-            Premium organic matcha, elegant drinks, and fine desserts.
+            Welcome to Matcha Energy. A modern and elegant matcha concept built around
+            high-quality ceremonial and culinary matcha, refined drinks, desserts, and a calm,
+            clean alternative to coffee.
           </span>
         </p>
 
@@ -540,16 +694,16 @@
 
         <div class="hero-points">
           <div class="hero-point">
-            <span data-lang="de">Premium Matcha</span>
-            <span data-lang="en">Premium Matcha</span>
+            <span data-lang="de">Zeremonien- & Culinary-Matcha</span>
+            <span data-lang="en">Ceremonial & culinary matcha</span>
           </div>
           <div class="hero-point">
-            <span data-lang="de">Elegante Drinks</span>
-            <span data-lang="en">Elegant Drinks</span>
+            <span data-lang="de">Professioneller Markenauftritt</span>
+            <span data-lang="en">Professional brand presentation</span>
           </div>
           <div class="hero-point">
-            <span data-lang="de">Feine Desserts</span>
-            <span data-lang="en">Fine Desserts</span>
+            <span data-lang="de">Elegant, schlicht, hochwertig</span>
+            <span data-lang="en">Elegant, simple, premium identity</span>
           </div>
         </div>
       </div>
@@ -561,12 +715,18 @@
           </div>
           <div class="poster-floating-card">
             <strong>
-              <span data-lang="de">Pure Matcha</span>
-              <span data-lang="en">Pure Matcha</span>
+              <span data-lang="de">Pure Matcha Experience</span>
+              <span data-lang="en">Pure Matcha Experience</span>
             </strong>
             <span>
-              <span data-lang="de">Premium Bio Matcha für Drinks und Desserts.</span>
-              <span data-lang="en">Premium organic matcha for drinks and desserts.</span>
+              <span data-lang="de">
+                Premium Bio Matcha für Espresso-Style Drinks, moderne Lattes,
+                Desserts und ruhige tägliche Energie.
+              </span>
+              <span data-lang="en">
+                Premium organic matcha for espresso-style drinks, modern lattes,
+                desserts, and calm daily energy.
+              </span>
             </span>
           </div>
         </div>
@@ -579,13 +739,18 @@
     <nav class="top-nav">
       <div class="nav-inner">
         <a href="#products">
-          <span data-lang="de">Matcha</span>
-          <span data-lang="en">Matcha</span>
+          <span data-lang="de">Matcha Sorten</span>
+          <span data-lang="en">Matcha Types</span>
         </a>
         <a href="#benefits">
           <span data-lang="de">Warum Matcha</span>
           <span data-lang="en">Why Matcha</span>
         </a>
+        <a href="#cultivation">
+          <span data-lang="de">Anbau</span>
+          <span data-lang="en">Cultivation</span>
+        </a>
+        <a href="#hojicha">Hojicha</a>
         <a href="#menu">
           <span data-lang="de">Menü</span>
           <span data-lang="en">Menu</span>
@@ -593,101 +758,182 @@
       </div>
     </nav>
 
-    <!-- PRODUCTS -->
+    <!-- MATCHA TYPES -->
     <section id="products">
       <div class="section-inner">
         <div class="section-heading">
           <div class="section-kicker">
-            <span data-lang="de">Matcha</span>
-            <span data-lang="en">Matcha</span>
+            <span data-lang="de">Unsere Matcha Auswahl</span>
+            <span data-lang="en">Our Matcha Selection</span>
           </div>
           <h2 class="section-title">
-            <span data-lang="de">Unsere Auswahl</span>
-            <span data-lang="en">Our Selection</span>
+            <span data-lang="de">Drei sorgfältig ausgewählte Matcha-Profile</span>
+            <span data-lang="en">Three carefully selected matcha profiles</span>
           </h2>
           <p class="section-text">
-            <span data-lang="de">Drei Matcha-Sorten für pure Drinks, Latte und Desserts.</span>
-            <span data-lang="en">Three matcha types for pure drinks, lattes, and desserts.</span>
+            <span data-lang="de">
+              Vom konzentrierten Zeremonien-Matcha über täglichen Latte-Matcha bis hin zu
+              Culinary-Matcha für Desserts erfüllt jede Sorte eine klare Rolle im Matcha Energy Konzept.
+            </span>
+            <span data-lang="en">
+              From concentrated ceremonial matcha to daily latte matcha and culinary matcha
+              for desserts, each selection serves a clear purpose in the Matcha Energy concept.
+            </span>
           </p>
         </div>
 
         <div class="grid-3">
-          <div class="card">
+          <div class="card product-card">
             <h3>
               <span data-lang="de">Ceremonial Matcha – Pure</span>
               <span data-lang="en">Ceremonial Matcha – Pure</span>
             </h3>
             <div class="meta">
-              <span data-lang="de">Bio • Kagoshima, Japan</span>
-              <span data-lang="en">Organic • Kagoshima, Japan</span>
+              <span data-lang="de">Bio • EU-zertifiziert • Erste Frühlingsernte • Kagoshima, Japan</span>
+              <span data-lang="en">Organic • EU-certified • First spring harvest • Kagoshima, Japan</span>
             </div>
             <div class="tagline">
-              <span data-lang="de">Für pure Drinks</span>
-              <span data-lang="en">For pure drinks</span>
+              <span data-lang="de">Die natürliche Alternative zu Kaffee</span>
+              <span data-lang="en">The natural alternative to coffee</span>
             </div>
             <p>
-              <span data-lang="de">Fein, weich und klar im Geschmack.</span>
-              <span data-lang="en">Fine, smooth, and clean in taste.</span>
+              <span data-lang="de">
+                Unser hochwertigster Zeremonien-Matcha. Hergestellt aus den jüngsten,
+                schattengewachsenen Blättern der ersten Frühlingsernte. Er bietet natürliche Süße,
+                tiefes Umami und eine seidige Textur.
+              </span>
+              <span data-lang="en">
+                Our highest-quality ceremonial matcha. Made from the youngest, shade-grown leaves
+                of the first spring harvest. It offers natural sweetness, deep umami, and a silky texture.
+              </span>
             </p>
-            <ul class="simple-list">
-              <li><span data-lang="de">Pure Matcha</span><span data-lang="en">Pure Matcha</span></li>
-              <li><span data-lang="de">Matcha Espresso Shot</span><span data-lang="en">Matcha Espresso Shot</span></li>
-              <li><span data-lang="de">Matcha Americano</span><span data-lang="en">Matcha Americano</span></li>
+            <ul class="use-list">
+              <li><span data-lang="de">Ruhige, gleichmäßige Energie</span><span data-lang="en">Calm, steady energy</span></li>
+              <li><span data-lang="de">Klare Konzentration ohne Kaffee-Crash</span><span data-lang="en">Clear focus without coffee crash</span></li>
+              <li><span data-lang="de">Reich an natürlichen Aminosäuren wie L-Theanin</span><span data-lang="en">Rich in natural amino acids such as L-Theanine</span></li>
             </ul>
+            <div class="divider"></div>
+            <h4><span data-lang="de">Verwendet für</span><span data-lang="en">Used for</span></h4>
+            <div class="mini-grid">
+              <div class="mini-box">
+                <strong><span data-lang="de">Matcha Espresso Shot</span><span data-lang="en">Matcha Espresso Shot</span></strong>
+                <span>
+                  <span data-lang="de">Ein konzentriertes Matcha-Getränk und natürliche Espresso-Alternative.</span>
+                  <span data-lang="en">A concentrated matcha drink and natural espresso alternative.</span>
+                </span>
+              </div>
+              <div class="mini-box">
+                <strong><span data-lang="de">Matcha Americano</span><span data-lang="en">Matcha Americano</span></strong>
+                <span>
+                  <span data-lang="de">Ein milderer Drink mit Kaffee-Stärke und ruhigerer Energie.</span>
+                  <span data-lang="en">A milder coffee-strength matcha drink with calmer energy.</span>
+                </span>
+              </div>
+            </div>
           </div>
 
-          <div class="card">
+          <div class="card product-card">
             <h3>
-              <span data-lang="de">Ceremonial Matcha – Daily</span>
-              <span data-lang="en">Ceremonial Matcha – Daily</span>
+              <span data-lang="de">Ceremonial Matcha – Refined Daily</span>
+              <span data-lang="en">Ceremonial Matcha – Refined Daily</span>
             </h3>
             <div class="meta">
-              <span data-lang="de">Bio • Aichi, Japan</span>
-              <span data-lang="en">Organic • Aichi, Japan</span>
+              <span data-lang="de">Bio • EU-zertifiziert • Erste Frühlingsernte • Aichi, Japan</span>
+              <span data-lang="en">Organic • EU-certified • First spring harvest • Aichi, Japan</span>
             </div>
             <div class="tagline">
-              <span data-lang="de">Für Latte</span>
-              <span data-lang="en">For lattes</span>
+              <span data-lang="de">Ausgewogener Premium-Matcha für jeden Tag</span>
+              <span data-lang="en">Balanced everyday premium matcha</span>
             </div>
             <p>
-              <span data-lang="de">Ausgewogen, weich und ideal mit Milch.</span>
-              <span data-lang="en">Balanced, smooth, and ideal with milk.</span>
+              <span data-lang="de">
+                Entwickelt für den täglichen Genuss und gleichzeitig mit der Qualität eines
+                feinen Zeremonien-Matcha. Er bietet ausgewogenes Umami, natürliche Süße
+                und eine angenehme Textur.
+              </span>
+              <span data-lang="en">
+                Developed for daily enjoyment while keeping the quality of fine ceremonial matcha.
+                It offers balanced umami, natural sweetness, and a pleasant texture.
+              </span>
             </p>
-            <ul class="simple-list">
-              <li><span data-lang="de">Matcha Latte</span><span data-lang="en">Matcha Latte</span></li>
-              <li><span data-lang="de">Erdbeer Matcha</span><span data-lang="en">Strawberry Matcha</span></li>
-              <li><span data-lang="de">Ube Matcha</span><span data-lang="en">Ube Matcha</span></li>
+            <ul class="use-list">
+              <li><span data-lang="de">Hervorragende Harmonie mit Milch</span><span data-lang="en">Excellent harmony with milk</span></li>
+              <li><span data-lang="de">Ideal für raffinierte Latte-Varianten</span><span data-lang="en">Suitable for refined latte variations</span></li>
+              <li><span data-lang="de">Premium-Charakter für den täglichen Service</span><span data-lang="en">Premium character for daily service</span></li>
             </ul>
+            <div class="divider"></div>
+            <h4><span data-lang="de">Verwendet für</span><span data-lang="en">Used for</span></h4>
+            <div class="mini-grid">
+              <div class="mini-box">
+                <strong><span data-lang="de">Matcha Latte</span><span data-lang="en">Matcha Latte</span></strong>
+                <span>
+                  <span data-lang="de">Saubere, weiche und ausgewogene Verbindung von Matcha und Milch.</span>
+                  <span data-lang="en">Clean, smooth, balanced matcha and milk combination.</span>
+                </span>
+              </div>
+              <div class="mini-box">
+                <strong><span data-lang="de">Latte Variationen</span><span data-lang="en">Latte Variations</span></strong>
+                <span>
+                  <span data-lang="de">Erdbeer Matcha, Matcha Cloud, Ube Matcha und weitere tägliche Drinks.</span>
+                  <span data-lang="en">Strawberry Matcha, Matcha Cloud, Ube Matcha and other daily drinks.</span>
+                </span>
+              </div>
+            </div>
           </div>
 
-          <div class="card">
+          <div class="card product-card">
             <h3>
-              <span data-lang="de">Organic Matcha – Dessert</span>
-              <span data-lang="en">Organic Matcha – Dessert</span>
+              <span data-lang="de">Organic Matcha – Versatile</span>
+              <span data-lang="en">Organic Matcha – Versatile</span>
             </h3>
             <div class="meta">
-              <span data-lang="de">Bio • Aichi & Shizuoka, Japan</span>
-              <span data-lang="en">Organic • Aichi & Shizuoka, Japan</span>
+              <span data-lang="de">Bio • EU-zertifiziert • Erste & zweite Ernte • Aichi & Shizuoka, Japan</span>
+              <span data-lang="en">Organic • EU-certified • First & second harvest • Aichi & Shizuoka, Japan</span>
             </div>
             <div class="tagline">
-              <span data-lang="de">Für Desserts</span>
-              <span data-lang="en">For desserts</span>
+              <span data-lang="de">Perfekt für Desserts und Gebäck</span>
+              <span data-lang="en">Perfect for desserts and baking</span>
             </div>
             <p>
-              <span data-lang="de">Kräftiger Geschmack und intensive grüne Farbe.</span>
-              <span data-lang="en">Stronger flavour and vibrant green colour.</span>
+              <span data-lang="de">
+                Ein Culinary-Matcha, der speziell für Desserts und Backwaren ausgewählt wurde.
+                Er liefert einen kräftigeren Matcha-Geschmack, intensive grüne Farbe
+                und gute Hitzebeständigkeit.
+              </span>
+              <span data-lang="en">
+                A culinary matcha selected specifically for desserts and baked products.
+                It delivers stronger matcha flavour, a vivid green colour, and good heat stability.
+              </span>
             </p>
-            <ul class="simple-list">
-              <li><span data-lang="de">Matcha Cookie</span><span data-lang="en">Matcha Cookie</span></li>
-              <li><span data-lang="de">Matcha Cheesecake</span><span data-lang="en">Matcha Cheesecake</span></li>
-              <li><span data-lang="de">Matcha Schokolade</span><span data-lang="en">Matcha Chocolate</span></li>
+            <ul class="use-list">
+              <li><span data-lang="de">Intensive grüne Farbe</span><span data-lang="en">Intense green colour</span></li>
+              <li><span data-lang="de">Kräftigerer Matcha-Geschmack</span><span data-lang="en">Stronger matcha taste</span></li>
+              <li><span data-lang="de">Geeignet für Gebäck und süße Produkte</span><span data-lang="en">Suitable for pastries and sweet products</span></li>
             </ul>
+            <div class="divider"></div>
+            <h4><span data-lang="de">Verwendet für</span><span data-lang="en">Used for</span></h4>
+            <div class="mini-grid">
+              <div class="mini-box">
+                <strong><span data-lang="de">Cookies & Schokolade</span><span data-lang="en">Cookies & Chocolate</span></strong>
+                <span>
+                  <span data-lang="de">Matcha Cookies, Matcha Schokolade und süße Backwaren.</span>
+                  <span data-lang="en">Matcha cookies, matcha chocolate and sweet baked products.</span>
+                </span>
+              </div>
+              <div class="mini-box">
+                <strong><span data-lang="de">Cheesecake & Desserts</span><span data-lang="en">Cheesecake & Desserts</span></strong>
+                <span>
+                  <span data-lang="de">Matcha Cheesecake und verschiedene Dessert-Kreationen.</span>
+                  <span data-lang="en">Matcha cheesecake and a variety of matcha dessert creations.</span>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- BENEFITS -->
+    <!-- WHY MATCHA -->
     <section id="benefits" class="alt-section">
       <div class="section-inner">
         <div class="section-heading">
@@ -696,23 +942,225 @@
             <span data-lang="en">Why Matcha</span>
           </div>
           <h2 class="section-title">
-            <span data-lang="de">Einfach und klar</span>
-            <span data-lang="en">Simple and clear</span>
+            <span data-lang="de">Ein ruhigeres und raffinierteres Energie-Erlebnis</span>
+            <span data-lang="en">A calmer and more refined energy experience</span>
           </h2>
           <p class="section-text">
-            <span data-lang="de">Pure Matcha für Fokus, Geschmack und ruhige Energie.</span>
-            <span data-lang="en">Pure matcha for focus, taste, and calm energy.</span>
+            <span data-lang="de">
+              Deine Poster zeigen Matcha als saubere tägliche Energiequelle mit Antioxidantien,
+              ruhiger Konzentration und einem sanfteren Gefühl als Kaffee.
+            </span>
+            <span data-lang="en">
+              Your posters highlight matcha as a clean daily energy choice with antioxidants,
+              calmer focus, and a smoother experience than coffee.
+            </span>
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+          <div class="benefit-item">
+            <h3><span data-lang="de">Reich an Antioxidantien</span><span data-lang="en">Rich in antioxidants</span></h3>
+            <p><span data-lang="de">Matcha ist bekannt für antioxidative Verbindungen und gilt als nährstoffreiche Tee-Wahl.</span><span data-lang="en">Matcha is known for antioxidant compounds and is presented as a nutrient-rich tea choice.</span></p>
+          </div>
+          <div class="benefit-item">
+            <h3><span data-lang="de">Stabile Energie ohne Kaffee-Crash</span><span data-lang="en">Stable energy, no coffee crash</span></h3>
+            <p><span data-lang="de">Matcha bietet ein ruhigeres, länger anhaltendes Energiegefühl mit weicherem Tagesrhythmus.</span><span data-lang="en">Matcha provides a calmer, longer-lasting energy feeling with a smoother daily rhythm.</span></p>
+          </div>
+          <div class="benefit-item">
+            <h3><span data-lang="de">Unterstützt Fokus und Konzentration</span><span data-lang="en">Supports focus and concentration</span></h3>
+            <p><span data-lang="de">Die Kombination aus Koffein und L-Theanin wird für klare Konzentration und mentale Klarheit geschätzt.</span><span data-lang="en">The combination of caffeine and L-Theanine is valued for clean concentration and mental clarity.</span></p>
+          </div>
+          <div class="benefit-item">
+            <h3><span data-lang="de">Ruhiges und ausgewogenes Gefühl</span><span data-lang="en">Calm and balanced feeling</span></h3>
+            <p><span data-lang="de">Viele Menschen bevorzugen Matcha, weil er sanfter, gleichmäßiger und entspannter wirkt als starker Kaffee.</span><span data-lang="en">Many people prefer matcha because it feels gentler, steadier, and more relaxing than strong coffee.</span></p>
+          </div>
+          <div class="benefit-item">
+            <h3><span data-lang="de">Besser für das tägliche Ritual</span><span data-lang="en">Better for daily ritual</span></h3>
+            <p><span data-lang="de">Geschmack, Farbe und Zubereitung schaffen ein Premium-Ritual statt nur eines schnellen Koffein-Drinks.</span><span data-lang="en">Its taste, colour, and preparation create a premium ritual rather than just a quick caffeine drink.</span></p>
+          </div>
+          <div class="benefit-item">
+            <h3><span data-lang="de">Vielseitig für Drinks und Desserts</span><span data-lang="en">Versatile for drinks and desserts</span></h3>
+            <p><span data-lang="de">Von Espresso-Style Shots bis zu Lattes, Cheesecake, Cookies und Schokolade passt Matcha perfekt ins Sortiment.</span><span data-lang="en">From espresso-style shots to lattes, cheesecake, cookies, and chocolate, matcha works beautifully across the menu.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CULTIVATION -->
+    <section id="cultivation">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="section-kicker">
+            <span data-lang="de">Matcha Anbau</span>
+            <span data-lang="en">Matcha Cultivation</span>
+          </div>
+          <h2 class="section-title">
+            <span data-lang="de">Die Kunst hinter hochwertigem Grüntee</span>
+            <span data-lang="en">The art behind premium green tea</span>
+          </h2>
+          <p class="section-text">
+            <span data-lang="de">
+              Die Poster erklären auch den traditionellen Prozess hinter Matcha-Qualität —
+              von der Teepflanze bis zum feinen Pulver.
+            </span>
+            <span data-lang="en">
+              The posters also explain the traditional process behind matcha quality, from the tea plant
+              to the final fine powder.
+            </span>
           </p>
         </div>
 
         <div class="grid-2">
           <div class="card">
-            <h3><span data-lang="de">Ruhige Energie</span><span data-lang="en">Calm Energy</span></h3>
-            <p><span data-lang="de">Sanfter und ausgewogener als starker Kaffee.</span><span data-lang="en">Smoother and more balanced than strong coffee.</span></p>
+            <h3><span data-lang="de">Wie Matcha angebaut wird</span><span data-lang="en">How matcha is cultivated</span></h3>
+
+            <div class="process-step">
+              <div class="step-number">1</div>
+              <div>
+                <h4><span data-lang="de">Anbau</span><span data-lang="en">Cultivation</span></h4>
+                <p><span data-lang="de">Camellia sinensis wird in bekannten Tee-Regionen wie Uji, Nishio, Shizuoka, Aichi und Kagoshima angebaut.</span><span data-lang="en">Camellia sinensis is cultivated in well-known tea-growing regions such as Uji, Nishio, Shizuoka, Aichi and Kagoshima.</span></p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">2</div>
+              <div>
+                <h4><span data-lang="de">Beschattung</span><span data-lang="en">Shade growing</span></h4>
+                <p><span data-lang="de">Etwa 3–4 Wochen vor der Ernte werden die Pflanzen beschattet. Das unterstützt Chlorophyll, Umami und Weichheit.</span><span data-lang="en">About 3–4 weeks before harvest, the plants are shaded. This supports chlorophyll development and contributes to umami and smoothness.</span></p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">3</div>
+              <div>
+                <h4><span data-lang="de">Ernte</span><span data-lang="en">Harvest</span></h4>
+                <p><span data-lang="de">Für Zeremonien-Matcha werden die jüngsten und zartesten Blätter ausgewählt, besonders aus der ersten Ernte.</span><span data-lang="en">For ceremonial-quality matcha, the youngest and most tender leaves are selected, especially from the first harvest.</span></p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">4</div>
+              <div>
+                <h4><span data-lang="de">Verarbeitung zu Tencha</span><span data-lang="en">Processing into Tencha</span></h4>
+                <p><span data-lang="de">Die Blätter werden gedämpft, getrocknet und entstielt, bevor daraus Tencha als Basis für Matcha entsteht.</span><span data-lang="en">The leaves are steamed, dried, and destemmed before they become tencha, the base material for matcha.</span></p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">5</div>
+              <div>
+                <h4><span data-lang="de">Steinmahlung</span><span data-lang="en">Stone milling</span></h4>
+                <p><span data-lang="de">Tencha wird langsam in Steinmühlen zu einem sehr feinen Pulver gemahlen und bewahrt so Textur und Charakter.</span><span data-lang="en">Tencha is slowly ground in stone mills into a very fine powder, preserving texture and character.</span></p>
+              </div>
+            </div>
           </div>
+
           <div class="card">
-            <h3><span data-lang="de">Klarer Fokus</span><span data-lang="en">Clear Focus</span></h3>
-            <p><span data-lang="de">Für Konzentration und ein bewusstes tägliches Ritual.</span><span data-lang="en">For concentration and a more intentional daily ritual.</span></p>
+            <h3><span data-lang="de">Warum Premium-Matcha besonders ist</span><span data-lang="en">Why premium matcha stands out</span></h3>
+            <ul class="benefit-list">
+              <li><span data-lang="de"><span class="highlight">Kräftige grüne Farbe</span> durch sorgfältige Beschattung und Blattqualität</span><span data-lang="en"><span class="highlight">Rich green colour</span> from careful shading and leaf quality</span></li>
+              <li><span data-lang="de"><span class="highlight">Natürliche Süße</span> und weiches Umami-Profil</span><span data-lang="en"><span class="highlight">Natural sweetness</span> and soft umami profile</span></li>
+              <li><span data-lang="de"><span class="highlight">L-Theanin</span> wird mit ruhigem Fokus verbunden</span><span data-lang="en"><span class="highlight">L-Theanine</span> associated with calm focus</span></li>
+              <li><span data-lang="de"><span class="highlight">Feine seidige Textur</span> durch sorgfältige Mahlung</span><span data-lang="en"><span class="highlight">Fine silky texture</span> from careful milling</span></li>
+              <li><span data-lang="de"><span class="highlight">Weniger Bitterkeit</span> bei hochwertigen jungen Blättern</span><span data-lang="en"><span class="highlight">Less bitterness</span> when high-quality young leaves are used</span></li>
+            </ul>
+
+            <div class="divider"></div>
+
+            <h4><span data-lang="de">In deinem Material erwähnte Regionen</span><span data-lang="en">Regions highlighted in your material</span></h4>
+            <div class="mini-grid">
+              <div class="mini-box">
+                <strong>Kagoshima</strong>
+                <span><span data-lang="de">Für dein hochwertiges Ceremonial Pure Matcha Konzept.</span><span data-lang="en">Used for your high-end ceremonial pure matcha concept.</span></span>
+              </div>
+              <div class="mini-box">
+                <strong>Aichi</strong>
+                <span><span data-lang="de">Für Refined Daily Zeremonien-Matcha und Latte-Drinks.</span><span data-lang="en">Used for refined daily ceremonial matcha and latte-based drinks.</span></span>
+              </div>
+              <div class="mini-box">
+                <strong>Shizuoka</strong>
+                <span><span data-lang="de">Teil deines vielseitigen Culinary-Matcha Profils.</span><span data-lang="en">Included in your versatile culinary matcha profile.</span></span>
+              </div>
+              <div class="mini-box">
+                <strong>Uji / Nishio</strong>
+                <span><span data-lang="de">Klassische Tee-Regionen in deiner Matcha-Geschichte.</span><span data-lang="en">Referenced as classic tea-growing locations in the cultivation story.</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOJICHA -->
+    <section id="hojicha" class="alt-section">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="section-kicker">Hojicha</div>
+          <h2 class="section-title">
+            <span data-lang="de">Gerösteter Grüntee mit warmem, nussigem Profil</span>
+            <span data-lang="en">Roasted green tea with a warm, nutty profile</span>
+          </h2>
+          <p class="section-text">
+            <span data-lang="de">
+              Dein Hojicha-Poster ergänzt die Marke mit einer weiteren starken Produktgeschichte —
+              ein gerösteter Tee mit gemütlicher, abendfreundlicher Identität.
+            </span>
+            <span data-lang="en">
+              Your Hojicha poster adds another strong product story to the brand — a roasted tea option
+              with a cosy, evening-friendly identity.
+            </span>
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3><span data-lang="de">Warum Hojicha zur Marke passt</span><span data-lang="en">Why Hojicha fits the brand</span></h3>
+            <ul class="benefit-list">
+              <li><span data-lang="de">Natürlich niedrigeres Koffeinprofil</span><span data-lang="en">Naturally lower caffeine profile</span></li>
+              <li><span data-lang="de">Warmer, gerösteter, nussiger Geschmack</span><span data-lang="en">Warm, roasted, nutty flavour</span></li>
+              <li><span data-lang="de">Wohltuender und entspannender Tee-Charakter</span><span data-lang="en">Comforting and soothing tea character</span></li>
+              <li><span data-lang="de">Ideal als entspannende Alternative zu stärkeren Drinks</span><span data-lang="en">Easy to position as a relaxing alternative to stronger drinks</span></li>
+              <li><span data-lang="de">Perfekt für Abend- oder Wellness-Angebote</span><span data-lang="en">Can support an evening or wellness-style offering</span></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3><span data-lang="de">Wie Hojicha hergestellt wird</span><span data-lang="en">How Hojicha is made</span></h3>
+            <div class="process-step">
+              <div class="step-number">1</div>
+              <div>
+                <h4><span data-lang="de">Anbau</span><span data-lang="en">Cultivation</span></h4>
+                <p><span data-lang="de">Die Grüntee-Pflanzen werden im üblichen Tee-Anbauprozess kultiviert.</span><span data-lang="en">Green tea plants are grown and prepared in the usual tea-growing process.</span></p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-number">2</div>
+              <div>
+                <h4><span data-lang="de">Ernte</span><span data-lang="en">Harvest</span></h4>
+                <p><span data-lang="de">Die Blätter werden geerntet und vor dem Rösten getrocknet.</span><span data-lang="en">The leaves are harvested and dried before roasting.</span></p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-number">3</div>
+              <div>
+                <h4><span data-lang="de">Rösten</span><span data-lang="en">Roasting</span></h4>
+                <p><span data-lang="de">Die Blätter werden bei hoher Temperatur geröstet, wodurch die braune Farbe und das charakteristische Aroma entstehen.</span><span data-lang="en">The leaves are roasted at high temperature, giving Hojicha its brown colour and signature aroma.</span></p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-number">4</div>
+              <div>
+                <h4><span data-lang="de">Abkühlen & sortieren</span><span data-lang="en">Cooling & sorting</span></h4>
+                <p><span data-lang="de">Der Tee wird abgekühlt, sortiert und für das Aufbrühen vorbereitet.</span><span data-lang="en">The tea is cooled, sorted, and prepared for brewing.</span></p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-number">5</div>
+              <div>
+                <h4><span data-lang="de">Aufbrühen</span><span data-lang="en">Brewing</span></h4>
+                <p><span data-lang="de">Mit heißem Wasser entsteht ein weicher, gerösteter Tee mit angenehm wohltuendem Geschmack.</span><span data-lang="en">With hot water, it becomes a smooth roasted tea with a naturally comforting taste.</span></p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -723,16 +1171,22 @@
       <div class="section-inner">
         <div class="section-heading">
           <div class="section-kicker">
-            <span data-lang="de">Menü</span>
-            <span data-lang="en">Menu</span>
+            <span data-lang="de">Signature Menü</span>
+            <span data-lang="en">Signature Menu</span>
           </div>
           <h2 class="section-title">
-            <span data-lang="de">Unsere Favoriten</span>
-            <span data-lang="en">Our Favourites</span>
+            <span data-lang="de">Getränke, Desserts und Favoriten</span>
+            <span data-lang="en">Drinks, desserts and favourites</span>
           </h2>
           <p class="section-text">
-            <span data-lang="de">Eine schlichte Auswahl an Drinks und Desserts.</span>
-            <span data-lang="en">A simple selection of drinks and desserts.</span>
+            <span data-lang="de">
+              Dieses Menü spiegelt jetzt die Produkte aus deinen Postern wider:
+              Espresso-Style Matcha-Drinks, Latte-Variationen, Desserts und weitere Highlights.
+            </span>
+            <span data-lang="en">
+              This menu now reflects the products shown across your posters:
+              espresso-style matcha drinks, latte variations, desserts, and more signature items.
+            </span>
           </p>
         </div>
 
@@ -744,6 +1198,7 @@
           <div class="menu-item"><span><span data-lang="de">Erdbeer Matcha</span><span data-lang="en">Strawberry Matcha</span></span></div>
           <div class="menu-item"><span><span data-lang="de">Matcha Cloud</span><span data-lang="en">Matcha Cloud</span></span></div>
           <div class="menu-item"><span><span data-lang="de">Ube Matcha</span><span data-lang="en">Ube Matcha</span></span></div>
+          <div class="menu-item"><span><span data-lang="de">Hojicha Tee</span><span data-lang="en">Hojicha Tea</span></span></div>
           <div class="menu-item"><span><span data-lang="de">Matcha Cookie</span><span data-lang="en">Matcha Cookie</span></span></div>
           <div class="menu-item"><span><span data-lang="de">Matcha Cheesecake</span><span data-lang="en">Matcha Cheesecake</span></span></div>
           <div class="menu-item"><span><span data-lang="de">Matcha Schokolade</span><span data-lang="en">Matcha Chocolate</span></span></div>
@@ -759,8 +1214,8 @@
 
     <div class="footer-brand">
       <strong>Matcha Energy</strong>
-      <span data-lang="de">Premium Bio Matcha • Drinks • Desserts</span>
-      <span data-lang="en">Premium Organic Matcha • Drinks • Desserts</span>
+      <span data-lang="de">Premium Bio Matcha Pulver • Elegante Getränke • Desserts • Ruhige tägliche Energie</span>
+      <span data-lang="en">Premium organic matcha powder • Elegant drinks • Desserts • Calm daily energy</span>
     </div>
   </div>
 
