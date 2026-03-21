@@ -7,18 +7,21 @@
 
   <style>
     :root {
-      --bg: #f7faf6;
-      --card: rgba(255, 255, 255, 0.88);
-      --card-solid: #ffffff;
-      --text: #182018;
-      --muted: #667065;
+      --bg-main: #fcfdfb;
+      --bg-soft: #f4f8f2;
+      --bg-accent: #edf5ee;
+      --white: #ffffff;
+      --text-main: #1f241f;
+      --text-soft: #5f6a61;
       --green: #2f6f46;
-      --green-dark: #245639;
-      --line: rgba(0, 0, 0, 0.07);
-      --shadow: 0 12px 30px rgba(26, 42, 30, 0.08);
-      --radius: 22px;
-      --radius-sm: 16px;
-      --max: 1120px;
+      --green-dark: #25573a;
+      --line: rgba(0, 0, 0, 0.08);
+      --shadow-soft: 0 18px 50px rgba(34, 55, 41, 0.08);
+      --shadow-card: 0 12px 26px rgba(0, 0, 0, 0.05);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max-width: 1180px;
     }
 
     * {
@@ -32,15 +35,14 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      color: var(--text);
+      color: var(--text-main);
       background:
-        radial-gradient(circle at top, rgba(191, 220, 196, 0.22), transparent 35%),
-        linear-gradient(180deg, #fcfdfb 0%, #f4f8f2 100%);
+        radial-gradient(circle at top, rgba(189, 223, 195, 0.22), #ffffff 58%);
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
     img {
@@ -48,94 +50,124 @@
       display: block;
     }
 
-    [data-lang],
-    [data-lang-block],
-    [data-lang-flex] {
+    [data-lang] {
       display: none;
     }
 
-    html[lang="de"] [data-lang="de"] { display: inline; }
-    html[lang="en"] [data-lang="en"] { display: inline; }
-    html[lang="de"] [data-lang-block="de"] { display: block; }
-    html[lang="en"] [data-lang-block="en"] { display: block; }
-    html[lang="de"] [data-lang-flex="de"] { display: flex; }
-    html[lang="en"] [data-lang-flex="en"] { display: flex; }
+    html[lang="de"] [data-lang="de"] {
+      display: inline;
+    }
 
-    .container {
-      width: 100%;
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 18px;
+    html[lang="en"] [data-lang="en"] {
+      display: inline;
+    }
+
+    html[lang="de"] [data-lang-block="de"] {
+      display: block;
+    }
+
+    html[lang="en"] [data-lang-block="en"] {
+      display: block;
     }
 
     /* HERO */
     .home-screen {
+      position: relative;
       min-height: 100vh;
+      overflow: hidden;
       display: flex;
       align-items: center;
-      padding: 20px 0 28px;
+      justify-content: center;
+      padding: 40px 24px;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(200, 228, 205, 0.45), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(224, 238, 225, 0.55), transparent 26%),
+        linear-gradient(180deg, #fdfefd 0%, #f6faf5 100%);
+    }
+
+    .home-screen::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: rgba(195, 222, 199, 0.18);
+      filter: blur(30px);
+      top: -140px;
+      left: -120px;
+    }
+
+    .home-screen::after {
+      content: "";
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      border-radius: 50%;
+      background: rgba(221, 235, 223, 0.22);
+      filter: blur(28px);
+      bottom: -140px;
+      right: -100px;
     }
 
     .hero-shell {
+      position: relative;
+      z-index: 2;
       width: 100%;
+      max-width: var(--max-width);
       display: grid;
-      gap: 22px;
+      grid-template-columns: 1.08fr 0.92fr;
       align-items: center;
+      gap: 50px;
     }
 
     .lang-switcher {
       display: inline-flex;
-      gap: 6px;
-      padding: 5px;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 6px;
       border-radius: 999px;
       background: rgba(255,255,255,0.78);
-      border: 1px solid var(--line);
-      width: fit-content;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.03);
-      margin-bottom: 14px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.03);
     }
 
     .lang-btn {
       border: none;
       background: transparent;
-      color: var(--muted);
+      color: var(--text-soft);
       font-weight: 700;
       padding: 10px 14px;
       border-radius: 999px;
       cursor: pointer;
+      transition: 0.2s ease;
     }
 
     .lang-btn.active {
       background: var(--green);
-      color: #fff;
-    }
-
-    .hero-copy {
-      order: 2;
-    }
-
-    .hero-visual-wrap {
-      order: 1;
+      color: white;
+      box-shadow: 0 10px 20px rgba(47,111,70,0.16);
     }
 
     .hero-badge {
       display: inline-flex;
-      padding: 9px 14px;
+      padding: 10px 16px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.82);
-      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.78);
       color: var(--green);
-      font-size: 0.88rem;
+      border: 1px solid rgba(47,111,70,0.12);
       font-weight: 700;
-      margin-bottom: 16px;
+      font-size: 0.92rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+      margin-bottom: 22px;
     }
 
     .hero-title {
-      margin: 0 0 14px;
-      font-size: clamp(2.2rem, 8vw, 4.6rem);
-      line-height: 0.96;
+      font-size: clamp(2.9rem, 5vw, 5rem);
+      line-height: 0.95;
+      margin: 0 0 18px;
       letter-spacing: -0.05em;
       font-weight: 800;
+      max-width: 680px;
     }
 
     .hero-title .accent {
@@ -143,17 +175,18 @@
     }
 
     .hero-text {
-      margin: 0 0 22px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 1rem;
-      max-width: 640px;
+      margin: 0 0 28px;
+      max-width: 580px;
+      color: var(--text-soft);
+      line-height: 1.75;
+      font-size: 1.02rem;
     }
 
     .hero-actions {
-      display: grid;
-      gap: 10px;
-      margin-bottom: 18px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
     }
 
     .enter-button,
@@ -161,61 +194,73 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 100%;
-      min-height: 52px;
-      padding: 14px 18px;
       border-radius: 999px;
+      padding: 15px 28px;
       font-size: 1rem;
       font-weight: 700;
-      border: none;
+      transition: 0.25s ease;
       cursor: pointer;
+      border: none;
     }
 
     .enter-button {
       background: var(--green);
-      color: #fff;
-      box-shadow: 0 12px 24px rgba(47,111,70,0.18);
+      color: white;
+      box-shadow: 0 14px 34px rgba(47,111,70,0.2);
+    }
+
+    .enter-button:hover {
+      transform: translateY(-2px);
+      background: var(--green-dark);
     }
 
     .secondary-button {
-      background: rgba(255,255,255,0.9);
-      color: var(--text);
-      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.82);
+      color: var(--text-main);
+      border: 1px solid rgba(0,0,0,0.07);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    }
+
+    .secondary-button:hover {
+      transform: translateY(-2px);
+      background: white;
     }
 
     .hero-points {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
     }
 
     .hero-point {
-      padding: 10px 13px;
+      padding: 10px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.85);
-      border: 1px solid var(--line);
-      font-size: 0.9rem;
-      color: #49544b;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(0,0,0,0.06);
+      color: #4d5a52;
+      font-size: 0.92rem;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.03);
     }
 
     .poster-frame {
       position: relative;
       width: 100%;
-      max-width: 420px;
-      margin: 0 auto;
-      padding: 12px;
-      border-radius: 28px;
-      background: rgba(255,255,255,0.65);
-      border: 1px solid rgba(255,255,255,0.9);
+      max-width: 470px;
+      padding: 16px;
+      border-radius: 34px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.85);
       backdrop-filter: blur(12px);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-soft);
+      margin-left: auto;
     }
 
     .poster-image-box {
-      border-radius: 20px;
       overflow: hidden;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #f9fbf8, #eef5ee);
       aspect-ratio: 4 / 5;
-      background: #eef4ed;
+      border: 1px solid rgba(0,0,0,0.05);
     }
 
     .poster-image {
@@ -226,32 +271,31 @@
 
     .poster-floating-card {
       position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-      background: rgba(255,255,255,0.92);
-      border: 1px solid var(--line);
+      left: -24px;
+      bottom: 26px;
+      max-width: 230px;
+      background: rgba(255,255,255,0.93);
+      border: 1px solid rgba(0,0,0,0.05);
       border-radius: 18px;
-      padding: 14px 16px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+      padding: 16px 18px;
+      box-shadow: 0 16px 35px rgba(0,0,0,0.08);
     }
 
     .poster-floating-card strong {
       display: block;
-      margin-bottom: 5px;
-      font-size: 0.98rem;
+      margin-bottom: 6px;
+      font-size: 1rem;
     }
 
     .poster-floating-card span {
-      color: var(--muted);
-      font-size: 0.9rem;
+      color: var(--text-soft);
+      font-size: 0.92rem;
       line-height: 1.55;
     }
 
     /* SITE */
     .site-content {
       display: none;
-      padding-bottom: 70px;
     }
 
     .site-content.active {
@@ -261,202 +305,192 @@
     .top-nav {
       position: sticky;
       top: 0;
-      z-index: 50;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
+      z-index: 1000;
+      width: 100%;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
     }
 
     .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 16px 20px;
       display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      padding: 12px 18px;
-      scrollbar-width: none;
-    }
-
-    .nav-inner::-webkit-scrollbar {
-      display: none;
+      justify-content: center;
+      gap: 26px;
+      flex-wrap: wrap;
     }
 
     .top-nav a {
-      flex: 0 0 auto;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.9);
-      border: 1px solid var(--line);
-      font-size: 0.92rem;
-      font-weight: 700;
-      white-space: nowrap;
+      font-weight: 600;
+      color: #2a2f2b;
+    }
+
+    .top-nav a:hover {
+      color: var(--green);
     }
 
     section {
-      padding: 56px 0;
+      padding: 100px 24px;
+    }
+
+    .section-inner {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
     }
 
     .section-heading {
-      margin-bottom: 22px;
-      text-align: left;
+      text-align: center;
+      margin-bottom: 50px;
     }
 
     .section-kicker {
       color: var(--green);
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      font-size: 0.76rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .section-title {
-      margin: 0 0 10px;
-      font-size: clamp(1.8rem, 6vw, 3rem);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0 0 14px;
+      letter-spacing: -0.03em;
     }
 
     .section-text {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 0.98rem;
-      max-width: 680px;
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--text-soft);
+      line-height: 1.8;
+      font-size: 1rem;
     }
 
     .alt-section {
-      background: rgba(238, 245, 238, 0.7);
+      background: rgba(240, 248, 241, 0.65);
     }
 
-    .grid {
+    .grid-3 {
       display: grid;
-      gap: 16px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
     }
 
     .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-card);
     }
 
     .card h3 {
-      margin: 0 0 8px;
-      font-size: 1.2rem;
+      margin: 0 0 10px;
+      font-size: 1.22rem;
     }
 
     .card p {
       margin: 0;
-      color: var(--muted);
+      color: var(--text-soft);
       line-height: 1.75;
     }
 
     .meta {
       color: var(--green);
-      font-size: 0.88rem;
+      font-size: 0.92rem;
       font-weight: 700;
+      line-height: 1.6;
       margin-bottom: 10px;
     }
 
     .tagline {
-      font-size: 1.25rem;
+      color: var(--text-main);
+      font-size: 1.35rem;
       line-height: 1.25;
+      margin: 8px 0 14px;
       font-weight: 700;
-      color: var(--text);
-      margin-bottom: 10px;
     }
 
     .simple-list {
-      margin: 14px 0 0;
+      margin: 16px 0 0;
       padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.75;
+      color: var(--text-soft);
+      line-height: 1.8;
     }
 
     .menu-list {
+      max-width: 700px;
+      margin: 34px auto 0;
       display: grid;
-      gap: 12px;
-      margin-top: 22px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
     }
 
     .menu-item {
       padding: 16px 18px;
-      border-radius: var(--radius-sm);
+      border-radius: 14px;
       background: rgba(255,255,255,0.92);
-      border: 1px solid var(--line);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.03);
+      text-align: center;
       font-weight: 600;
     }
 
     .back-home {
       display: inline-block;
-      margin-top: 22px;
+      margin-top: 30px;
       color: var(--green);
-      font-weight: 700;
+      font-weight: 600;
       cursor: pointer;
     }
 
     .footer-brand {
       text-align: center;
-      padding: 44px 18px 80px;
-      color: var(--muted);
+      padding: 70px 24px 90px;
+      color: var(--text-soft);
     }
 
     .footer-brand strong {
       display: block;
+      font-size: 2rem;
       color: var(--green);
-      font-size: 1.7rem;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
-    @media (min-width: 900px) {
-      .hero-shell {
-        grid-template-columns: 1.05fr 0.95fr;
-        gap: 48px;
+    @media (max-width: 1100px) {
+      .hero-shell,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
       }
 
-      .hero-copy {
-        order: 1;
-      }
-
-      .hero-visual-wrap {
-        order: 2;
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-      }
-
-      .enter-button,
-      .secondary-button {
-        width: auto;
-        min-width: 190px;
-      }
-
-      .grid.products-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .grid.benefits-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .section-heading {
-        text-align: center;
-      }
-
-      .section-text {
+      .poster-frame {
         margin: 0 auto;
       }
 
-      .nav-inner {
-        justify-content: center;
-        overflow: visible;
+      .poster-floating-card {
+        left: 16px;
+        bottom: 16px;
+        max-width: 240px;
       }
 
-      section {
-        padding: 88px 0;
+      .menu-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .menu-list {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -465,78 +499,75 @@
 
   <!-- HERO -->
   <div id="homeScreen" class="home-screen">
-    <div class="container">
-      <div class="hero-shell">
-        <div class="hero-copy">
-          <div class="lang-switcher">
-            <button class="lang-btn active" id="btn-de" onclick="setLanguage('de')">DE</button>
-            <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
-          </div>
+    <div class="hero-shell">
+      <div class="hero-copy">
 
-          <div class="hero-badge">
-            <span data-lang="de">Premium Bio Matcha • Ruhige Energie</span>
-            <span data-lang="en">Premium Organic Matcha • Calm Energy</span>
-          </div>
-
-          <h1 class="hero-title">
-            <span data-lang="de">Modernes <span class="accent">Matcha</span><br>für jeden Tag</span>
-            <span data-lang="en">Modern <span class="accent">matcha</span><br>for every day</span>
-          </h1>
-
-          <p class="hero-text">
-            <span data-lang="de">
-              Ein klares, elegantes Matcha-Konzept mit Premium-Drinks, ruhiger Energie
-              und einer modernen visuellen Identität.
-            </span>
-            <span data-lang="en">
-              A clean and elegant matcha concept with premium drinks, calm energy,
-              and a modern visual identity.
-            </span>
-          </p>
-
-          <div class="hero-actions">
-            <button class="enter-button" onclick="showSite()">
-              <span data-lang="de">Webseite entdecken</span>
-              <span data-lang="en">Explore Website</span>
-            </button>
-
-            <a class="secondary-button" href="#menu" onclick="showSite()">
-              <span data-lang="de">Menü ansehen</span>
-              <span data-lang="en">View Menu</span>
-            </a>
-          </div>
-
-          <div class="hero-points">
-            <div class="hero-point">
-              <span data-lang="de">Premium Matcha</span>
-              <span data-lang="en">Premium Matcha</span>
-            </div>
-            <div class="hero-point">
-              <span data-lang="de">Mobile first</span>
-              <span data-lang="en">Mobile first</span>
-            </div>
-            <div class="hero-point">
-              <span data-lang="de">Clean Design</span>
-              <span data-lang="en">Clean Design</span>
-            </div>
-          </div>
+        <div class="lang-switcher">
+          <button class="lang-btn active" id="btn-de" onclick="setLanguage('de')">DE</button>
+          <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
         </div>
 
-        <div class="hero-visual-wrap">
-          <div class="poster-frame">
-            <div class="poster-image-box">
-              <img id="hourlyPoster" class="poster-image" src="" alt="Matcha poster" />
-            </div>
-            <div class="poster-floating-card">
-              <strong>
-                <span data-lang="de">Pure Matcha Experience</span>
-                <span data-lang="en">Pure Matcha Experience</span>
-              </strong>
-              <span>
-                <span data-lang="de">Minimal, hochwertig und gemacht für ruhige tägliche Energie.</span>
-                <span data-lang="en">Minimal, premium, and made for calm daily energy.</span>
-              </span>
-            </div>
+        <div class="hero-badge">
+          <span data-lang="de">Premium Bio Matcha • Pure Matcha</span>
+          <span data-lang="en">Premium Organic Matcha • Pure Matcha</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span data-lang="de">Pure <span class="accent">Matcha</span></span>
+          <span data-lang="en">Pure <span class="accent">Matcha</span></span>
+        </h1>
+
+        <p class="hero-text">
+          <span data-lang="de">
+            Premium Bio Matcha, elegante Drinks und feine Desserts.
+          </span>
+          <span data-lang="en">
+            Premium organic matcha, elegant drinks, and fine desserts.
+          </span>
+        </p>
+
+        <div class="hero-actions">
+          <button class="enter-button" onclick="showSite()">
+            <span data-lang="de">Webseite entdecken</span>
+            <span data-lang="en">Explore Website</span>
+          </button>
+
+          <a class="secondary-button" href="#menu" onclick="showSite()">
+            <span data-lang="de">Menü ansehen</span>
+            <span data-lang="en">View Menu</span>
+          </a>
+        </div>
+
+        <div class="hero-points">
+          <div class="hero-point">
+            <span data-lang="de">Premium Matcha</span>
+            <span data-lang="en">Premium Matcha</span>
+          </div>
+          <div class="hero-point">
+            <span data-lang="de">Elegante Drinks</span>
+            <span data-lang="en">Elegant Drinks</span>
+          </div>
+          <div class="hero-point">
+            <span data-lang="de">Feine Desserts</span>
+            <span data-lang="en">Fine Desserts</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual-wrap">
+        <div class="poster-frame">
+          <div class="poster-image-box">
+            <img id="hourlyPoster" class="poster-image" src="" alt="Matcha poster" />
+          </div>
+          <div class="poster-floating-card">
+            <strong>
+              <span data-lang="de">Pure Matcha</span>
+              <span data-lang="en">Pure Matcha</span>
+            </strong>
+            <span>
+              <span data-lang="de">Premium Bio Matcha für Drinks und Desserts.</span>
+              <span data-lang="en">Premium organic matcha for drinks and desserts.</span>
+            </span>
           </div>
         </div>
       </div>
@@ -564,45 +595,39 @@
 
     <!-- PRODUCTS -->
     <section id="products">
-      <div class="container">
+      <div class="section-inner">
         <div class="section-heading">
           <div class="section-kicker">
-            <span data-lang="de">Matcha Auswahl</span>
-            <span data-lang="en">Matcha Selection</span>
+            <span data-lang="de">Matcha</span>
+            <span data-lang="en">Matcha</span>
           </div>
           <h2 class="section-title">
-            <span data-lang="de">Drei klare Profile</span>
-            <span data-lang="en">Three clear profiles</span>
+            <span data-lang="de">Unsere Auswahl</span>
+            <span data-lang="en">Our Selection</span>
           </h2>
           <p class="section-text">
-            <span data-lang="de">
-              Weniger Text, mehr Klarheit: drei Matcha-Optionen für pure Drinks,
-              Lattes und Desserts.
-            </span>
-            <span data-lang="en">
-              Less text, more clarity: three matcha options for pure drinks,
-              lattes, and desserts.
-            </span>
+            <span data-lang="de">Drei Matcha-Sorten für pure Drinks, Latte und Desserts.</span>
+            <span data-lang="en">Three matcha types for pure drinks, lattes, and desserts.</span>
           </p>
         </div>
 
-        <div class="grid products-grid">
+        <div class="grid-3">
           <div class="card">
             <h3>
-              <span data-lang="de">Ceremonial Pure</span>
-              <span data-lang="en">Ceremonial Pure</span>
+              <span data-lang="de">Ceremonial Matcha – Pure</span>
+              <span data-lang="en">Ceremonial Matcha – Pure</span>
             </h3>
             <div class="meta">
-              <span data-lang="de">Bio • Kagoshima</span>
-              <span data-lang="en">Organic • Kagoshima</span>
+              <span data-lang="de">Bio • Kagoshima, Japan</span>
+              <span data-lang="en">Organic • Kagoshima, Japan</span>
             </div>
             <div class="tagline">
-              <span data-lang="de">Für pure Matcha-Momente</span>
-              <span data-lang="en">For pure matcha moments</span>
+              <span data-lang="de">Für pure Drinks</span>
+              <span data-lang="en">For pure drinks</span>
             </div>
             <p>
-              <span data-lang="de">Fein, weich und elegant. Ideal für puren Matcha, Shots und klare Energie.</span>
-              <span data-lang="en">Fine, smooth, and elegant. Ideal for pure matcha, shots, and clean energy.</span>
+              <span data-lang="de">Fein, weich und klar im Geschmack.</span>
+              <span data-lang="en">Fine, smooth, and clean in taste.</span>
             </p>
             <ul class="simple-list">
               <li><span data-lang="de">Pure Matcha</span><span data-lang="en">Pure Matcha</span></li>
@@ -613,44 +638,44 @@
 
           <div class="card">
             <h3>
-              <span data-lang="de">Refined Daily</span>
-              <span data-lang="en">Refined Daily</span>
+              <span data-lang="de">Ceremonial Matcha – Daily</span>
+              <span data-lang="en">Ceremonial Matcha – Daily</span>
             </h3>
             <div class="meta">
-              <span data-lang="de">Bio • Aichi</span>
-              <span data-lang="en">Organic • Aichi</span>
+              <span data-lang="de">Bio • Aichi, Japan</span>
+              <span data-lang="en">Organic • Aichi, Japan</span>
             </div>
             <div class="tagline">
-              <span data-lang="de">Perfekt für Lattes</span>
-              <span data-lang="en">Perfect for lattes</span>
+              <span data-lang="de">Für Latte</span>
+              <span data-lang="en">For lattes</span>
             </div>
             <p>
-              <span data-lang="de">Ausgewogen und cremig. Entwickelt für moderne Matcha-Latte Variationen.</span>
-              <span data-lang="en">Balanced and creamy. Designed for modern matcha latte variations.</span>
+              <span data-lang="de">Ausgewogen, weich und ideal mit Milch.</span>
+              <span data-lang="en">Balanced, smooth, and ideal with milk.</span>
             </p>
             <ul class="simple-list">
               <li><span data-lang="de">Matcha Latte</span><span data-lang="en">Matcha Latte</span></li>
               <li><span data-lang="de">Erdbeer Matcha</span><span data-lang="en">Strawberry Matcha</span></li>
-              <li><span data-lang="de">Matcha Cloud / Ube Matcha</span><span data-lang="en">Matcha Cloud / Ube Matcha</span></li>
+              <li><span data-lang="de">Ube Matcha</span><span data-lang="en">Ube Matcha</span></li>
             </ul>
           </div>
 
           <div class="card">
             <h3>
-              <span data-lang="de">Versatile Matcha</span>
-              <span data-lang="en">Versatile Matcha</span>
+              <span data-lang="de">Organic Matcha – Dessert</span>
+              <span data-lang="en">Organic Matcha – Dessert</span>
             </h3>
             <div class="meta">
-              <span data-lang="de">Bio • Aichi & Shizuoka</span>
-              <span data-lang="en">Organic • Aichi & Shizuoka</span>
+              <span data-lang="de">Bio • Aichi & Shizuoka, Japan</span>
+              <span data-lang="en">Organic • Aichi & Shizuoka, Japan</span>
             </div>
             <div class="tagline">
-              <span data-lang="de">Für Desserts und Gebäck</span>
-              <span data-lang="en">For desserts and pastries</span>
+              <span data-lang="de">Für Desserts</span>
+              <span data-lang="en">For desserts</span>
             </div>
             <p>
-              <span data-lang="de">Kräftiger Geschmack und intensive Farbe für süße Produkte.</span>
-              <span data-lang="en">Stronger taste and vibrant colour for sweet creations.</span>
+              <span data-lang="de">Kräftiger Geschmack und intensive grüne Farbe.</span>
+              <span data-lang="en">Stronger flavour and vibrant green colour.</span>
             </p>
             <ul class="simple-list">
               <li><span data-lang="de">Matcha Cookie</span><span data-lang="en">Matcha Cookie</span></li>
@@ -664,41 +689,30 @@
 
     <!-- BENEFITS -->
     <section id="benefits" class="alt-section">
-      <div class="container">
+      <div class="section-inner">
         <div class="section-heading">
           <div class="section-kicker">
             <span data-lang="de">Warum Matcha</span>
             <span data-lang="en">Why Matcha</span>
           </div>
           <h2 class="section-title">
-            <span data-lang="de">Ruhige Energie, klarer Fokus</span>
-            <span data-lang="en">Calm energy, clear focus</span>
+            <span data-lang="de">Einfach und klar</span>
+            <span data-lang="en">Simple and clear</span>
           </h2>
           <p class="section-text">
-            <span data-lang="de">Einfach erklärt und visuell stark — ideal für eine mobile Brand-Page.</span>
-            <span data-lang="en">Simple and visually strong — ideal for a mobile brand page.</span>
+            <span data-lang="de">Pure Matcha für Fokus, Geschmack und ruhige Energie.</span>
+            <span data-lang="en">Pure matcha for focus, taste, and calm energy.</span>
           </p>
         </div>
 
-        <div class="grid benefits-grid">
+        <div class="grid-2">
           <div class="card">
-            <h3><span data-lang="de">Sanfter als Kaffee</span><span data-lang="en">Smoother than coffee</span></h3>
-            <p><span data-lang="de">Matcha steht für ein ruhigeres Energiegefühl ohne hektischen Eindruck.</span><span data-lang="en">Matcha is associated with a calmer energy feeling and a smoother daily rhythm.</span></p>
+            <h3><span data-lang="de">Ruhige Energie</span><span data-lang="en">Calm Energy</span></h3>
+            <p><span data-lang="de">Sanfter und ausgewogener als starker Kaffee.</span><span data-lang="en">Smoother and more balanced than strong coffee.</span></p>
           </div>
-
           <div class="card">
-            <h3><span data-lang="de">Klare Konzentration</span><span data-lang="en">Clear focus</span></h3>
-            <p><span data-lang="de">Ideal für Fokus, Kreativität und ein bewusstes tägliches Ritual.</span><span data-lang="en">Ideal for focus, creativity, and a more intentional daily ritual.</span></p>
-          </div>
-
-          <div class="card">
-            <h3><span data-lang="de">Premium Ritual</span><span data-lang="en">Premium ritual</span></h3>
-            <p><span data-lang="de">Farbe, Zubereitung und Geschmack machen Matcha zu mehr als nur einem Drink.</span><span data-lang="en">Colour, preparation, and taste make matcha more than just another drink.</span></p>
-          </div>
-
-          <div class="card">
-            <h3><span data-lang="de">Vielseitig einsetzbar</span><span data-lang="en">Versatile</span></h3>
-            <p><span data-lang="de">Von puren Drinks bis zu Lattes und Desserts passt Matcha perfekt ins Sortiment.</span><span data-lang="en">From pure drinks to lattes and desserts, matcha works beautifully across the menu.</span></p>
+            <h3><span data-lang="de">Klarer Fokus</span><span data-lang="en">Clear Focus</span></h3>
+            <p><span data-lang="de">Für Konzentration und ein bewusstes tägliches Ritual.</span><span data-lang="en">For concentration and a more intentional daily ritual.</span></p>
           </div>
         </div>
       </div>
@@ -706,19 +720,19 @@
 
     <!-- MENU -->
     <section id="menu">
-      <div class="container">
+      <div class="section-inner">
         <div class="section-heading">
           <div class="section-kicker">
             <span data-lang="de">Menü</span>
             <span data-lang="en">Menu</span>
           </div>
           <h2 class="section-title">
-            <span data-lang="de">Signature Auswahl</span>
-            <span data-lang="en">Signature Selection</span>
+            <span data-lang="de">Unsere Favoriten</span>
+            <span data-lang="en">Our Favourites</span>
           </h2>
           <p class="section-text">
-            <span data-lang="de">Reduziert, modern und passend zur Matcha-Identität.</span>
-            <span data-lang="en">Reduced, modern, and aligned with the matcha identity.</span>
+            <span data-lang="de">Eine schlichte Auswahl an Drinks und Desserts.</span>
+            <span data-lang="en">A simple selection of drinks and desserts.</span>
           </p>
         </div>
 
@@ -745,8 +759,8 @@
 
     <div class="footer-brand">
       <strong>Matcha Energy</strong>
-      <span data-lang="de">Premium Bio Matcha • Moderne Drinks • Desserts</span>
-      <span data-lang="en">Premium Organic Matcha • Modern drinks • Desserts</span>
+      <span data-lang="de">Premium Bio Matcha • Drinks • Desserts</span>
+      <span data-lang="en">Premium Organic Matcha • Drinks • Desserts</span>
     </div>
   </div>
 
@@ -765,7 +779,7 @@
       const slot = now.getHours() * 2 + (now.getMinutes() >= 30 ? 1 : 0);
       const posterIndex = slot % posters.length;
       const poster = document.getElementById("hourlyPoster");
-      if (poster) poster.src = posters[posterIndex];
+      poster.src = posters[posterIndex];
     }
 
     function setLanguage(lang) {
