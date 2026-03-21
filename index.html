@@ -363,7 +363,7 @@
 
     function setHalfHourlyPoster() {
       const now = new Date();
-      const slot = now.getHours() * 2 + (now.getMinutes() >= 30 ? 1 : 0);
+      const slot = now.getHours() * 2 + (now.getMinutes() >= 10 ? 1 : 0);
       const posterIndex = slot % posters.length;
       const poster = document.getElementById("hourlyPoster");
       poster.src = posters[posterIndex];
