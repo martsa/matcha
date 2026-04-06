@@ -7,109 +7,113 @@
 
 <style>
 :root{
-  --bg:#eef5ea;
+  --bg:#f7faf7;
   --card:#ffffff;
-  --text:#1a1f16;
-  --muted:#5f6d5c;
-  --green:#6fa44b;
-  --green-soft:#dfead6;
-  --dark:#2e4a2f;
+  --text:#1b1f1b;
+  --muted:#6b736b;
+  --green:#4CAF50;
+  --dark:#1e3d2b;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:system-ui;
-  background:linear-gradient(180deg,#eef5ea 0%, #f5f3ed 100%);
+  background:linear-gradient(180deg,#f0f7f0 0%, #ffffff 100%);
   color:var(--text)
 }
+
 .container{width:90%;max-width:900px;margin:auto}
 
 header{
   display:flex;
   justify-content:space-between;
   padding:20px 0;
-  border-bottom:1px solid var(--green-soft);
 }
 
 nav a{
   margin-left:20px;
   color:var(--dark);
-  font-weight:500;
+  font-weight:600;
+  opacity:0.85;
 }
+
 nav a:hover{
+  opacity:1;
   color:var(--green);
 }
 
 .hero{text-align:center;padding:60px 0}
-.hero h1{font-size:clamp(2.5rem,6vw,4rem);color:var(--dark)}
-.hero p{color:var(--muted);margin-top:10px}
+.hero h1{
+  font-size:clamp(2.5rem,6vw,4rem);
+  color:var(--green);
+  font-weight:800;
+}
+.hero p{
+  color:var(--muted);
+  margin-top:10px;
+}
 
-/* SLIDER */
+@keyframes matchaSlide{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
 .hero-img{
-  box-shadow:0 10px 30px rgba(111,164,75,0.2);
   margin-top:30px;
-  height:300px;
+  height:280px;
   border-radius:20px;
   overflow:hidden;
   position:relative;
+  box-shadow:0 12px 30px rgba(76,175,80,0.18);
 }
 
 .hero-img img{
   width:100%;
   height:100%;
   object-fit:cover;
+  object-position:center;
   position:absolute;
-  top:0;left:0;
+  top:0;
+  left:0;
   opacity:0;
-  transition:opacity 1s ease;
+  transition:opacity 1s ease-in-out;
 }
 
-.hero-img img.active{
-  opacity:1;
-}
+.hero-img img.active{opacity:1}
 
 .overlay{
   position:absolute;
   bottom:20px;
   left:20px;
   right:20px;
+  background:rgba(30,61,43,0.6);
   color:white;
-  font-weight:600;
-  text-align:left;
-  background:rgba(46,74,47,0.65);
-  padding:12px 16px;
-  border-radius:12px;
+  padding:12px;
+  border-radius:10px;
 }
 
-.links{
+.summary{
   margin-top:40px;
-  display:flex;
-  gap:20px;
-  justify-content:center;
-}
-
-.link-card{
   background:var(--card);
-  padding:25px 30px;
+  padding:25px;
   border-radius:20px;
-  text-align:center;
-  border:1px solid var(--green-soft);
-  transition:0.2s ease;
-}
-  background:var(--card);
-  padding:25px 30px;
-  border-radius:20px;
-  text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.06);
+  border:1px solid rgba(76,175,80,0.12);
+  text-align:left;
 }
 
-.link-card h3{color:var(--dark);margin-bottom:8px}
-.link-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 25px rgba(111,164,75,0.25);
+.summary p{
+  color:var(--muted);
+  line-height:1.7;
+  margin-bottom:12px;
 }
-.link-card p{color:var(--muted);font-size:0.9rem}
 
-footer{text-align:center;padding:40px;color:var(--muted)}
+footer{text-align:center;padding:30px;color:var(--muted)}
+
+@media(max-width:800px){
+  .hero-img{height:220px}
+}
 </style>
 </head>
 
@@ -118,7 +122,7 @@ footer{text-align:center;padding:40px;color:var(--muted)}
 <div class="container">
 
 <header>
-  <h2>Matcha Energy</h2>
+  <h2 style="color:var(--green)">Matcha Energy</h2>
   <nav>
     <a href="powder.html">Powder</a>
     <a href="menu.html">Menu</a>
@@ -128,37 +132,33 @@ footer{text-align:center;padding:40px;color:var(--muted)}
 
 <div class="hero">
   <h1>Matcha Energy</h1>
-  <p>Clean energy. Simple menu. Premium matcha.</p>
+  <p>Ceremonial matcha from Japan. Crafted with care. A calm, refined energy.</p>
 
-  <!-- SLIDER -->
   <div class="hero-img">
-    <img src="https://images.unsplash.com/photo-1559561853-08451507cbe7" class="active">
-    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348">
-    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
+    <img src="https://images.unsplash.com/photo-1559561853-08451507cbe7?auto=format&fit=crop&w=1200&q=80" class="active">
+    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=80">
+    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80">
 
     <div class="overlay" id="overlayText">
       Premium matcha for clean energy
     </div>
   </div>
 
-  <div class="links">
-
-    <a href="powder.html" class="link-card">
-      <h3>Matcha Powder</h3>
-      <p>Learn about the 3 grades</p>
-    </a>
-
-    <a href="menu.html" class="link-card">
-      <h3>Menu</h3>
-      <p>See drinks and prices</p>
-    </a>
-
-    <a href="ingredients.html" class="link-card">
-      <h3>Ingredients</h3>
-      <p>What we use</p>
-    </a>
-
+  <div class="summary">
+    <p>
+      At Matcha Energy, quality is our first priority. We use EU-certified organic matcha sourced from Japan, made from ceremonial grade, first-harvest leaves.
+    </p>
+    <p>
+      Matcha is a healthier alternative to coffee, providing smooth and steady energy without the crash. Unlike coffee, it is generally lower in acidity, making it gentler on the stomach and less likely to cause irritation or discomfort. The natural combination of caffeine and L-theanine in matcha supports calm focus, helping reduce jitters and sharp spikes in energy. Matcha is also rich in antioxidants, which support overall wellbeing and make it a more balanced daily choice compared to many coffee-based drinks.
+    </p>
+    <p>
+      We prepare our own syrups using real fruits and never use artificial colors. All colors come naturally from matcha and fruits.
+    </p>
+    <p>
+      Our snacks are baked fresh daily in small quantities, and all stock is cleared by the end of the day.
+    </p>
   </div>
+
 </div>
 
 </div>
@@ -170,9 +170,9 @@ footer{text-align:center;padding:40px;color:var(--muted)}
 <script>
 const images = document.querySelectorAll('.hero-img img');
 const texts = [
-  "Premium matcha for clean energy",
-  "No crash, smooth focus",
-  "Simple ingredients, powerful effect"
+  'Premium matcha for clean energy',
+  'No crash, smooth focus',
+  'Natural ingredients only'
 ];
 
 let index = 0;
