@@ -248,10 +248,11 @@ footer{
 }
 
 @media (max-width:800px){
+
   .floating-logo{
-    top:75px;         /* pushes logo down onto hero image */
-    left:12px;
-    transform:rotate(-14deg);
+    top: calc(28px + 0px);  /* aligns with hero-img top */
+    left:14px;
+    transform:translateY(-50%) rotate(-8deg); /* 👈 KEY PART */
     z-index:20;
   }
 
@@ -261,7 +262,7 @@ footer{
 
   header{
     padding:18px 16px;
-    margin-top:20px;   /* remove the large gap */
+    margin-top:20px;
     justify-content:center;
   }
 
@@ -282,33 +283,13 @@ footer{
     margin-top:28px;
   }
 
-  .overlay{
-    padding:22px;
-  }
-
-  .overlay-title{
-    font-size:2.25rem;
-  }
-
-  .overlay-subtitle{
-    font-size:0.95rem;
-  }
-
   .hero-bottom-logo{
-    right:8px;
-    bottom:8px;
+    right:5px;
+    bottom:3px;
   }
 
   .hero-bottom-logo img{
-    width:52px;
-  }
-
-  .summary-top{
-    padding:22px 22px 16px;
-  }
-
-  .summary-body{
-    padding:20px 22px 22px;
+    width:42px;
   }
 
   .summary-grid{
