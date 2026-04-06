@@ -119,7 +119,7 @@ nav a:hover{
   background:var(--card);
   padding:0;
   border-radius:24px;
-  box-shadow:0 10px 28px rgba(0,0,0,0.01);
+  box-shadow:0 10px 28px rgba(0,0,0,0.05);
   border:1px solid var(--line);
   text-align:left;
   overflow:hidden;
@@ -207,48 +207,59 @@ footer{text-align:center;padding:34px 0 40px;color:var(--muted);font-size:0.94re
 </header>
 
 <div class="hero">
-  <h1>Matcha Energy</h1>
-  <p>Ceremonial matcha from Japan, prepared for a fresh and modern food trailer experience.</p>
+  <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=1200&q=80" alt="Matcha Energy" style="max-width:100%;height:auto;margin-bottom:10px;border-radius:16px;">
+  <p>Natürliche Energie. Klarer Fokus.</p>
 
   <div class="hero-img">
-     <img src="puremathca.png?auto=format&fit=crop&w=1200&q=80" class="active">
-    <img src="baking.png?auto=format&fit=crop&w=1200&q=80" class="active">
-    <img src="japan.png?auto=format&fit=crop&w=1200&q=80" class="active">
-    <img src="pure.png?auto=format&fit=crop&w=1200&q=80"class="active">
+    <img src="matcha1.jpg" class="active">
+    <img src="matcha2.jpg">
+    <img src="matcha3.jpg">
+    <img src="matcha4.jpg">
+    <img src="matcha5.jpg">
 
     <div class="overlay" id="overlayText">
-      Premium matcha drinks and fresh daily snacks
+      Den ganzen Tag.
     </div>
   </div>
 
   <div class="summary">
     <div class="summary-top">
-      <h2>A premium matcha trailer built around freshness and quality.</h2>
+      <h2>Natürlich wach. Ohne Crash.</h2>
       <p>
-        Matcha Energy is designed as a clean, modern food trailer brand focused on ceremonial-grade matcha drinks, natural ingredients, and small-batch preparation.
+        Premium Matcha aus Japan — modern serviert für einen frischen Food-Trailer-Auftritt.
       </p>
     </div>
 
     <div class="summary-body">
       <div class="summary-grid">
         <div class="feature-card">
-          <h3>Japanese ceremonial-grade matcha</h3>
-          <p>We use EU-certified organic matcha from Japan made from first-harvest leaves for a smoother taste, vibrant natural color, and more premium drinking experience.</p>
+          <h3>✓ Kein Crash.</h3>
+          <p>Sanfte Energie ohne Absturz und ohne das typische Auf und Ab vieler Kaffeegetränke.</p>
         </div>
 
         <div class="feature-card">
-          <h3>A better daily energy option</h3>
-          <p>Matcha offers more balanced energy than coffee, with less acidity, calmer focus, and a smoother caffeine release supported by naturally occurring L-theanine.</p>
+          <h3>✓ Kein Kaffee.</h3>
+          <p>Klarer Fokus statt Nervosität. Matcha bietet ruhigere, gleichmäßigere Energie für den Tag.</p>
         </div>
 
         <div class="feature-card">
-          <h3>Prepared with real ingredients</h3>
-          <p>We prepare our own fruit syrups and never use artificial colors. The color you see comes naturally from matcha and fruit.</p>
+          <h3>✓ Premium Matcha.</h3>
+          <p>EU-Bio-zertifiziertes Matcha-Pulver aus Japan, sorgfältig ausgewählt für Farbe, Qualität und Geschmack.</p>
         </div>
 
         <div class="feature-card">
-          <h3>Fresh trailer-made snacks</h3>
-          <p>Our snacks are baked fresh daily in small quantities, with stock cleared by the end of the day to keep quality and freshness at the highest level.</p>
+          <h3>100% Natürlich</h3>
+          <p>Keine künstlichen Farbstoffe. Die Farben stammen natürlich aus Matcha und Früchten.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Sanfte Energie</h3>
+          <p>Eine angenehmere Alternative zu Kaffee mit ausgewogenerem Koffeinprofil und ruhigerem Energiegefühl.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Klarer Fokus</h3>
+          <p>Ideal für Menschen, die wacher sein möchten, ohne sich nervös oder überreizt zu fühlen.</p>
         </div>
       </div>
     </div>
@@ -267,8 +278,7 @@ const images = document.querySelectorAll('.hero-img img');
 const texts = [
   'Premium matcha for clean energy',
   'No crash, smooth focus',
-  'Natural ingredients only',
-    'Natural ingredients only'
+  'Natural ingredients only'
 ];
 
 let index = 0;
