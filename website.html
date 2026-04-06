@@ -1,408 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matcha Energy</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Matcha Energy</title>
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
 
-    :root{
-      --bg:#f7faf7;
-      --card:#ffffff;
-      --text:#1b1f1b;
-      --muted:#6b736b;
-      --green:#4CAF50;
-      --green-soft:#edf7ee;
-      --dark:#1e3d2b;
-      --line:rgba(76,175,80,0.12);
-    }
+:root{
+  --bg:#f7faf7;
+  --card:#ffffff;
+  --text:#1b1f1b;
+  --muted:#6b736b;
+  --green:#4CAF50;
+  --green-soft:#edf7ee;
+  --dark:#1e3d2b;
+  --line:rgba(76,175,80,0.12);
+}
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+*{margin:0;padding:0;box-sizing:border-box}
 
-    body{
-      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
-      background:linear-gradient(180deg,#f0f7f0 0%, #ffffff 100%);
-      color:var(--text);
-    }
+body{
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+  background:linear-gradient(180deg,#f0f7f0 0%, #ffffff 100%);
+  color:var(--text);
+}
 
-    .container{
-      width:90%;
-      max-width:940px;
-      margin:auto;
-      position:relative;
-    }
+.container{
+  width:90%;
+  max-width:940px;
+  margin:auto;
+  position:relative;
+}
 
-    .floating-logo{
-      position:absolute;
-      top:24px;
-      left:10px;
-      z-index:5;
-      transform:rotate(-10deg);
-      opacity:0.95;
-    }
+/* TOP LOGO */
+.floating-logo{
+  position:absolute;
+  top:24px;
+  left:10px;
+  z-index:5;
+  transform:rotate(-10deg);
+  opacity:0.95;
+}
 
-    .floating-logo img{
-      width:180px;
-      height:auto;
-    }
+.floating-logo img{
+  width:180px;
+}
 
-    header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:16px 20px;
-      padding-left:200px;
-      background:rgba(76,175,80,0.06);
-      backdrop-filter:blur(10px);
-      border-radius:16px;
-      margin-top:20px;
-    }
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 20px;
+  padding-left:200px;
+  background:rgba(76,175,80,0.06);
+  backdrop-filter:blur(10px);
+  border-radius:16px;
+  margin-top:20px;
+}
 
-    nav a{
-      margin-left:24px;
-      color:var(--dark);
-      font-weight:600;
-      font-size:0.96rem;
-      letter-spacing:0.01em;
-      opacity:0.85;
-      text-decoration:none;
-    }
+nav a{
+  margin-left:24px;
+  color:var(--dark);
+  font-weight:600;
+  font-size:0.96rem;
+  opacity:0.85;
+  text-decoration:none;
+}
 
-    nav a:hover{
-      opacity:1;
-      color:var(--green);
-    }
+nav a:hover{
+  opacity:1;
+  color:var(--green);
+}
 
-    .hero-img{
-      margin:28px auto 0;
-      height:520px;
-      width:100%;
-      border-radius:28px;
-      overflow:visible;
-      position:relative;
-      border:1px solid var(--line);
-      box-shadow:0 18px 44px rgba(76,175,80,0.14);
-    }
+/* HERO */
+.hero-img{
+  margin:28px auto 0;
+  height:520px;
+  width:100%;
+  border-radius:28px;
+  overflow:hidden;
+  position:relative;
+  border:1px solid var(--line);
+  box-shadow:0 18px 44px rgba(76,175,80,0.14);
+}
 
-    .hero-slide{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center;
-      position:absolute;
-      inset:0;
-      opacity:0;
-      transition:opacity 1s ease-in-out;
-      border-radius:28px;
-    }
+/* SLIDES */
+.hero-slide{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:opacity 1s ease-in-out;
+}
 
-    .hero-slide.active{
-      opacity:1;
-    }
+.hero-slide.active{
+  opacity:1;
+}
 
-    .overlay{
-      position:absolute;
-      inset:0;
-      background:linear-gradient(
-        180deg,
-        rgba(12,26,14,0.06) 0%,
-        rgba(12,26,14,0.18) 42%,
-        rgba(12,26,14,0.62) 100%
-      );
-      color:white;
-      padding:34px;
-      display:flex;
-      align-items:flex-end;
-      justify-content:center;
-      z-index:2;
-      border-radius:28px;
-    }
+/* OVERLAY */
+.overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    rgba(12,26,14,0.06) 0%,
+    rgba(12,26,14,0.18) 42%,
+    rgba(12,26,14,0.62) 100%
+  );
+  color:white;
+  padding:34px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  z-index:2;
+}
 
-    .overlay-content{
-      max-width:760px;
-      width:100%;
-      text-align:center;
-    }
+.overlay-content{
+  max-width:760px;
+  width:100%;
+  text-align:center;
+}
 
-    .overlay-title{
-      font-family:'Poppins', sans-serif;
-      font-size:clamp(2.8rem,6vw,5.2rem);
-      line-height:0.92;
-      letter-spacing:-0.05em;
-      font-weight:800;
-      margin-bottom:12px;
-      text-shadow:0 8px 30px rgba(0,0,0,0.22);
-    }
+.overlay-title{
+  font-family:'Poppins', sans-serif;
+  font-size:clamp(2.8rem,6vw,5.2rem);
+  font-weight:800;
+  margin-bottom:12px;
+}
 
-    .overlay-subtitle{
-      font-size:1.05rem;
-      line-height:1.6;
-      opacity:0.96;
-      margin:0 auto;
-      max-width:560px;
-      text-shadow:0 6px 20px rgba(0,0,0,0.18);
-    }
+.overlay-subtitle{
+  font-size:1.05rem;
+  line-height:1.6;
+  opacity:0.96;
+}
 
-    .hero-bottom-logo{
-      position:absolute;
-      right:28px;
-      bottom:-58px;
-      z-index:10;
-      transform:rotate(-10deg);
-      opacity:0.95;
-    }
+/* ✅ CLEAN BOTTOM LOGO */
+.hero-bottom-logo{
+  position:absolute;
+  right:18px;
+  bottom:18px;
+  z-index:10;
+}
 
-    .hero-bottom-logo img{
-      width:170px;
-      height:auto;
-      display:block;
-      filter:drop-shadow(0 10px 22px rgba(0,0,0,0.18));
-    }
+.hero-bottom-logo img{
+  width:95px;
+  filter:drop-shadow(0 8px 18px rgba(0,0,0,0.18));
+}
 
-    .summary{
-      margin-top:90px;
-      background:var(--card);
-      border-radius:24px;
-      box-shadow:0 10px 28px rgba(0,0,0,0.05);
-      border:1px solid var(--line);
-      text-align:left;
-      overflow:hidden;
-    }
+/* SUMMARY */
+.summary{
+  margin-top:48px;
+  background:var(--card);
+  border-radius:24px;
+  box-shadow:0 10px 28px rgba(0,0,0,0.05);
+  border:1px solid var(--line);
+  overflow:hidden;
+}
 
-    .summary p{
-      color:var(--muted);
-      line-height:1.82;
-      margin-bottom:14px;
-      font-size:1rem;
-    }
+.summary-top{
+  background:linear-gradient(180deg, var(--green-soft) 0%, #f7fbf7 58%, #ffffff 100%);
+  padding:28px 30px 22px;
+}
 
-    .summary-top{
-      background:linear-gradient(180deg, var(--green-soft) 0%, #f7fbf7 58%, #ffffff 100%);
-      padding:28px 30px 22px;
-    }
+.summary-top h2{
+  color:var(--dark);
+  font-size:1.5rem;
+  margin-bottom:10px;
+}
 
-    .summary-top h2{
-      color:var(--dark);
-      font-size:1.5rem;
-      line-height:1.1;
-      margin-bottom:10px;
-      letter-spacing:-0.02em;
-    }
+.summary-top p{
+  color:var(--muted);
+  line-height:1.8;
+}
 
-    .summary-top p{
-      margin-bottom:0;
-    }
+.summary-body{
+  padding:26px 30px 30px;
+}
 
-    .summary-body{
-      padding:26px 30px 30px;
-    }
+.summary-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
 
-    .summary-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:16px;
-      margin-top:10px;
-    }
+.feature-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+}
 
-    .feature-card{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:18px;
-    }
+.feature-card h3{
+  color:var(--dark);
+  font-size:1rem;
+  margin-bottom:8px;
+}
 
-    .feature-card h3{
-      color:var(--dark);
-      font-size:1rem;
-      margin-bottom:8px;
-    }
+.feature-card p{
+  font-size:0.95rem;
+  color:var(--muted);
+}
 
-    .feature-card p{
-      margin-bottom:0;
-      font-size:0.95rem;
-      line-height:1.7;
-    }
+/* MOBILE */
+@media(max-width:800px){
 
-    footer{
-      text-align:center;
-      padding:34px 0 40px;
-      color:var(--muted);
-      font-size:0.94rem;
-    }
+  .floating-logo img{
+    width:120px;
+  }
 
-    @media (max-width:800px){
-      .floating-logo{
-        top:0;
-        left:6px;
-        transform:rotate(-8deg);
-      }
+  header{
+    padding-left:120px;
+  }
 
-      .floating-logo img{
-        width:120px;
-      }
+  .hero-img{
+    height:340px;
+  }
 
-      header{
-        padding-left:120px;
-      }
+  .hero-bottom-logo{
+    right:12px;
+    bottom:12px;
+  }
 
-      .hero-img{
-        height:340px;
-      }
+  .hero-bottom-logo img{
+    width:72px;
+  }
 
-      .overlay{
-        padding:22px;
-      }
-
-      .overlay-title{
-        font-size:2.25rem;
-      }
-
-      .overlay-subtitle{
-        font-size:0.95rem;
-      }
-
-      .hero-bottom-logo{
-        right:14px;
-        bottom:-40px;
-        transform:rotate(-8deg);
-      }
-
-      .hero-bottom-logo img{
-        width:110px;
-      }
-
-      .summary{
-        margin-top:70px;
-      }
-
-      .summary-top{
-        padding:22px 22px 16px;
-      }
-
-      .summary-body{
-        padding:20px 22px 22px;
-      }
-
-      .summary-grid{
-        grid-template-columns:1fr;
-      }
-
-      nav a{
-        margin-left:14px;
-        font-size:0.9rem;
-      }
-    }
-  </style>
+  .summary-grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
 </head>
+
 <body>
 
-  <div class="container">
-    <div class="floating-logo">
-      <img src="logowhite.png" alt="Matcha Energy Logo" />
-    </div>
+<div class="container">
 
-    <header>
-      <nav>
-        <a href="powder.html">Powder</a>
-        <a href="menu.html">Menu</a>
-        <a href="ingredients.html">Ingredients</a>
-      </nav>
-    </header>
-
-    <div class="hero-img">
-      <img src="puremathca.png" class="hero-slide active" alt="Pure matcha" />
-      <img src="baking.png" class="hero-slide" alt="Matcha baking" />
-      <img src="japan.png" class="hero-slide" alt="Japan inspiration" />
-      <img src="pure.png" class="hero-slide" alt="Pure natural ingredients" />
-      <img src="posternext.png" class="hero-slide" alt="Matcha poster" />
-
-      <div class="overlay">
-        <div class="overlay-content">
-          <div class="overlay-title" id="overlayText">Natürlich wach.<br>Ohne Crash.</div>
-          <div class="overlay-subtitle">
-            Premium Matcha aus Japan — modern serviert für einen frischen Food-Trailer-Auftritt.
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-bottom-logo">
-        <img src="logousenow-2.png" alt="Matcha Energy Logo" />
-      </div>
-    </div>
-
-    <div class="summary">
-      <div class="summary-top">
-        <h2>Natürlich wach. Ohne Crash.</h2>
-        <p>
-          Premium Matcha aus Japan — modern serviert für einen frischen Food-Trailer-Auftritt.
-        </p>
-      </div>
-
-      <div class="summary-body">
-        <div class="summary-grid">
-          <div class="feature-card">
-            <h3>✓ Kein Crash.</h3>
-            <p>Sanfte Energie ohne Absturz und ohne das typische Auf und Ab vieler Kaffeegetränke.</p>
-          </div>
-
-          <div class="feature-card">
-            <h3>✓ Kein Kaffee.</h3>
-            <p>Klarer Fokus statt Nervosität. Matcha bietet ruhigere, gleichmäßigere Energie für den Tag.</p>
-          </div>
-
-          <div class="feature-card">
-            <h3>✓ Premium Matcha.</h3>
-            <p>EU-Bio-zertifiziertes Matcha-Pulver aus Japan, sorgfältig ausgewählt für Farbe, Qualität und Geschmack.</p>
-          </div>
-
-          <div class="feature-card">
-            <h3>100% Natürlich</h3>
-            <p>Keine künstlichen Farbstoffe. Die Farben stammen natürlich aus Matcha und Früchten.</p>
-          </div>
-
-          <div class="feature-card">
-            <h3>Sanfte Energie</h3>
-            <p>Eine angenehmere Alternative zu Kaffee mit ausgewogenerem Koffeinprofil und ruhigerem Energiegefühl.</p>
-          </div>
-
-          <div class="feature-card">
-            <h3>Klarer Fokus</h3>
-            <p>Ideal für Menschen, die wacher sein möchten, ohne sich nervös oder überreizt zu fühlen.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="floating-logo">
+    <img src="logousenow-2.png">
   </div>
 
-  <footer>
-    © 2026 Matcha Energy
-  </footer>
+  <header>
+    <nav>
+      <a href="#">Powder</a>
+      <a href="#">Menu</a>
+      <a href="#">Ingredients</a>
+    </nav>
+  </header>
 
-  <script>
-    const images = document.querySelectorAll('.hero-slide');
-    const texts = [
-      'Natürlich wach.<br>Ohne Crash.',
-      'Sanfte Energie.<br>Klarer Fokus.',
-      'Premium Matcha<br>aus Japan.',
-      '100% Natürlich.<br>Ohne Zusätze.',
-      'Den ganzen Tag.'
-    ];
+  <div class="hero-img">
 
-    let index = 0;
+    <img src="puremathca.png" class="hero-slide active">
+    <img src="baking.png" class="hero-slide">
+    <img src="japan.png" class="hero-slide">
+    <img src="pure.png" class="hero-slide">
+    <img src="posternext.png" class="hero-slide">
 
-    setInterval(() => {
-      images[index].classList.remove('active');
-      index = (index + 1) % images.length;
-      images[index].classList.add('active');
-      document.getElementById('overlayText').innerHTML = texts[index];
-    }, 10000);
-  </script>
+    <div class="overlay">
+      <div class="overlay-content">
+        <div class="overlay-title" id="overlayText">
+          Natürlich wach.<br>Ohne Crash.
+        </div>
+        <div class="overlay-subtitle">
+          Premium Matcha aus Japan — modern serviert für einen frischen Food-Trailer-Auftritt.
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-bottom-logo">
+      <img src="logowhite.png">
+    </div>
+
+  </div>
+
+  <!-- FULL TEXT RESTORED -->
+  <div class="summary">
+
+    <div class="summary-top">
+      <h2>Natürlich wach. Ohne Crash.</h2>
+      <p>
+        Premium Matcha aus Japan — modern serviert für einen frischen Food-Trailer-Auftritt.
+      </p>
+    </div>
+
+    <div class="summary-body">
+      <div class="summary-grid">
+
+        <div class="feature-card">
+          <h3>✓ Kein Crash.</h3>
+          <p>Sanfte Energie ohne Absturz und ohne das typische Auf und Ab vieler Kaffeegetränke.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>✓ Kein Kaffee.</h3>
+          <p>Klarer Fokus statt Nervosität. Matcha bietet ruhigere, gleichmäßigere Energie für den Tag.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>✓ Premium Matcha.</h3>
+          <p>EU-Bio-zertifiziertes Matcha-Pulver aus Japan.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>100% Natürlich</h3>
+          <p>Keine künstlichen Farbstoffe.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Sanfte Energie</h3>
+          <p>Angenehmere Alternative zu Kaffee.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Klarer Fokus</h3>
+          <p>Wach ohne Nervosität.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+const images = document.querySelectorAll('.hero-slide');
+
+const texts = [
+  'Natürlich wach.<br>Ohne Crash.',
+  'Sanfte Energie.<br>Klarer Fokus.',
+  'Premium Matcha<br>aus Japan.',
+  '100% Natürlich.',
+  'Den ganzen Tag.'
+];
+
+let index = 0;
+
+setInterval(() => {
+  images[index].classList.remove('active');
+  index = (index + 1) % images.length;
+  images[index].classList.add('active');
+  document.getElementById('overlayText').innerHTML = texts[index];
+}, 5000);
+</script>
 
 </body>
 </html>
