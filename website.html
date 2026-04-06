@@ -12,28 +12,34 @@
   --text:#1b1f1b;
   --muted:#6b736b;
   --green:#4CAF50;
+  --green-soft:#edf7ee;
   --dark:#1e3d2b;
+  --line:rgba(76,175,80,0.12);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family:system-ui;
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
   background:linear-gradient(180deg,#f0f7f0 0%, #ffffff 100%);
   color:var(--text)
 }
 
-.container{width:90%;max-width:900px;margin:auto}
+.container{width:90%;max-width:940px;margin:auto}
 
 header{
   display:flex;
   justify-content:space-between;
-  padding:20px 0;
+  align-items:center;
+  padding:24px 0 18px;
+  border-bottom:1px solid var(--line);
 }
 
 nav a{
-  margin-left:20px;
+  margin-left:24px;
   color:var(--dark);
   font-weight:600;
+  font-size:0.96rem;
+  letter-spacing:0.01em;
   opacity:0.85;
 }
 
@@ -42,15 +48,20 @@ nav a:hover{
   color:var(--green);
 }
 
-.hero{text-align:center;padding:60px 0}
+.hero{text-align:center;padding:82px 0 72px}
 .hero h1{
-  font-size:clamp(2.5rem,6vw,4rem);
+  font-size:clamp(2.8rem,6vw,4.4rem);
   color:var(--green);
   font-weight:800;
+  letter-spacing:-0.03em;
+  line-height:0.96;
 }
 .hero p{
   color:var(--muted);
-  margin-top:10px;
+  margin:14px auto 0;
+  font-size:1.06rem;
+  line-height:1.6;
+  max-width:680px;
 }
 
 @keyframes matchaSlide{
@@ -60,14 +71,15 @@ nav a:hover{
 }
 
 .hero-img{
-  margin:30px auto 0;
-  height:260px;
-  width:80%;
-  max-width:600px;
-  border-radius:20px;
+  margin:42px auto 0;
+  height:310px;
+  width:84%;
+  max-width:680px;
+  border-radius:26px;
   overflow:hidden;
   position:relative;
-  box-shadow:0 12px 30px rgba(76,175,80,0.18);
+  border:1px solid var(--line);
+  box-shadow:0 18px 44px rgba(76,175,80,0.14);
 }
 
 .hero-img img{
@@ -86,35 +98,96 @@ nav a:hover{
 
 .overlay{
   position:absolute;
-  bottom:20px;
-  left:20px;
-  right:20px;
-  background:rgba(30,61,43,0.6);
+  bottom:18px;
+  left:18px;
+  right:18px;
+  background:linear-gradient(135deg, rgba(30,61,43,0.78), rgba(30,61,43,0.58));
   color:white;
-  padding:12px;
-  border-radius:10px;
+  padding:14px 16px;
+  border-radius:14px;
+  font-size:0.95rem;
+  letter-spacing:0.01em;
+  backdrop-filter:blur(4px);
+  text-align:left;
 }
 
 .summary{
-  margin-top:40px;
+  margin-top:48px;
   background:var(--card);
-  padding:25px;
-  border-radius:20px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.06);
-  border:1px solid rgba(76,175,80,0.12);
+  padding:0;
+  border-radius:24px;
+  box-shadow:0 10px 28px rgba(0,0,0,0.05);
+  border:1px solid var(--line);
   text-align:left;
+  overflow:hidden;
 }
 
 .summary p{
   color:var(--muted);
-  line-height:1.7;
-  margin-bottom:12px;
+  line-height:1.82;
+  margin-bottom:14px;
+  font-size:1rem;
 }
 
-footer{text-align:center;padding:30px;color:var(--muted)}
+.summary-top{
+  background:linear-gradient(180deg,var(--green-soft),#ffffff);
+  padding:28px 30px 18px;
+  border-bottom:1px solid var(--line);
+}
+
+.summary-top h2{
+  color:var(--dark);
+  font-size:1.5rem;
+  line-height:1.1;
+  margin-bottom:10px;
+  letter-spacing:-0.02em;
+}
+
+.summary-top p{
+  margin-bottom:0;
+}
+
+.summary-body{
+  padding:26px 30px 30px;
+}
+
+.summary-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  margin-top:10px;
+}
+
+.feature-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+}
+
+.feature-card h3{
+  color:var(--dark);
+  font-size:1rem;
+  margin-bottom:8px;
+}
+
+.feature-card p{
+  margin-bottom:0;
+  font-size:0.95rem;
+  line-height:1.7;
+}
+
+footer{text-align:center;padding:34px 0 40px;color:var(--muted);font-size:0.94rem}
 
 @media(max-width:800px){
-  .hero-img{height:220px}
+  .hero{padding:56px 0 54px}
+  .hero-img{height:220px;width:100%}
+  .summary-top{padding:22px 22px 16px}
+  .summary-body{padding:20px 22px 22px}
+  .summary-grid{grid-template-columns:1fr}
+}
+  .hero-img{height:220px;width:100%}
+  .summary{padding:22px}
 }
 </style>
 </head>
@@ -124,7 +197,7 @@ footer{text-align:center;padding:30px;color:var(--muted)}
 <div class="container">
 
 <header>
-  <h2 style="color:var(--green)">Matcha Energy</h2>
+  <img src="logo.png" alt="Matcha Energy" style="height:50px;object-fit:contain;">
   <nav>
     <a href="powder.html">Powder</a>
     <a href="menu.html">Menu</a>
@@ -134,32 +207,49 @@ footer{text-align:center;padding:30px;color:var(--muted)}
 
 <div class="hero">
   <h1>Matcha Energy</h1>
-  <p>Ceremonial matcha from Japan. Crafted with care. A calm, refined energy.</p>
+  <p>Ceremonial matcha from Japan, prepared for a fresh and modern food trailer experience.</p>
 
   <div class="hero-img">
-   <img src="puremathca.png?auto=format&fit=crop&w=1200&q=80" class="active">
-    <img src="baking.png?auto=format&fit=crop&w=1200&q=80" class="active">
-    <img src="japan.png?auto=format&fit=crop&w=1200&q=80" class="active">
-    <img src="pure.png?auto=format&fit=crop&w=1200&q=80"class="active">
+    <img src="matcha1.jpg" class="active">
+    <img src="matcha2.jpg">
+    <img src="matcha3.jpg">
 
     <div class="overlay" id="overlayText">
-      Premium matcha for clean energy
+      Premium matcha drinks and fresh daily snacks
     </div>
   </div>
 
   <div class="summary">
-    <p>
-      At Matcha Energy, quality is our first priority. We use EU-certified organic matcha sourced from Japan, made from ceremonial grade, first-harvest leaves.
-    </p>
-    <p>
-      Matcha is a healthier alternative to coffee, providing smooth and steady energy without the crash. Unlike coffee, it is generally lower in acidity, making it gentler on the stomach and less likely to cause irritation or discomfort. The natural combination of caffeine and L-theanine in matcha supports calm focus, helping reduce jitters and sharp spikes in energy. Matcha is also rich in antioxidants, which support overall wellbeing and make it a more balanced daily choice compared to many coffee-based drinks.
-    </p>
-    <p>
-      We prepare our own syrups using real fruits and never use artificial colors. All colors come naturally from matcha and fruits.
-    </p>
-    <p>
-      Our snacks are baked fresh daily in small quantities, and all stock is cleared by the end of the day.
-    </p>
+    <div class="summary-top">
+      <h2>A premium matcha trailer built around freshness and quality.</h2>
+      <p>
+        Matcha Energy is designed as a clean, modern food trailer brand focused on ceremonial-grade matcha drinks, natural ingredients, and small-batch preparation.
+      </p>
+    </div>
+
+    <div class="summary-body">
+      <div class="summary-grid">
+        <div class="feature-card">
+          <h3>Japanese ceremonial-grade matcha</h3>
+          <p>We use EU-certified organic matcha from Japan made from first-harvest leaves for a smoother taste, vibrant natural color, and more premium drinking experience.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>A better daily energy option</h3>
+          <p>Matcha offers more balanced energy than coffee, with less acidity, calmer focus, and a smoother caffeine release supported by naturally occurring L-theanine.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Prepared with real ingredients</h3>
+          <p>We prepare our own fruit syrups and never use artificial colors. The color you see comes naturally from matcha and fruit.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Fresh trailer-made snacks</h3>
+          <p>Our snacks are baked fresh daily in small quantities, with stock cleared by the end of the day to keep quality and freshness at the highest level.</p>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
