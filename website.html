@@ -7,7 +7,6 @@
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
-
 :root{
   --bg:#f7faf7;
   --card:#ffffff;
@@ -20,36 +19,22 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
-
 body{
   font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
   background:linear-gradient(180deg,#f0f7f0 0%, #ffffff 100%);
-  color:var(--text);
+  color:var(--text)
 }
 
-.container{
-  width:90%;
-  max-width:940px;
-  margin:auto;
-  padding-top:10px;
-}
+.container{width:90%;max-width:940px;margin:auto}
 
-/* ✅ UPDATED HEADER (PREMIUM LOOK) */
 header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:14px 20px;
-  margin-bottom:10px;
-
-  background:rgba(255,255,255,0.6);
-  backdrop-filter:blur(10px);
-
-  border-radius:16px;
-  border:1px solid rgba(76,175,80,0.08);
+  padding:24px 0 18px;
+  border-bottom:1px solid var(--line);
 }
 
-/* NAV */
 nav a{
   margin-left:24px;
   color:var(--dark);
@@ -57,7 +42,6 @@ nav a{
   font-size:0.96rem;
   letter-spacing:0.01em;
   opacity:0.85;
-  text-decoration:none;
 }
 
 nav a:hover{
@@ -65,34 +49,20 @@ nav a:hover{
   color:var(--green);
 }
 
-/* HERO */
 .hero{
-  text-align:center;
-  padding:10px 0 72px;
+  padding:44px 0 72px;
 }
 
-.hero > img{
-  display:block;
-  max-width:40%;
-  height:auto;
-  margin:0 auto 6px;
+.hero-top{
+  display:none;
 }
 
-.hero p{
-  color:var(--muted);
-  margin:6px auto 0;
-  font-size:1.06rem;
-  line-height:1.6;
-  max-width:680px;
-}
-
-/* IMAGE SLIDER */
 .hero-img{
-  margin:42px auto 0;
-  height:310px;
+  margin:0 auto;
+  height:520px;
   width:100%;
-  max-width:900px;
-  border-radius:6px;
+  max-width:none;
+  border-radius:28px;
   overflow:hidden;
   position:relative;
   border:1px solid var(--line);
@@ -111,54 +81,98 @@ nav a:hover{
   transition:opacity 1s ease-in-out;
 }
 
-.hero-img img.active{
-  opacity:1;
-}
+.hero-img img.active{opacity:1}
 
-/* OVERLAY */
 .overlay{
   position:absolute;
-  bottom:8px;
-  left:18px;
-  right:18px;
-  background:linear-gradient(135deg, rgba(30,61,43,0.4), rgba(30,61,43,0.25));
+  inset:0;
+  background:linear-gradient(180deg, rgba(12,26,14,0.06) 0%, rgba(12,26,14,0.18) 42%, rgba(12,26,14,0.62) 100%);
   color:white;
-  padding:14px 16px;
-  border-radius:14px;
-  font-size:0.95rem;
-  backdrop-filter:blur(4px);
-  text-align:left;
+  padding:34px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
 }
 
-/* SUMMARY */
+.overlay-content{
+  max-width:760px;
+  width:100%;
+  text-align:center;
+}
+
+.overlay-kicker{
+  display:none;
+}
+
+.overlay-title{
+  font-family:'Poppins', sans-serif;
+  font-size:clamp(2.8rem,6vw,5.2rem);
+  line-height:0.92;
+  letter-spacing:-0.05em;
+  font-weight:800;
+  margin-bottom:12px;
+  text-shadow:0 8px 30px rgba(0,0,0,0.22);
+}
+
+.overlay-subtitle{
+  font-size:1.05rem;
+  line-height:1.6;
+  opacity:0.96;
+  margin:0 auto;
+  max-width:560px;
+  text-shadow:0 6px 20px rgba(0,0,0,0.18);
+}
+
+.overlay-points{
+  display:none;
+}
+
 .summary{
   margin-top:48px;
   background:var(--card);
+  padding:0;
   border-radius:24px;
   box-shadow:0 10px 28px rgba(0,0,0,0.05);
   border:1px solid var(--line);
+  text-align:left;
   overflow:hidden;
+}
+
+.summary p{
+  color:var(--muted);
+  line-height:1.82;
+  margin-bottom:14px;
+  font-size:1rem;
 }
 
 .summary-top{
   background:linear-gradient(180deg, var(--green-soft) 0%, #f7fbf7 58%, #ffffff 100%);
   padding:28px 30px 22px;
+  border-top-left-radius:24px;
+  border-top-right-radius:24px;
 }
 
 .summary-top h2{
   color:var(--dark);
   font-size:1.5rem;
+  line-height:1.1;
   margin-bottom:10px;
+  letter-spacing:-0.02em;
+}
+
+.summary-top p{
+  margin-bottom:0;
 }
 
 .summary-body{
-  padding:26px 30px;
+  padding:26px 30px 30px;
 }
 
 .summary-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:16px;
+  margin-top:10px;
 }
 
 .feature-card{
@@ -168,32 +182,30 @@ nav a:hover{
   padding:18px;
 }
 
-footer{
-  text-align:center;
-  padding:34px 0;
-  color:var(--muted);
+.feature-card h3{
+  color:var(--dark);
+  font-size:1rem;
+  margin-bottom:8px;
 }
 
-/* MOBILE */
+.feature-card p{
+  margin-bottom:0;
+  font-size:0.95rem;
+  line-height:1.7;
+}
+
+footer{text-align:center;padding:34px 0 40px;color:var(--muted);font-size:0.94rem}
+
 @media(max-width:800px){
-  header{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:12px;
-  }
-
-  .hero > img{
-    max-width:70%;
-  }
-
-  .hero-img{
-    height:220px;
-    width:100%;
-  }
-
-  .summary-grid{
-    grid-template-columns:1fr;
-  }
+  .hero{padding:28px 0 54px}
+  .hero-img{height:340px;width:100%}
+  .overlay{padding:22px}
+  .overlay-content{max-width:100%}
+  .overlay-title{font-size:2.25rem}
+  .overlay-subtitle{font-size:0.95rem}
+  .summary-top{padding:22px 22px 16px}
+  .summary-body{padding:20px 22px 22px}
+  .summary-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -203,7 +215,7 @@ footer{
 <div class="container">
 
 <header>
-  <img src="logos.png" style="height:60px;">
+  <img src="logo.png" alt="Matcha Energy" style="height:50px;object-fit:contain;">
   <nav>
     <a href="powder.html">Powder</a>
     <a href="menu.html">Menu</a>
@@ -211,15 +223,81 @@ footer{
   </nav>
 </header>
 
-<div class="hero"> <div class="hero-img"> <img src="puremathca.png" class="active" alt="Pure matcha"> <img src="baking.png" alt="Fresh baking"> <img src="japan.png" alt="Matcha from Japan"> <img src="pure.png" alt="Pure ingredients"> <img src="posternext.png" alt="Matcha poster"> <div class="overlay" id="overlayText"> Den ganzen Tag. </div> </div> <div class="summary"> <div class="summary-top"> <h2>Natürlich wach. Ohne Crash.</h2> <p> Premium Matcha aus Japan — modern serviert für einen frischen Food-Trailer-Auftritt. </p> </div> <div class="summary-body"> <div class="summary-grid"> <div class="feature-card"> <h3>✓ Kein Crash.</h3> <p>Sanfte Energie ohne Absturz und ohne das typische Auf und Ab vieler Kaffeegetränke.</p> </div> <div class="feature-card"> <h3>✓ Kein Kaffee.</h3> <p>Klarer Fokus statt Nervosität. Matcha bietet ruhigere, gleichmäßigere Energie für den Tag.</p> </div> <div class="feature-card"> <h3>✓ Premium Matcha.</h3> <p>EU-Bio-zertifiziertes Matcha-Pulver aus Japan, sorgfältig ausgewählt für Farbe, Qualität und Geschmack.</p> </div> <div class="feature-card"> <h3>100% Natürlich</h3> <p>Keine künstlichen Farbstoffe. Die Farben stammen natürlich aus Matcha und Früchten.</p> </div> <div class="feature-card"> <h3>Sanfte Energie</h3> <p>Eine angenehmere Alternative zu Kaffee mit ausgewogenerem Koffeinprofil und ruhigerem Energiegefühl.</p> </div> <div class="feature-card"> <h3>Klarer Fokus</h3> <p>Ideal für Menschen, die wacher sein möchten, ohne sich nervös oder überreizt zu fühlen.</p> </div> </div> </div> </div> </div> </div> <footer> © 2026 Matcha Energy </footer>
+<div class="hero">
+  <div class="hero-img">
+    <img src="matcha1.jpg" class="active">
+    <img src="matcha2.jpg">
+    <img src="matcha3.jpg">
+    <img src="matcha4.jpg">
+    <img src="matcha5.jpg">
+
+    <div class="overlay">
+      <div class="overlay-content">
+        <div class="overlay-title" id="overlayText">Natürlich wach.<br>Ohne Crash.</div>
+        <div class="overlay-subtitle">Premium Matcha aus Japan — modern serviert für einen frischen Food-Trailer-Auftritt.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-top">
+      <h2>Natürlich wach. Ohne Crash.</h2>
+      <p>
+        Premium Matcha aus Japan — modern serviert für einen frischen Food-Trailer-Auftritt.
+      </p>
+    </div>
+
+    <div class="summary-body">
+      <div class="summary-grid">
+        <div class="feature-card">
+          <h3>✓ Kein Crash.</h3>
+          <p>Sanfte Energie ohne Absturz und ohne das typische Auf und Ab vieler Kaffeegetränke.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>✓ Kein Kaffee.</h3>
+          <p>Klarer Fokus statt Nervosität. Matcha bietet ruhigere, gleichmäßigere Energie für den Tag.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>✓ Premium Matcha.</h3>
+          <p>EU-Bio-zertifiziertes Matcha-Pulver aus Japan, sorgfältig ausgewählt für Farbe, Qualität und Geschmack.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>100% Natürlich</h3>
+          <p>Keine künstlichen Farbstoffe. Die Farben stammen natürlich aus Matcha und Früchten.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Sanfte Energie</h3>
+          <p>Eine angenehmere Alternative zu Kaffee mit ausgewogenerem Koffeinprofil und ruhigerem Energiegefühl.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Klarer Fokus</h3>
+          <p>Ideal für Menschen, die wacher sein möchten, ohne sich nervös oder überreizt zu fühlen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<footer>
+  © 2026 Matcha Energy
+</footer>
+
 <script>
 const images = document.querySelectorAll('.hero-img img');
 const texts = [
-  'Den ganzen Tag.',
-  'Premium Matcha aus Japan.',
-  'Sanfte Energie.',
-  'Natürlich frisch.',
-  'Ohne Crash.'
+  'Natürlich wach.<br>Ohne Crash.',
+  'Sanfte Energie.<br>Klarer Fokus.',
+  'Premium Matcha<br>aus Japan.',
+  '100% Natürlich.<br>Ohne Zusätze.',
+  'Den ganzen Tag.'
 ];
 
 let index = 0;
@@ -228,8 +306,8 @@ setInterval(() => {
   images[index].classList.remove('active');
   index = (index + 1) % images.length;
   images[index].classList.add('active');
-  document.getElementById('overlayText').innerText = texts[index];
-}, 8000);
+  document.getElementById('overlayText').innerHTML = texts[index];
+}, 10000);
 </script>
 
 </body>
