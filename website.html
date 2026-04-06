@@ -7,6 +7,7 @@
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
+
 :root{
   --bg:#f7faf7;
   --card:#ffffff;
@@ -19,22 +20,36 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
   font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
   background:linear-gradient(180deg,#f0f7f0 0%, #ffffff 100%);
-  color:var(--text)
+  color:var(--text);
 }
 
-.container{width:90%;max-width:940px;margin:auto}
+.container{
+  width:90%;
+  max-width:940px;
+  margin:auto;
+  padding-top:10px;
+}
 
+/* ✅ UPDATED HEADER (PREMIUM LOOK) */
 header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:24px 0 18px;
-  border-bottom:1px solid var(--line);
+  padding:14px 20px;
+  margin-bottom:10px;
+
+  background:rgba(255,255,255,0.6);
+  backdrop-filter:blur(10px);
+
+  border-radius:16px;
+  border:1px solid rgba(76,175,80,0.08);
 }
 
+/* NAV */
 nav a{
   margin-left:24px;
   color:var(--dark);
@@ -42,6 +57,7 @@ nav a{
   font-size:0.96rem;
   letter-spacing:0.01em;
   opacity:0.85;
+  text-decoration:none;
 }
 
 nav a:hover{
@@ -49,30 +65,28 @@ nav a:hover{
   color:var(--green);
 }
 
-.hero{text-align:center;padding:82px 0 72px}
-.hero h1{
-  font-family:'Poppins', sans-serif;
-  font-size:clamp(3rem,6vw,4.6rem);
-  color:var(--green);
-  font-weight:800;
-  letter-spacing:-0.02em;
-  line-height:0.95;
-  text-transform:uppercase;
+/* HERO */
+.hero{
+  text-align:center;
+  padding:60px 0 72px;
 }
+
+.hero > img{
+  display:block;
+  max-width:40%;
+  height:auto;
+  margin:0 auto 6px;
+}
+
 .hero p{
   color:var(--muted);
-  margin:14px auto 0;
+  margin:6px auto 0;
   font-size:1.06rem;
   line-height:1.6;
   max-width:680px;
 }
 
-@keyframes matchaSlide{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
-
+/* IMAGE SLIDER */
 .hero-img{
   margin:42px auto 0;
   height:310px;
@@ -97,69 +111,54 @@ nav a:hover{
   transition:opacity 1s ease-in-out;
 }
 
-.hero-img img.active{opacity:1}
+.hero-img img.active{
+  opacity:1;
+}
 
+/* OVERLAY */
 .overlay{
   position:absolute;
-  bottom:8px; /* moved slightly lower */
+  bottom:8px;
   left:18px;
   right:18px;
-  background:linear-gradient(135deg, rgba(30,61,43,0.4), rgba(30,61,43,0.25)); /* more transparent */
+  background:linear-gradient(135deg, rgba(30,61,43,0.4), rgba(30,61,43,0.25));
   color:white;
   padding:14px 16px;
   border-radius:14px;
   font-size:0.95rem;
-  letter-spacing:0.01em;
   backdrop-filter:blur(4px);
   text-align:left;
 }
 
+/* SUMMARY */
 .summary{
   margin-top:48px;
   background:var(--card);
-  padding:0;
   border-radius:24px;
   box-shadow:0 10px 28px rgba(0,0,0,0.05);
   border:1px solid var(--line);
-  text-align:left;
   overflow:hidden;
-}
-
-.summary p{
-  color:var(--muted);
-  line-height:1.82;
-  margin-bottom:14px;
-  font-size:1rem;
 }
 
 .summary-top{
   background:linear-gradient(180deg, var(--green-soft) 0%, #f7fbf7 58%, #ffffff 100%);
   padding:28px 30px 22px;
-  border-top-left-radius:24px;
-  border-top-right-radius:24px;
 }
 
 .summary-top h2{
   color:var(--dark);
   font-size:1.5rem;
-  line-height:1.1;
   margin-bottom:10px;
-  letter-spacing:-0.02em;
-}
-
-.summary-top p{
-  margin-bottom:0;
 }
 
 .summary-body{
-  padding:26px 30px 30px;
+  padding:26px 30px;
 }
 
 .summary-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:16px;
-  margin-top:10px;
 }
 
 .feature-card{
@@ -169,26 +168,32 @@ nav a:hover{
   padding:18px;
 }
 
-.feature-card h3{
-  color:var(--dark);
-  font-size:1rem;
-  margin-bottom:8px;
+footer{
+  text-align:center;
+  padding:34px 0;
+  color:var(--muted);
 }
 
-.feature-card p{
-  margin-bottom:0;
-  font-size:0.95rem;
-  line-height:1.7;
-}
-
-footer{text-align:center;padding:34px 0 40px;color:var(--muted);font-size:0.94rem}
-
+/* MOBILE */
 @media(max-width:800px){
-  .hero{padding:56px 0 54px}
-  .hero-img{height:220px;width:100%}
-  .summary-top{padding:22px 22px 16px}
-  .summary-body{padding:20px 22px 22px}
-  .summary-grid{grid-template-columns:1fr}
+  header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+  }
+
+  .hero > img{
+    max-width:70%;
+  }
+
+  .hero-img{
+    height:220px;
+    width:100%;
+  }
+
+  .summary-grid{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
@@ -198,7 +203,7 @@ footer{text-align:center;padding:34px 0 40px;color:var(--muted);font-size:0.94re
 <div class="container">
 
 <header>
-  <img src="logos.png" alt="Matcha Energy" style="height:40px;object-fit:contain;">
+  <img src="logos.png" style="height:40px;">
   <nav>
     <a href="powder.html">Powder</a>
     <a href="menu.html">Menu</a>
@@ -207,16 +212,15 @@ footer{text-align:center;padding:34px 0 40px;color:var(--muted);font-size:0.94re
 </header>
 
 <div class="hero">
-  <img src="matchaener.png?auto=format&fit=crop" alt="Matcha Energy" style="max-width:40%;height:auto;margin-bottom:0px;border-radius:0px;">
+  <img src="matchaener.png">
   <p>Natürliche Energie. Klarer Fokus.</p>
 
   <div class="hero-img">
-      <img src="puremathca.png?auto=format&fit=crop&w=1200&q=80" class="active">
-    <img src="baking.png?auto=format&fit=crop&w=1200&q=80" class="active">
-    <img src="japan.png?auto=format&fit=crop&w=1200&q=80" class="active">
-    <img src="pure.png?auto=format&fit=crop&w=1200&q=80"class="active">
-    <img src="posternext.png?auto=format&fit=crop&w=1200&q=80"class="active">
-
+    <img src="puremathca.png" class="active">
+    <img src="baking.png">
+    <img src="japan.png">
+    <img src="pure.png">
+    <img src="posterboy.png">
 
     <div class="overlay" id="overlayText">
       Den ganzen Tag.
@@ -226,42 +230,15 @@ footer{text-align:center;padding:34px 0 40px;color:var(--muted);font-size:0.94re
   <div class="summary">
     <div class="summary-top">
       <h2>Natürlich wach. Ohne Crash.</h2>
-      <p>
-        Premium Matcha aus Japan — modern serviert für einen frischen Food-Trailer-Auftritt.
-      </p>
+      <p>Premium Matcha aus Japan — modern serviert für einen frischen Food-Trailer-Auftritt.</p>
     </div>
 
     <div class="summary-body">
       <div class="summary-grid">
-        <div class="feature-card">
-          <h3>✓ Kein Crash.</h3>
-          <p>Sanfte Energie ohne Absturz und ohne das typische Auf und Ab vieler Kaffeegetränke.</p>
-        </div>
-
-        <div class="feature-card">
-          <h3>✓ Kein Kaffee.</h3>
-          <p>Klarer Fokus statt Nervosität. Matcha bietet ruhigere, gleichmäßigere Energie für den Tag.</p>
-        </div>
-
-        <div class="feature-card">
-          <h3>✓ Premium Matcha.</h3>
-          <p>EU-Bio-zertifiziertes Matcha-Pulver aus Japan, sorgfältig ausgewählt für Farbe, Qualität und Geschmack.</p>
-        </div>
-
-        <div class="feature-card">
-          <h3>100% Natürlich</h3>
-          <p>Keine künstlichen Farbstoffe. Die Farben stammen natürlich aus Matcha und Früchten.</p>
-        </div>
-
-        <div class="feature-card">
-          <h3>Sanfte Energie</h3>
-          <p>Eine angenehmere Alternative zu Kaffee mit ausgewogenerem Koffeinprofil und ruhigerem Energiegefühl.</p>
-        </div>
-
-        <div class="feature-card">
-          <h3>Klarer Fokus</h3>
-          <p>Ideal für Menschen, die wacher sein möchten, ohne sich nervös oder überreizt zu fühlen.</p>
-        </div>
+        <div class="feature-card">✓ Kein Crash.</div>
+        <div class="feature-card">✓ Kein Kaffee.</div>
+        <div class="feature-card">✓ Premium Matcha.</div>
+        <div class="feature-card">100% Natürlich</div>
       </div>
     </div>
   </div>
@@ -277,9 +254,11 @@ footer{text-align:center;padding:34px 0 40px;color:var(--muted);font-size:0.94re
 <script>
 const images = document.querySelectorAll('.hero-img img');
 const texts = [
-  'Premium matcha for clean energy',
-  'No crash, smooth focus',
-  'Natural ingredients only'
+  'Den ganzen Tag.',
+  'Premium Matcha aus Japan.',
+  'Sanfte Energie.',
+  'Natürlich frisch.',
+  'Ohne Crash.'
 ];
 
 let index = 0;
@@ -289,7 +268,7 @@ setInterval(() => {
   index = (index + 1) % images.length;
   images[index].classList.add('active');
   document.getElementById('overlayText').innerText = texts[index];
-}, 10000);
+}, 8000);
 </script>
 
 </body>
