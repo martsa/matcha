@@ -2,7 +2,6 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Matcha Energy</title>
 
   <style>
@@ -35,6 +34,8 @@
 
     body {
       margin: 0;
+      min-width: 1180px;
+      overflow-x: auto;
       font-family: Arial, sans-serif;
       color: var(--text-main);
       background:
@@ -122,6 +123,7 @@
       position: relative;
       z-index: 2;
       width: 100%;
+      min-width: 1180px;
       max-width: var(--max-width);
       display: grid;
       grid-template-columns: 1.08fr 0.92fr;
@@ -168,10 +170,11 @@
       font-size: 0.92rem;
       box-shadow: 0 10px 25px rgba(0,0,0,0.03);
       margin-bottom: 22px;
+      white-space: nowrap;
     }
 
     .hero-title {
-      font-size: clamp(2.7rem, 5vw, 4.9rem);
+      font-size: 4.9rem;
       line-height: 0.98;
       margin: 0 0 18px;
       letter-spacing: -0.045em;
@@ -194,7 +197,7 @@
     .hero-actions {
       display: flex;
       gap: 14px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       margin-bottom: 24px;
     }
 
@@ -210,6 +213,7 @@
       transition: 0.25s ease;
       cursor: pointer;
       border: none;
+      white-space: nowrap;
     }
 
     .enter-button {
@@ -237,8 +241,9 @@
 
     .hero-points {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 12px;
+      overflow: hidden;
     }
 
     .hero-point {
@@ -249,6 +254,7 @@
       color: #4d5a52;
       font-size: 0.92rem;
       box-shadow: 0 8px 22px rgba(0,0,0,0.03);
+      white-space: nowrap;
     }
 
     .poster-frame {
@@ -316,6 +322,7 @@
       top: 0;
       z-index: 1000;
       width: 100%;
+      min-width: 1180px;
       background: rgba(255,255,255,0.88);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(0,0,0,0.06);
@@ -328,12 +335,14 @@
       display: flex;
       justify-content: center;
       gap: 26px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      white-space: nowrap;
     }
 
     .top-nav a {
       font-weight: 600;
       color: #2a2f2b;
+      white-space: nowrap;
     }
 
     .top-nav a:hover {
@@ -346,6 +355,7 @@
 
     .section-inner {
       width: 100%;
+      min-width: 1180px;
       max-width: var(--max-width);
       margin: 0 auto;
     }
@@ -365,7 +375,7 @@
     }
 
     .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: 3rem;
       margin: 0 0 14px;
       letter-spacing: -0.03em;
     }
@@ -585,63 +595,6 @@
       font-size: 2rem;
       color: var(--green);
       margin-bottom: 10px;
-    }
-
-    @media (max-width: 1100px) {
-      .hero-shell,
-      .grid-3,
-      .grid-2,
-      .benefits-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .poster-frame {
-        margin: 0 auto;
-      }
-
-      .poster-floating-card {
-        left: 16px;
-        right: 16px;
-        bottom: 16px;
-        max-width: none;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .home-screen {
-        padding: 24px 16px 30px;
-      }
-
-      section {
-        padding: 82px 16px;
-      }
-
-      .hero-title,
-      .section-title {
-        font-size: 2rem;
-      }
-
-      .hero-text,
-      .section-text {
-        font-size: 0.98rem;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .enter-button,
-      .secondary-button {
-        width: 100%;
-      }
-
-      .mini-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-inner {
-        gap: 16px;
-      }
     }
   </style>
 </head>
