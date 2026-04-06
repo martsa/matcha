@@ -3,77 +3,329 @@
 <head>
   <meta charset="UTF-8" />
   <title>Matcha Energy</title>
-
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     :root {
-      --bg-main: #fcfdfb;
-      --bg-soft: #f4f8f2;
-      --bg-accent: #edf5ee;
-      --white: #ffffff;
-      --text-main: #1f241f;
-      --text-soft: #5f6a61;
+      --bg: #ffffff;
       --green: #2f6f46;
-      --green-dark: #25573a;
-      --green-soft: #6e866f;
-      --line: rgba(0, 0, 0, 0.08);
-      --shadow-soft: 0 18px 50px rgba(34, 55, 41, 0.08);
-      --shadow-card: 0 12px 26px rgba(0, 0, 0, 0.05);
-      --radius-xl: 30px;
-      --radius-lg: 22px;
-      --radius-md: 16px;
-      --max-width: 1180px;
+      --green-soft: #eff7f1;
+      --text: #1f241f;
+      --text-soft: #667067;
+      --line: rgba(0,0,0,0.08);
+      --shadow: 0 14px 40px rgba(0,0,0,0.06);
+      --radius: 22px;
+      --max: 1120px;
     }
+
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      min-width: 1180px;
-      overflow-x: auto;
       font-family: Arial, sans-serif;
-      color: var(--text-main);
-      background:
-        radial-gradient(circle at top, rgba(189, 223, 195, 0.22), #ffffff 58%);
+      background: var(--bg);
+      color: var(--text);
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
+    [data-lang] { display: none; }
+    html[lang="de"] [data-lang="de"] { display: inline; }
+    html[lang="en"] [data-lang="en"] { display: inline; }
+    html[lang="de"] [data-lang-block="de"] { display: block; }
+    html[lang="en"] [data-lang-block="en"] { display: block; }
+
+    .nav {
+      border-bottom: 1px solid var(--line);
+      background: white;
     }
 
-    [data-lang] {
-      display: none;
-    }
-
-    html[lang="de"] [data-lang="de"] {
-      display: inline;
-    }
-
-    html[lang="en"] [data-lang="en"] {
-      display: inline;
-    }
-
-    html[lang="de"] [data-lang-block="de"] {
-      display: block;
-    }
-
-    html[lang="en"] [data-lang-block="en"] {
-      display: block;
-    }
-
-    html[lang="de"] [data-lang-flex="de"] {
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 22px 24px;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: -0.03em;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-weight: 600;
+    }
+
+    .lang-switcher {
+      display: inline-flex;
+      gap: 6px;
+      padding: 4px;
+      border-radius: 999px;
+      background: var(--green-soft);
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .lang-btn.active {
+      background: var(--green);
+      color: white;
+    }
+
+    .hero {
+      min-height: calc(100vh - 81px);
+      display: flex;
+      align-items: center;
+      padding: 40px 24px;
+      background:
+        radial-gradient(circle at top left, rgba(47,111,70,0.08), transparent 28%),
+        linear-gradient(180deg, #ffffff 0%, #fbfdfb 100%);
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 20px;
+      font-size: 0.92rem;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: 4.2rem;
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .hero p {
+      max-width: 620px;
+      color: var(--text-soft);
+      line-height: 1.8;
+      font-size: 1.05rem;
+      margin: 0 0 30px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+    }
+
+    .btn {
+      padding: 15px 26px;
+      border-radius: 999px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: white;
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .hero-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      margin: 0 0 12px;
+      font-size: 1.6rem;
+      color: var(--green);
+    }
+
+    .hero-card p {
+      margin: 0 0 22px;
+      font-size: 1rem;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .mini-item {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fafcf9;
+      border: 1px solid var(--line);
+    }
+
+    .mini-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .mini-item span {
+      color: var(--text-soft);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="brand">Matcha Energy</div>
+
+      <div class="nav-right">
+        <nav class="nav-links">
+          <a href="index.html">
+            <span data-lang="de">Start</span>
+            <span data-lang="en">Home</span>
+          </a>
+          <a href="menu.html">
+            <span data-lang="de">Menü</span>
+            <span data-lang="en">Menu</span>
+          </a>
+        </nav>
+
+        <div class="lang-switcher">
+          <button class="lang-btn active" id="btn-de" onclick="setLanguage('de')">DE</button>
+          <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="badge">
+          <span data-lang="de">Premium Bio Matcha</span>
+          <span data-lang="en">Premium Organic Matcha</span>
+        </div>
+
+        <h1>
+          <span data-lang="de">Schlicht, sauber, <span>premium Matcha</span></span>
+          <span data-lang="en">Simple, clean, <span>premium matcha</span></span>
+        </h1>
+
+        <p>
+          <span data-lang="de">
+            Entdecke drei sorgfältig ausgewählte Matcha-Profile für pure Drinks,
+            raffinierte tägliche Lattes und Desserts. Ein einfaches und elegantes
+            Konzept rund um Qualität, ruhige Energie und schönen Geschmack.
+          </span>
+          <span data-lang="en">
+            Discover three carefully selected matcha profiles for pure drinks,
+            refined daily lattes, and desserts. A simple and elegant concept
+            built around quality, calm energy, and beautiful flavour.
+          </span>
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="menu.html">
+            <span data-lang="de">Menü ansehen</span>
+            <span data-lang="en">View Menu</span>
+          </a>
+          <a class="btn btn-secondary" href="pure-matcha.html">
+            <span data-lang="de">Matcha entdecken</span>
+            <span data-lang="en">Explore Matcha</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h2>
+          <span data-lang="de">Unsere 3 Matcha-Versionen</span>
+          <span data-lang="en">Our 3 Matcha Versions</span>
+        </h2>
+
+        <p>
+          <span data-lang="de">Jeder Matcha hat eine klare Rolle im Konzept.</span>
+          <span data-lang="en">Each matcha has a clear role in the concept.</span>
+        </p>
+
+        <div class="mini-list">
+          <a class="mini-item" href="pure-matcha.html">
+            <strong>Ceremonial Matcha – Pure</strong>
+            <span data-lang="de">Für puren Matcha, Espresso-Style Shots und Americano-Style Drinks.</span>
+            <span data-lang="en">For pure matcha, espresso-style shots, and americano-style drinks.</span>
+          </a>
+
+          <a class="mini-item" href="daily-matcha.html">
+            <strong>Ceremonial Matcha – Refined Daily</strong>
+            <span data-lang="de">Für den täglichen Premium Matcha Latte und Signature-Variationen.</span>
+            <span data-lang="en">For everyday premium matcha latte and signature variations.</span>
+          </a>
+
+          <a class="mini-item" href="versatile-matcha.html">
+            <strong>Organic Matcha – Versatile</strong>
+            <span data-lang="de">Für Desserts, Cheesecake, Cookies, Waffles und Schokolade.</span>
+            <span data-lang="en">For desserts, cheesecake, cookies, waffles, and chocolate.</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.getElementById("btn-de").classList.toggle("active", lang === "de");
+      document.getElementById("btn-en").classList.toggle("active", lang === "en");
+      localStorage.setItem("siteLanguage", lang);
+    }
+
+    function loadLanguage() {
+      const saved = localStorage.getItem("siteLanguage") || "de";
+      setLanguage(saved);
+    }
+
+    loadLanguage();
+  </script>
+</body>
+</html>      display: flex;
     }
 
     html[lang="en"] [data-lang-flex="en"] {
