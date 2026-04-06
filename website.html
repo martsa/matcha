@@ -7,27 +7,37 @@
 
 <style>
 :root{
-  --bg:#f5f3ed;
+  --bg:#eef5ea;
   --card:#ffffff;
   --text:#1a1f16;
-  --muted:#6a7265;
+  --muted:#5f6d5c;
   --green:#6fa44b;
+  --green-soft:#dfead6;
   --dark:#2e4a2f;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:system-ui;background:var(--bg);color:var(--text)}
+body{
+  font-family:system-ui;
+  background:linear-gradient(180deg,#eef5ea 0%, #f5f3ed 100%);
+  color:var(--text)
+}
 .container{width:90%;max-width:900px;margin:auto}
 
 header{
   display:flex;
   justify-content:space-between;
   padding:20px 0;
+  border-bottom:1px solid var(--green-soft);
 }
 
 nav a{
   margin-left:20px;
-  color:var(--muted);
+  color:var(--dark);
+  font-weight:500;
+}
+nav a:hover{
+  color:var(--green);
 }
 
 .hero{text-align:center;padding:60px 0}
@@ -36,6 +46,7 @@ nav a{
 
 /* SLIDER */
 .hero-img{
+  box-shadow:0 10px 30px rgba(111,164,75,0.2);
   margin-top:30px;
   height:300px;
   border-radius:20px;
@@ -65,9 +76,9 @@ nav a{
   color:white;
   font-weight:600;
   text-align:left;
-  background:rgba(0,0,0,0.3);
-  padding:10px 15px;
-  border-radius:10px;
+  background:rgba(46,74,47,0.65);
+  padding:12px 16px;
+  border-radius:12px;
 }
 
 .links{
@@ -82,9 +93,20 @@ nav a{
   padding:25px 30px;
   border-radius:20px;
   text-align:center;
+  border:1px solid var(--green-soft);
+  transition:0.2s ease;
+}
+  background:var(--card);
+  padding:25px 30px;
+  border-radius:20px;
+  text-align:center;
 }
 
 .link-card h3{color:var(--dark);margin-bottom:8px}
+.link-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(111,164,75,0.25);
+}
 .link-card p{color:var(--muted);font-size:0.9rem}
 
 footer{text-align:center;padding:40px;color:var(--muted)}
