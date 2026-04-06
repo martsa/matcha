@@ -101,10 +101,10 @@ nav a:hover{
 
 .overlay{
   position:absolute;
-  bottom:18px;
+  bottom:8px; /* moved slightly lower */
   left:18px;
   right:18px;
-  background:linear-gradient(135deg, rgba(30,61,43,0.78), rgba(30,61,43,0.58));
+  background:linear-gradient(135deg, rgba(30,61,43,0.4), rgba(30,61,43,0.25)); /* more transparent */
   color:white;
   padding:14px 16px;
   border-radius:14px;
@@ -119,7 +119,7 @@ nav a:hover{
   background:var(--card);
   padding:0;
   border-radius:24px;
-  box-shadow:0 10px 28px rgba(0,0,0,0.05);
+  box-shadow:0 10px 28px rgba(0,0,0,0.01);
   border:1px solid var(--line);
   text-align:left;
   overflow:hidden;
@@ -267,7 +267,8 @@ const images = document.querySelectorAll('.hero-img img');
 const texts = [
   'Premium matcha for clean energy',
   'No crash, smooth focus',
-  'Natural ingredients only'
+  'Natural ingredients only',
+    'Natural ingredients only'
 ];
 
 let index = 0;
