@@ -123,12 +123,12 @@ nav a:hover{
   inset:0;
   background:linear-gradient(
     180deg,
-    rgba(12,26,14,0.06) 0%,
-    rgba(12,26,14,0.18) 42%,
-    rgba(12,26,14,0.62) 100%
+    rgba(12,26,14,0.04) 0%,
+    rgba(12,26,14,0.14) 38%,
+    rgba(12,26,14,0.68) 100%
   );
   color:white;
-  padding:34px;
+  padding:20px 34px 6px;
   display:flex;
   align-items:flex-end;
   justify-content:center;
@@ -139,6 +139,7 @@ nav a:hover{
   max-width:760px;
   width:100%;
   text-align:center;
+  margin-bottom:0;
 }
 
 .overlay-title{
@@ -147,7 +148,7 @@ nav a:hover{
   line-height:0.92;
   letter-spacing:-0.05em;
   font-weight:800;
-  margin-bottom:5px;
+  margin-bottom:3px;
   text-shadow:0 8px 30px rgba(0,0,0,0.22);
 }
 
@@ -250,9 +251,9 @@ footer{
 @media (max-width:800px){
 
   .floating-logo{
-    top: 55px;  /* aligns with hero-img top */
+    top:55px;
     left:1px;
-    transform:translateY(-10%) rotate(-5deg); /* 👈 KEY PART */
+    transform:translateY(-10%) rotate(-5deg);
     z-index:20;
   }
 
@@ -281,6 +282,10 @@ footer{
   .hero-img{
     height:340px;
     margin-top:28px;
+  }
+
+  .overlay{
+    padding:16px 18px 8px;
   }
 
   .hero-bottom-logo{
@@ -324,7 +329,7 @@ footer{
     <div class="overlay">
       <div class="overlay-content">
         <div class="overlay-title" id="overlayText">Natürlich wach.<br>Ohne Crash.</div>
-        <div class="overlay-subtitle">
+        <div class="overlay-subtitle" id="overlaySubtitle">
           Premium Matcha aus Japan — modern serviert für einen frischen Food-Trailer-Auftritt.
         </div>
       </div>
@@ -386,12 +391,28 @@ footer{
 
 <script>
 const images = document.querySelectorAll('.hero-slide');
-const texts = [
-  'Natürlich wach. Ohne Crash.',
-  'Sanfte Energie. Klarer Fokus.',
-  'Premium Matcha aus Japan.',
-  '100% Natürlich.Ohne Zusätze.',
-  'Den ganzen Tag.'
+
+const slideContent = [
+  {
+    title: 'Natürlich wach.<br>Ohne Crash.',
+    subtitle: 'Premium Matcha aus Japan — modern serviert für einen frischen Food-Trailer-Auftritt.'
+  },
+  {
+    title: 'Sanfte Energie.<br>Klarer Fokus.',
+    subtitle: 'Kreative Matcha-Snacks und süsse Ideen — modern, frisch und visuell besonders.'
+  },
+  {
+    title: 'Premium Matcha<br>aus Japan.',
+    subtitle: 'Inspiriert von japanischer Herkunft, Teekultur und echter Matcha-Tradition.'
+  },
+  {
+    title: '100% Natürlich.<br>Ohne Zusätze.',
+    subtitle: 'Natürlich grün, natürlich intensiv — ohne künstliche Zusätze oder unnötige Extras.'
+  },
+  {
+    title: 'Den ganzen Tag.',
+    subtitle: 'Matcha Energy steht für Stil, Natürlichkeit und sanfte Energie für den ganzen Tag.'
+  }
 ];
 
 let index = 0;
@@ -400,7 +421,9 @@ setInterval(() => {
   images[index].classList.remove('active');
   index = (index + 1) % images.length;
   images[index].classList.add('active');
-  document.getElementById('overlayText').innerHTML = texts[index];
+
+  document.getElementById('overlayText').innerHTML = slideContent[index].title;
+  document.getElementById('overlaySubtitle').innerHTML = slideContent[index].subtitle;
 }, 10000);
 </script>
 
