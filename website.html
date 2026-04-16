@@ -97,11 +97,9 @@ nav a:hover{
   border-radius:28px;
   overflow:hidden;
   position:relative;
-  border: none !important;
-  box-shadow: none !important;
-  outline: none !important;
- /*  border:1px solid var(--line); */
- /*  box-shadow:0 18px 44px rgba(76,175,80,0.14);*/
+  border:none !important;
+  box-shadow:none !important;
+  outline:none !important;
 }
 
 /* SLIDES */
@@ -114,9 +112,9 @@ nav a:hover{
   inset:0;
   opacity:0;
   transition:opacity 1s ease-in-out;
-  border: none !important;
-  box-shadow: none !important;
-  outline: none !important;
+  border:none !important;
+  box-shadow:none !important;
+  outline:none !important;
 }
 
 .hero-slide.active{
@@ -154,7 +152,7 @@ nav a:hover{
   line-height:0.92;
   letter-spacing:-0.05em;
   font-weight:800;
-  margin-bottom:3px;
+  margin-bottom:8px;
   text-shadow:0 8px 30px rgba(0,0,0,0.22);
 }
 
@@ -326,7 +324,6 @@ footer{
   </header>
 
   <div class="hero-img">
-   
     <img src="brush.png" class="hero-slide active" alt="Pure matcha" />
     <img src="cookies.png" class="hero-slide" alt="Matcha baking" />
     <img src="japan01.png" class="hero-slide" alt="Japan inspiration" />
@@ -334,10 +331,16 @@ footer{
     <img src="colourful.png" class="hero-slide" alt="Matcha poster" />
 
     <div class="overlay">
-      
+      <div class="overlay-content">
+        <div class="overlay-title" id="overlayText">Sanfte Energie. Klarer Fokus.</div>
+        <div class="overlay-subtitle" id="overlaySubtitle">
+          Langanhaltende Energie durch natürliches L-Theanin — für Fokus, Ruhe und Balance.
+        </div>
+      </div>
 
-    <div class="hero-bottom-logo">
-      <img src="logousenow-2.png" alt="Matcha Energy Logo" />
+      <div class="hero-bottom-logo">
+        <img src="logousenow-2.png" alt="Matcha Energy Logo" />
+      </div>
     </div>
   </div>
 
@@ -394,29 +397,28 @@ footer{
 const images = document.querySelectorAll('.hero-slide');
 
 const slideContent = [
-  
   {
     title: 'Sanfte Energie. Klarer Fokus.',
     subtitle: 'Langanhaltende Energie durch natürliches L-Theanin — für Fokus, Ruhe und Balance.'
   },
-  ,
   {
-    title: 'Natürlich wach.Ohne Crash.',
-    subtitle: 'EU-Bio zertifizierter Premium Matcha aus Japan — sanfte Energie ohne Koffein-Absturz.'
+    title: 'Natürlich wach. Ohne Crash.',
+    subtitle: 'EU-Bio-zertifizierter Premium Matcha aus Japan — sanfte Energie ohne Koffein-Absturz.'
   },
   {
     title: '100% Natürlich. 0% Künstlich.',
-    subtitle: 'Nur echtes Matcha-Grün und natürliche Früchte — keine künstlichen Farben'
+    subtitle: 'Nur echtes Matcha-Grün und natürliche Früchte — keine künstlichen Farben.'
   },
   {
-   title: 'Frisch. Natürlich. Besonders.',
-    subtitle: 'Frisch zubereitete Matcha-Snacks jeden Tag
+    title: 'Frisch. Natürlich. Besonders.',
+    subtitle: 'Frisch zubereitete Matcha-Snacks jeden Tag.'
   },
-  
   {
     title: 'Modern. Frisch. Einzigartig.',
-subtitle: 'Kreative Matcha-Drinks — visuell besonders, nachhaltig, gesund und bewusst geniessen.'   }
+    subtitle: 'Kreative Matcha-Drinks — visuell besonders, nachhaltig, gesund und bewusst geniessen.'
+  }
 ];
+
 let index = 0;
 
 setInterval(() => {
