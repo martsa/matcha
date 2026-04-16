@@ -1,435 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Matcha Energy</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matcha Energy</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
 
-:root{
-  --bg:#f7faf7;
-  --card:#ffffff;
-  --text:#1b1f1b;
-  --muted:#6b736b;
-  --green:#4CAF50;
-  --green-soft:#edf7ee;
-  --dark:#1e3d2b;
-  --line:rgba(76,175,80,0.12);
-}
+    :root{
+      --bg:#f7faf7;
+      --card:#ffffff;
+      --text:#1b1f1b;
+      --muted:#6b736b;
+      --green:#4CAF50;
+      --green-soft:#edf7ee;
+      --dark:#1e3d2b;
+      --line:rgba(76,175,80,0.12);
+    }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-body{
-  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
-  background:linear-gradient(180deg,#f0f7f0 0%, #ffffff 100%);
-  color:var(--text);
-}
+    body{
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+      background:linear-gradient(180deg,#f0f7f0 0%, #ffffff 100%);
+      color:var(--text);
+    }
 
-.container{
-  width:90%;
-  max-width:940px;
-  margin:auto;
-  position:relative;
-}
+    .container{
+      width:90%;
+      max-width:940px;
+      margin:auto;
+      position:relative;
+    }
 
-/* TOP LOGO */
-.floating-logo{
-  position:absolute;
-  top:22px;
-  left:2px;
-  z-index:20;
-  transform:rotate(-5deg);
-  opacity:0.95;
-}
+    .floating-logo{
+      position:absolute;
+      top:22px;
+      left:2px;
+      z-index:20;
+      transform:rotate(-5deg);
+      opacity:0.95;
+    }
 
-.floating-logo img{
-  width:280px;
-  height:auto;
-  display:block;
-}
+    .floating-logo img{
+      width:280px;
+      height:auto;
+      display:block;
+    }
 
-/* HEADER */
-header{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:16px 20px;
-  background:rgba(76,175,80,0.18);
-  backdrop-filter:blur(10px);
-  border-radius:16px;
-  margin-top:20px;
-}
+    header{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:16px 20px;
+      background:rgba(76,175,80,0.18);
+      backdrop-filter:blur(10px);
+      border-radius:16px;
+      margin-top:20px;
+    }
 
-nav{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:24px;
-  flex-wrap:wrap;
-  width:100%;
-}
+    nav{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:24px;
+      flex-wrap:wrap;
+      width:100%;
+    }
 
-nav a{
-  color:var(--dark);
-  font-weight:600;
-  font-size:0.96rem;
-  letter-spacing:0.01em;
-  opacity:0.85;
-  text-decoration:none;
-}
+    nav a{
+      color:var(--dark);
+      font-weight:600;
+      font-size:0.96rem;
+      letter-spacing:0.01em;
+      opacity:0.85;
+      text-decoration:none;
+    }
 
-nav a:hover{
-  opacity:1;
-  color:var(--green);
-}
+    nav a:hover{
+      opacity:1;
+      color:var(--green);
+    }
 
-/* HERO */
-.hero-img{
-  margin:28px auto 0;
-  height:520px;
-  width:100%;
-  border-radius:28px;
-  overflow:hidden;
-  position:relative;
-  border:none !important;
-  box-shadow:none !important;
-  outline:none !important;
-}
+    .hero-img{
+      margin:28px auto 0;
+      height:520px;
+      width:100%;
+      border-radius:28px;
+      overflow:hidden;
+      position:relative;
+      border:none !important;
+      box-shadow:none !important;
+      outline:none !important;
+    }
 
-/* SLIDES */
-.hero-slide{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-  position:absolute;
-  inset:0;
-  opacity:0;
-  transition:opacity 1s ease-in-out;
-  border:none !important;
-  box-shadow:none !important;
-  outline:none !important;
-}
+    .hero-slide{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transition:opacity 1s ease-in-out;
+      border:none !important;
+      box-shadow:none !important;
+      outline:none !important;
+    }
 
-.hero-slide.active{
-  opacity:1;
-}
+    .hero-slide.active{
+      opacity:1;
+    }
 
-/* OVERLAY */
-.overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    180deg,
-    rgba(12,26,14,0.04) 0%,
-    rgba(12,26,14,0.14) 38%,
-    rgba(12,26,14,0.68) 100%
-  );
-  color:white;
-  padding:20px 34px 6px;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-  z-index:2;
-}
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        180deg,
+        rgba(12,26,14,0.04) 0%,
+        rgba(12,26,14,0.14) 38%,
+        rgba(12,26,14,0.68) 100%
+      );
+      color:white;
+      padding:20px 34px 6px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      z-index:2;
+    }
 
-.overlay-content{
-  max-width:760px;
-  width:100%;
-  text-align:center;
-  margin-bottom:0;
-}
+    .overlay-content{
+      max-width:760px;
+      width:100%;
+      text-align:center;
+      margin-bottom:0;
+    }
 
-.overlay-title{
-  font-family:'Poppins', sans-serif;
-  font-size:clamp(1.4rem,3vw,2.6rem);
-  line-height:0.92;
-  letter-spacing:-0.05em;
-  font-weight:800;
-  margin-bottom:8px;
-  text-shadow:0 8px 30px rgba(0,0,0,0.22);
-}
+    .overlay-title{
+      font-family:'Poppins', sans-serif;
+      font-size:clamp(1.4rem,3vw,2.6rem);
+      line-height:0.92;
+      letter-spacing:-0.05em;
+      font-weight:800;
+      margin-bottom:8px;
+      text-shadow:0 8px 30px rgba(0,0,0,0.22);
+    }
 
-.overlay-subtitle{
-  font-size:.92rem;
-  line-height:1.6;
-  opacity:0.96;
-  margin:0 auto;
-  max-width:560px;
-  text-shadow:0 6px 20px rgba(0,0,0,0.18);
-}
+    .overlay-subtitle{
+      font-size:.92rem;
+      line-height:1.6;
+      opacity:0.96;
+      margin:0 auto;
+      max-width:560px;
+      text-shadow:0 6px 20px rgba(0,0,0,0.18);
+    }
 
-/* BOTTOM LOGO */
-.hero-bottom-logo{
-  position:absolute;
-  right:18px;
-  top:18px;
-  z-index:10;
-}
+    .hero-bottom-logo{
+      position:absolute;
+      right:18px;
+      top:18px;
+      z-index:10;
+    }
 
-.hero-bottom-logo img{
-  width:95px;
-  height:auto;
-  display:block;
-  filter:drop-shadow(0 8px 18px rgba(0,0,0,0.18));
-}
+    .hero-bottom-logo img{
+      width:95px;
+      height:auto;
+      display:block;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,0.18));
+    }
 
-/* SUMMARY */
-.summary{
-  margin-top:48px;
-  background:var(--card);
-  border-radius:24px;
-  box-shadow:0 10px 28px rgba(0,0,0,0.05);
-  border:1px solid var(--line);
-  text-align:left;
-  overflow:hidden;
-}
+    .summary{
+      margin-top:48px;
+      background:var(--card);
+      border-radius:24px;
+      box-shadow:0 10px 28px rgba(0,0,0,0.05);
+      border:1px solid var(--line);
+      text-align:left;
+      overflow:hidden;
+    }
 
-.summary p{
-  color:var(--muted);
-  line-height:1.82;
-  margin-bottom:14px;
-  font-size:1rem;
-}
+    .summary-top{
+      background:linear-gradient(180deg, var(--green-soft) 0%, #f7fbf7 58%, #ffffff 100%);
+      padding:28px 30px 22px;
+    }
 
-.summary-top{
-  background:linear-gradient(180deg, var(--green-soft) 0%, #f7fbf7 58%, #ffffff 100%);
-  padding:28px 30px 22px;
-}
+    .summary-top h2{
+      color:var(--dark);
+      font-size:2rem;
+      line-height:1.15;
+      margin-bottom:14px;
+      letter-spacing:-0.02em;
+    }
 
-.summary-top h2{
-  color:var(--dark);
-  font-size:1.5rem;
-  line-height:1.1;
-  margin-bottom:10px;
-  letter-spacing:-0.02em;
-}
+    .summary-body{
+      padding:26px 30px 30px;
+    }
 
-.summary-top p{
-  margin-bottom:0;
-}
+    .summary-body p{
+      color:var(--muted);
+      line-height:1.85;
+      margin-bottom:16px;
+      font-size:1rem;
+    }
 
-.summary-body{
-  padding:26px 30px 30px;
-}
+    footer{
+      text-align:center;
+      padding:34px 0 40px;
+      color:var(--muted);
+      font-size:0.94rem;
+    }
 
-.summary-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:16px;
-  margin-top:10px;
-}
+    @media (max-width:800px){
+      .floating-logo{
+        top:55px;
+        left:1px;
+        transform:translateY(-10%) rotate(-5deg);
+        z-index:20;
+      }
 
-.feature-card{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:18px;
-}
+      .floating-logo img{
+        width:150px;
+      }
 
-.feature-card h3{
-  color:var(--dark);
-  font-size:1rem;
-  margin-bottom:8px;
-}
+      header{
+        padding:18px 16px;
+        margin-top:20px;
+        justify-content:center;
+      }
 
-.feature-card p{
-  margin-bottom:0;
-  font-size:0.95rem;
-  line-height:1.7;
-}
+      nav{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:14px 24px;
+        width:100%;
+      }
 
-footer{
-  text-align:center;
-  padding:34px 0 40px;
-  color:var(--muted);
-  font-size:0.94rem;
-}
+      nav a{
+        font-size:0.9rem;
+      }
 
-@media (max-width:800px){
+      .hero-img{
+        height:340px;
+        margin-top:28px;
+      }
 
-  .floating-logo{
-    top:55px;
-    left:1px;
-    transform:translateY(-10%) rotate(-5deg);
-    z-index:20;
-  }
+      .overlay{
+        padding:16px 18px 8px;
+      }
 
-  .floating-logo img{
-    width:150px;
-  }
+      .hero-bottom-logo{
+        right:5px;
+        top:3px;
+      }
 
-  header{
-    padding:18px 16px;
-    margin-top:20px;
-    justify-content:center;
-  }
+      .hero-bottom-logo img{
+        width:42px;
+      }
 
-  nav{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:14px 24px;
-    width:100%;
-  }
+      .summary-top h2{
+        font-size:1.55rem;
+      }
 
-  nav a{
-    font-size:0.9rem;
-  }
-
-  .hero-img{
-    height:340px;
-    margin-top:28px;
-  }
-
-  .overlay{
-    padding:16px 18px 8px;
-  }
-
-  .hero-bottom-logo{
-    right:5px;
-    top:3px;
-  }
-
-  .hero-bottom-logo img{
-    width:42px;
-  }
-
-  .summary-grid{
-    grid-template-columns:1fr;
-  }
-}
-</style>
+      .summary-body p{
+        font-size:0.96rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <div class="floating-logo">
-    <img src="matcha-trailer.png" alt="Matcha Energy Logo" />
-  </div>
-
-  <header>
-    <nav>
-      <a href="powder.html">Matcha</a>
-      <a href="menu.html">Menu</a>
-      <a href="ingredients.html">Standort</a>
-    </nav>
-  </header>
-
-  <div class="hero-img">
-    <img src="brush.png" class="hero-slide active" alt="Pure matcha" />
-    <img src="japan01.png" class="hero-slide" alt="Japan inspiration" />
-    <img src="cookies.png" class="hero-slide" alt="Matcha baking" />
-    <img src="brightcolor.png" class="hero-slide" alt="Pure natural ingredients" />
-    <img src="colourful.png" class="hero-slide" alt="Matcha poster" />
-
-    <div class="overlay">
-      <div class="overlay-content">
-        <div class="overlay-title" id="overlayText">Sanfte Energie. Klarer Fokus.</div>
-        <div class="overlay-subtitle" id="overlaySubtitle">
-          Langanhaltende Energie durch natürliches L-Theanin — für Fokus, Ruhe und Balance.
-        </div>
-      </div>
-
-      <div class="hero-bottom-logo">
-        <img src="logousenow-2.png" alt="Matcha Energy Logo" />
-      </div>
-    </div>
-  </div>
-
-  <div class="summary">
-    <div class="summary-top">
-      <h2>Natürlich wach. Ohne Crash.</h2>
-      <p>
-        Premium Matcha aus Japan — modern serviert für einen frischen Food-Trailer-Auftritt.
-      </p>
+    <div class="floating-logo">
+      <img src="matcha-trailer.png" alt="Matcha Energy Logo" />
     </div>
 
-    <div class="summary-body">
-      <div class="summary-grid">
-        <div class="feature-card">
-          <h3>✓ Kein Crash.</h3>
-          <p>Sanfte Energie ohne Absturz und ohne das typische Auf und Ab vieler Kaffeegetränke.</p>
+    <header>
+      <nav>
+        <a href="powder.html">Matcha</a>
+        <a href="menu.html">Menu</a>
+        <a href="ingredients.html">Standort</a>
+      </nav>
+    </header>
+
+    <div class="hero-img">
+      <img src="brush.png" class="hero-slide active" alt="Pure matcha" />
+      <img src="japan01.png" class="hero-slide" alt="Japan inspiration" />
+      <img src="cookies.png" class="hero-slide" alt="Matcha baking" />
+      <img src="brightcolor.png" class="hero-slide" alt="Pure natural ingredients" />
+      <img src="colourful.png" class="hero-slide" alt="Matcha poster" />
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <div class="overlay-title" id="overlayText">Sanfte Energie. Klarer Fokus.</div>
+          <div class="overlay-subtitle" id="overlaySubtitle">
+            Langanhaltende Energie durch natürliches L-Theanin — für Fokus, Ruhe und Balance.
+          </div>
         </div>
 
-        <div class="feature-card">
-          <h3>✓ Kein Kaffee.</h3>
-          <p>Klarer Fokus statt Nervosität. Matcha bietet ruhigere, gleichmäßigere Energie für den Tag.</p>
-        </div>
-
-        <div class="feature-card">
-          <h3>✓ Premium Matcha.</h3>
-          <p>EU-Bio-zertifiziertes Matcha-Pulver aus Japan, sorgfältig ausgewählt für Farbe, Qualität und Geschmack.</p>
-        </div>
-
-        <div class="feature-card">
-          <h3>100% Natürlich</h3>
-          <p>Keine künstlichen Farbstoffe. Die Farben stammen natürlich aus Matcha und Früchten.</p>
-        </div>
-
-        <div class="feature-card">
-          <h3>Sanfte Energie</h3>
-          <p>Eine angenehmere Alternative zu Kaffee mit ausgewogenerem Koffeinprofil und ruhigerem Energiegefühl.</p>
-        </div>
-
-        <div class="feature-card">
-          <h3>Klarer Fokus</h3>
-          <p>Ideal für Menschen, die wacher sein möchten, ohne sich nervös oder überreizt zu fühlen.</p>
+        <div class="hero-bottom-logo">
+          <img src="logousenow-2.png" alt="Matcha Energy Logo" />
         </div>
       </div>
     </div>
+
+    <div class="summary">
+      <div class="summary-top">
+        <h2>Frisch zubereitet. Reiner Matcha. Echte Zutaten.</h2>
+      </div>
+
+      <div class="summary-body">
+        <p>Wir verwenden hochwertigen Bio-Matcha aus Japan, sorgfältig ausgewählt für beste Qualität und Geschmack.</p>
+
+        <p>Unsere Auswahl umfasst zwei Ceremonial-Grade Matcha Varianten – eine für traditionellen, puren Matcha und eine für Matcha Latte.</p>
+
+        <p>Matcha ist eine natürliche und gesündere Alternative zu Kaffee – mit ruhiger, gleichmäßiger Energie und ohne den typischen Koffein-Crash.</p>
+
+        <p>Alle Matcha-Pulver sind nach EU-Bio-Standards zertifiziert.</p>
+
+        <p>Unsere Fruchtpürees werden täglich frisch aus echten Früchten hergestellt – ohne Konservierungsstoffe und ohne künstliche Farbstoffe.</p>
+
+        <p>Was Sie sehen, ist echt: die natürliche Farbe von Matcha und Früchten.</p>
+
+        <p>Unsere Snacks und Desserts werden täglich frisch zubereitet, um höchste Qualität zu gewährleisten.</p>
+
+        <p>Jedes Getränk wird frisch vor Ihnen zubereitet.</p>
+      </div>
+    </div>
+
   </div>
 
-</div>
+  <footer>
+    © 2026 Matcha Energy
+  </footer>
 
-<footer>
-  © 2026 Matcha Energy
-</footer>
+  <script>
+    const images = document.querySelectorAll('.hero-slide');
 
-<script>
-const images = document.querySelectorAll('.hero-slide');
+    const slideContent = [
+      {
+        title: 'Sanfte Energie - Klarer Fokus',
+        subtitle: 'Langanhaltende Energie — ruhig, klar und ausgeglichen.'
+      },
+      {
+        title: 'Natürlich wach - Ohne Crash.',
+        subtitle: 'Premium Bio-Matcha aus Japan — Energie ohne Absturz.'
+      },
+      {
+        title: 'Frisch - Natürlich',
+        subtitle: 'Frisch zubereitete Matcha-Snacks, jeden Tag.'
+      },
+      {
+        title: '100% Natürlich',
+        subtitle: 'Nur echtes Matcha und Früchte — keine künstlichen Zusätze.'
+      },
+      {
+        title: 'Frisch - Einzigartig.',
+        subtitle: 'Kreative Matcha-Drinks — bewusst und besonders.'
+      }
+    ];
 
-const slideContent = [
-  {
-    title: 'Sanfte Energie - Klarer Fokus',
-    subtitle: 'Langanhaltende Energie — ruhig, klar und ausgeglichen.'
-  },
-  {
-    title: 'Natürlich wach - Ohne Crash.',
-    subtitle: 'Premium Bio-Matcha aus Japan — Energie ohne Absturz.'
-  },
-  {
-    title: 'Frisch - Natürlich ',
-    subtitle: 'Frisch zubereitete Matcha-Snacks, jeden Tag.'
-  },
-  {
-    title: '100% Natürlich',
-    subtitle: 'Nur echtes Matcha und Früchte — keine künstlichen Zusätze.'
-  },
-  {
-    title: 'Frisch - Einzigartig.',
-    subtitle: 'Kreative Matcha-Drinks — bewusst und besonders.'
-  }
-];
+    let index = 0;
 
-let index = 0;
+    setInterval(() => {
+      images[index].classList.remove('active');
+      index = (index + 1) % images.length;
+      images[index].classList.add('active');
 
-setInterval(() => {
-  images[index].classList.remove('active');
-  index = (index + 1) % images.length;
-  images[index].classList.add('active');
-
-  document.getElementById('overlayText').innerHTML = slideContent[index].title;
-  document.getElementById('overlaySubtitle').innerHTML = slideContent[index].subtitle;
-}, 10000);
-</script>
+      document.getElementById('overlayText').innerHTML = slideContent[index].title;
+      document.getElementById('overlaySubtitle').innerHTML = slideContent[index].subtitle;
+    }, 10000);
+  </script>
 
 </body>
 </html>
