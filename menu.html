@@ -16,7 +16,7 @@
   --green:#4CAF50;
   --green-soft:#edf7ee;
   --dark:#1e3d2b;
-  --line:rgba(76,175,80,0.14);
+  --line:rgba(76,175,80,0.22);
   --shadow:0 12px 30px rgba(0,0,0,0.06);
 }
 
@@ -76,28 +76,55 @@ nav a:hover{color:var(--green);}
   border-radius:24px;
   box-shadow:var(--shadow);
   border:1px solid var(--line);
+  padding:24px 14px 18px;
 }
 
 .section-head{
-  padding:16px;
   text-align:center;
-  background:var(--green-soft);
+  margin-bottom:22px;
 }
 
+.section-head h2{
+  font-family:'Poppins', sans-serif;
+  font-size:1.8rem;
+  color:var(--dark);
+}
+
+/* CATEGORY */
+.menu-category{
+  position:relative;
+  border:1px solid rgba(76,175,80,0.35);
+  border-radius:22px;
+  padding:34px 16px 18px;
+  margin-bottom:34px;
+  background:#fff;
+}
+
+.category-title{
+  position:absolute;
+  top:-22px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#3f6f22;
+  color:white;
+  font-family:'Poppins', sans-serif;
+  font-size:1rem;
+  font-weight:800;
+  letter-spacing:1px;
+  padding:10px 36px;
+  border-radius:999px;
+}
+
+/* GRID */
 .menu-grid{
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
   gap:12px;
-  padding:14px;
 }
 
-/* 20% BIGGER MENU CARDS */
+/* CARDS (20% bigger) */
 .menu-card{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:18px;
-  overflow:hidden;
   flex:0 1 calc(26% - 10px);
   max-width:130px;
   text-align:center;
@@ -108,10 +135,11 @@ nav a:hover{color:var(--green);}
   transform:translateY(-3px);
 }
 
-/* IMAGE RATIO KEPT SAME */
 .menu-img{
   width:100%;
   aspect-ratio:2/3;
+  border-radius:16px;
+  overflow:hidden;
 }
 
 .menu-img img{
@@ -121,7 +149,7 @@ nav a:hover{color:var(--green);}
 }
 
 .menu-info{
-  padding:10px;
+  padding:10px 4px 4px;
 }
 
 .menu-info h3{
@@ -169,9 +197,12 @@ nav a:hover{color:var(--green);}
 <h2>Matcha Menu</h2>
 </div>
 
+<!-- MATCHA PURE -->
+<div class="menu-category">
+<div class="category-title">MATCHA PURE</div>
+
 <div class="menu-grid">
 
-<!-- PURE -->
 <div class="menu-card">
 <div class="menu-img"><img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800"></div>
 <div class="menu-info">
@@ -188,12 +219,28 @@ nav a:hover{color:var(--green);}
 </div>
 </div>
 
-<!-- DRINKS -->
+</div>
+</div>
+
+<!-- MATCHA DRINKS -->
+<div class="menu-category">
+<div class="category-title">MATCHA DRINKS</div>
+
+<div class="menu-grid">
+
+<div class="menu-card">
+<div class="menu-img"><img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=800"></div>
+<div class="menu-info">
+<span class="tag">Matcha Drink</span>
+<h3>Matcha Latte Hot</h3>
+</div>
+</div>
+
 <div class="menu-card">
 <div class="menu-img"><img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800"></div>
 <div class="menu-info">
 <span class="tag">Matcha Drink</span>
-<h3>Matcha Latte</h3>
+<h3>Matcha Latte Cold</h3>
 </div>
 </div>
 
@@ -229,7 +276,15 @@ nav a:hover{color:var(--green);}
 </div>
 </div>
 
-<!-- SNACKS -->
+</div>
+</div>
+
+<!-- MATCHA SNACKS -->
+<div class="menu-category">
+<div class="category-title">MATCHA SNACKS</div>
+
+<div class="menu-grid">
+
 <div class="menu-card">
 <div class="menu-img"><img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?q=80&w=800"></div>
 <div class="menu-info">
@@ -247,6 +302,8 @@ nav a:hover{color:var(--green);}
 </div>
 
 </div>
+</div>
+
 </section>
 
 </div>
