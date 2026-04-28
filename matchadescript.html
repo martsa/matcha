@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matcha Energy - Matcha Details</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
+
+    :root{
+      --bg:#f7faf7;
+      --card:#ffffff;
+      --text:#1b1f1b;
+      --muted:#6b736b;
+      --green:#4CAF50;
+      --green-soft:#edf7ee;
+      --dark:#1e3d2b;
+      --line:rgba(76,175,80,0.14);
+      --shadow:0 12px 30px rgba(0,0,0,0.06);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+
+    body{
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+      background:linear-gradient(180deg,#f0f7f0 0%, #ffffff 100%);
+      color:var(--text);
+    }
+
+    .container{width:90%;max-width:940px;margin:auto;position:relative;}
+
+    .floating-logo{position:absolute;top:12px;left:0;z-index:20;opacity:0.95;}
+    .floating-logo img{width:210px;height:auto;display:block;}
+
+    header{
+      display:flex;justify-content:center;align-items:center;
+      padding:16px 20px;background:rgba(76,175,80,0.18);
+      backdrop-filter:blur(10px);border-radius:16px;margin-top:20px;
+    }
+
+    nav{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;width:100%;}
+    nav a{color:var(--dark);font-weight:600;font-size:0.96rem;letter-spacing:0.01em;opacity:0.85;text-decoration:none;}
+    nav a:hover{opacity:1;color:var(--green);}
+
+    .hero-detail{
+      margin:28px auto 0;min-height:360px;border-radius:28px;overflow:hidden;position:relative;
+      background:linear-gradient(135deg, rgba(30,61,43,0.86), rgba(76,175,80,0.55)), url('matcha-detail-dummy.jpg');
+      background-size:cover;background-position:center;box-shadow:var(--shadow);
+      display:flex;align-items:flex-end;justify-content:center;padding:34px;
+    }
+
+    .hero-detail-content{color:white;text-align:center;max-width:740px;padding-top:120px;}
+
+    .hero-detail h1{
+      font-family:'Poppins', sans-serif;
+      font-size:clamp(2rem,5vw,4rem);
+      line-height:0.95;letter-spacing:-0.06em;font-weight:800;margin-bottom:12px;
+      text-shadow:0 8px 30px rgba(0,0,0,0.22);
+    }
+
+    .hero-detail p{font-size:1rem;line-height:1.7;opacity:0.96;text-shadow:0 6px 20px rgba(0,0,0,0.18);}
+
+    .hero-bottom-logo{position:absolute;right:18px;top:18px;z-index:10;}
+    .hero-bottom-logo img{width:95px;height:auto;display:block;filter:drop-shadow(0 8px 18px rgba(0,0,0,0.18));}
+
+    .intro-box{
+      margin-top:42px;background:var(--card);border-radius:24px;box-shadow:var(--shadow);
+      border:1px solid var(--line);padding:26px;text-align:center;
+    }
+
+    .intro-box h2{
+      font-family:'Poppins', sans-serif;color:var(--dark);
+      font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.15;letter-spacing:-0.03em;margin-bottom:10px;
+    }
+
+    .intro-box p{color:var(--muted);line-height:1.75;font-size:1rem;max-width:760px;margin:auto;}
+
+    .tea-grid{display:grid;grid-template-columns:repeat(2, minmax(0,1fr));gap:20px;margin-top:28px;}
+
+    .tea-card{
+      background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;
+      box-shadow:var(--shadow);transition:transform .25s ease, box-shadow .25s ease;
+    }
+
+    .tea-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.08);} 
+
+    /* Premium Highlight */
+    .premium{
+      position:relative;
+      border:2px solid var(--green);
+      box-shadow:0 20px 40px rgba(0,0,0,0.12);
+      transform:scale(1.02);
+    }
+
+    .premium::before{
+      content:"PREMIUM";
+      position:absolute;
+      top:12px;
+      left:12px;
+      background:linear-gradient(135deg,#4CAF50,#81c784);
+      color:#1b1f1b;
+      font-weight:800;
+      font-size:0.7rem;
+      padding:6px 10px;
+      border-radius:999px;
+      letter-spacing:0.08em;
+      z-index:5;
+    }
+
+    .premium img{
+      filter:saturate(1.15) contrast(1.05);
+    }
+
+    .tea-visual{
+      height:165px;display:flex;align-items:center;justify-content:center;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.95) 0 18%, transparent 19%),
+        radial-gradient(circle at 66% 58%, rgba(76,175,80,0.28) 0 24%, transparent 25%),
+        linear-gradient(135deg, #edf7ee, #ffffff);
+    }
+
+    .tea-bowl{
+      width:122px;height:78px;border-radius:18px 18px 54px 54px;
+      background:linear-gradient(180deg,#ffffff 0%,#ecf7eb 45%,#6fb85d 100%);
+      box-shadow:0 16px 28px rgba(30,61,43,0.18);position:relative;
+    }
+
+    .tea-bowl::before{
+      content:"";position:absolute;top:-15px;left:-8px;width:138px;height:32px;border-radius:50%;
+      background:#ffffff;border:5px solid rgba(76,175,80,0.28);
+    }
+
+    .hojicha .tea-visual{
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.95) 0 18%, transparent 19%),
+        radial-gradient(circle at 66% 58%, rgba(154,105,52,0.24) 0 24%, transparent 25%),
+        linear-gradient(135deg, #f7f0e8, #ffffff);
+    }
+
+    .hojicha .tea-bowl{background:linear-gradient(180deg,#ffffff 0%,#f3eadf 45%,#b47a42 100%);}    
+    .hojicha .tea-bowl::before{border-color:rgba(154,105,52,0.28);}    
+
+    .tea-info{padding:22px;}
+
+    .tea-info h3{color:var(--dark);font-size:1.28rem;line-height:1.25;letter-spacing:-0.02em;margin-bottom:10px;}
+
+    .meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+    .meta span{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--green-soft);color:var(--dark);font-size:0.76rem;font-weight:700;}
+
+    .tea-info p{color:var(--muted);font-size:0.95rem;line-height:1.7;margin-bottom:14px;}
+
+    .best-for{padding-top:12px;border-top:1px solid var(--line);color:var(--dark);font-weight:700;font-size:0.92rem;line-height:1.5;}
+
+    footer{text-align:center;padding:34px 0 40px;color:var(--muted);font-size:0.94rem;}
+
+    @media (max-width:800px){
+      .floating-logo{top:55px;left:1px;transform:translateY(-10%) rotate(-5deg);z-index:20;}
+      .floating-logo img{width:150px;}
+      header{padding:18px 16px;margin-top:20px;}
+      nav{gap:14px 24px;}
+      nav a{font-size:0.9rem;}
+      .hero-detail{min-height:330px;padding:24px 18px;}
+      .hero-detail-content{padding-top:110px;}
+      .hero-bottom-logo{right:5px;top:3px;}
+      .hero-bottom-logo img{width:42px;}
+      .tea-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="floating-logo">
+      <img src="matcha-trailer.png" alt="Matcha Energy Food Trailer" />
+    </div>
+
+    <header>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="powder.html">Matcha</a>
+        <a href="menu.html">Menu</a>
+        <a href="ingredients.html">Standort</a>
+      </nav>
+    </header>
+
+    <section class="hero-detail">
+      <div class="hero-detail-content">
+        <h1>Unsere Matcha-Auswahl</h1>
+        <p>Sorgfältig ausgewählter Bio-Matcha aus Japan und gerösteter Tee — von Premium-Ceremonial-Qualität bis zu ausgewogenen Alltagskreationen.</p>
+      </div>
+
+      <div class="hero-bottom-logo">
+        <img src="logousenow-2.png" alt="Matcha Energy Logo" />
+      </div>
+    </section>
+
+    <section class="intro-box">
+      <h2>Reine Qualität. EU-Bio-zertifiziert.</h2>
+      <p>
+        Alle unsere Matcha- und Teesorten sind 100% rein und EU-Bio-zertifiziert.
+        Jede Qualität wird gezielt für ihren optimalen Einsatz verwendet.
+      </p>
+    </section>
+
+    <section class="tea-grid">
+
+      <article class="tea-card premium">
+        <div class="tea-visual">
+          <img src="/mnt/data/a_highly_detailed_close_up_top_angled_still_life.png" alt="Ceremonial Matcha Pure" style="width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <div class="tea-info">
+          <h3>🌿 Ceremonial Matcha – Pure</h3>
+          <div class="meta">
+            <span>Bio</span>
+            <span>Erste Frühlingsernte</span>
+            <span>Uji</span>
+          </div>
+          <p>
+            Unser hochwertigster Matcha, hergestellt aus den jüngsten Blättern der ersten Ernte.
+            Natürlich süß, samtig weich und reich an Umami, mit einem klaren, nicht bitteren Abgang.
+          </p>
+          <div class="best-for">Für Matcha Espresso und Matcha Americano.</div>
+        </div>
+      </article>
+
+      <article class="tea-card premium">
+        <div class="tea-visual">
+          <img src="https://via.placeholder.com/400x300?text=Matcha" alt="Matcha Image" style="width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <div class="tea-info">
+          <h3>🌱 Ceremonial Matcha – Refined Daily</h3>
+          <div class="meta">
+            <span>Bio</span>
+            <span>Erste Frühlingsernte</span>
+            <span>Nishio</span>
+          </div>
+          <p>
+            Ein verfeinerter Ceremonial Matcha für den täglichen Genuss.
+            Ausgewogen, weich und leicht süß – perfekt pur oder mit etwas Milch.
+          </p>
+          <div class="best-for">Für alle Matcha Latte Varianten.</div>
+        </div>
+      </article>
+
+      <article class="tea-card">
+        <div class="tea-visual">
+          <img src="https://via.placeholder.com/400x300?text=Matcha" alt="Matcha Image" style="width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <div class="tea-info">
+          <h3>🍵 Bio Matcha – Vielseitig</h3>
+          <div class="meta">
+            <span>Bio</span>
+            <span>Erste & Zweite Ernte</span>
+            <span>Shizuoka</span>
+          </div>
+          <p>
+            Ein zuverlässiger Bio-Matcha mit frischem, ausgewogenem Charakter.
+            Ideal für den täglichen Gebrauch und für Backwaren.
+          </p>
+          <div class="best-for">Für Snacks und Backwaren.</div>
+        </div>
+      </article>
+
+      <article class="tea-card hojicha">
+        <div class="tea-visual">
+          <img src="https://via.placeholder.com/400x300?text=Matcha" alt="Matcha Image" style="width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <div class="tea-info">
+          <h3>🍂 Hojicha – Geröstet</h3>
+          <div class="meta">
+            <span>Bio</span>
+            <span>Koffeinarm</span>
+            <span>Kagoshima</span>
+          </div>
+          <p>
+            Ein warm gerösteter Grüntee mit nussigen und karamelligen Noten.
+            Von Natur aus koffeinarm und besonders sanft – ideal zum Entspannen.
+          </p>
+          <div class="best-for">Für Hojicha Latte.</div>
+        </div>
+      </article>
+
+    </section>
+
+    <section class="intro-box" style="margin-top:28px">
+      <h2>Verwendung</h2>
+      <p>
+        Ceremonial Matcha – Pure verwenden wir für Matcha Espresso und Matcha Americano.
+        Ceremonial Matcha – Refined Daily nutzen wir für alle Matcha Latte Varianten.
+        Bio Matcha – Vielseitig verwenden wir für unsere Snacks.
+        Hojicha setzen wir für Hojicha Latte ein.
+      </p>
+    </section>
+
+  </div>
+
+  <footer>
+    © 2026 Matcha Energy
+  </footer>
+
+</body>
+</html>
