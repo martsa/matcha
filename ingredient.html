@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matcha Energy</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
+
+    :root{
+      --bg:#f7faf7;
+      --card:#ffffff;
+      --text:#1b1f1b;
+      --muted:#6b736b;
+      --green:#4CAF50;
+      --green-soft:#edf7ee;
+      --dark:#1e3d2b;
+      --line:rgba(76,175,80,0.12);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+      background:linear-gradient(180deg,#f0f7f0 0%, #ffffff 100%);
+      color:var(--text);
+    }
+
+    .container{
+      width:90%;
+      max-width:940px;
+      margin:auto;
+      position:relative;
+    }
+
+    .floating-logo{
+      position:absolute;
+      top:12px;
+      left:0px;
+      z-index:20;
+      transform:rotate(-0deg);
+      opacity:0.95;
+    }
+
+    .floating-logo img{
+      width:210px;
+      height:auto;
+      display:block;
+    }
+
+    header{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:16px 20px;
+      background:rgba(76,175,80,0.18);
+      backdrop-filter:blur(10px);
+      border-radius:16px;
+      margin-top:20px;
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:24px;
+      flex-wrap:wrap;
+      width:100%;
+    }
+
+    nav a{
+      color:var(--dark);
+      font-weight:600;
+      font-size:0.96rem;
+      letter-spacing:0.01em;
+      opacity:0.85;
+      text-decoration:none;
+    }
+
+    nav a:hover{
+      opacity:1;
+      color:var(--green);
+    }
+
+    .hero-img{
+      margin:28px auto 0;
+      height:520px;
+      width:100%;
+      border-radius:28px;
+      overflow:hidden;
+      position:relative;
+      border:none !important;
+      box-shadow:none !important;
+      outline:none !important;
+    }
+
+    .hero-slide{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transition:opacity 1s ease-in-out;
+      border:none !important;
+      box-shadow:none !important;
+      outline:none !important;
+    }
+
+    .hero-slide.active{
+      opacity:1;
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        180deg,
+        rgba(12,26,14,0.04) 0%,
+        rgba(12,26,14,0.14) 38%,
+        rgba(12,26,14,0.68) 100%
+      );
+      color:white;
+      padding:20px 34px 6px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      z-index:2;
+    }
+
+    .overlay-content{
+      max-width:760px;
+      width:100%;
+      text-align:center;
+      margin-bottom:0;
+    }
+
+    .overlay-title{
+      font-family:'Poppins', sans-serif;
+      font-size:clamp(1.4rem,3vw,2.6rem);
+      line-height:0.92;
+      letter-spacing:-0.05em;
+      font-weight:800;
+      margin-bottom:8px;
+      text-shadow:0 8px 30px rgba(0,0,0,0.22);
+    }
+
+    .overlay-subtitle{
+      font-size:.92rem;
+      line-height:1.6;
+      opacity:0.96;
+      margin:0 auto;
+      max-width:560px;
+      text-shadow:0 6px 20px rgba(0,0,0,0.18);
+    }
+
+    .hero-bottom-logo{
+      position:absolute;
+      right:18px;
+      top:18px;
+      z-index:10;
+    }
+
+    .hero-bottom-logo img{
+      width:95px;
+      height:auto;
+      display:block;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,0.18));
+    }
+
+    .summary{
+      margin-top:48px;
+      background:var(--card);
+      border-radius:24px;
+      box-shadow:0 10px 28px rgba(0,0,0,0.05);
+      border:1px solid var(--line);
+      text-align:left;
+      overflow:hidden;
+    }
+
+    .summary-top{
+      background:linear-gradient(180deg, var(--green-soft) 0%, #f7fbf7 58%, #ffffff 100%);
+      padding:18px 20px 14px;
+    }
+
+    .summary-top h2{
+      color:var(--dark);
+      font-size:2rem;
+      line-height:1.15;
+      margin-bottom:0;
+      letter-spacing:-0.02em;
+    }
+
+    .summary-body{
+      padding:20px 20px 10px;
+    }
+
+    .summary-body p{
+      color:var(--muted);
+      line-height:1.85;
+      margin-bottom:16px;
+      font-size:1rem;
+    }
+
+    .location-section{
+      margin-top:24px;
+      background:var(--card);
+      border-radius:26px;
+      overflow:hidden;
+      border:1px solid rgba(76,175,80,0.16);
+      box-shadow:0 14px 32px rgba(0,0,0,0.055);
+    }
+
+    .location-header{
+      background:linear-gradient(180deg, #edf7ee 0%, #ffffff 100%);
+      padding:24px 24px 12px;
+      text-align:center;
+    }
+
+    .location-header span{
+      display:inline-block;
+      background:white;
+      color:var(--green);
+      font-weight:800;
+      font-size:0.82rem;
+      padding:7px 14px;
+      border-radius:999px;
+      margin-bottom:12px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.06);
+      letter-spacing:0.02em;
+    }
+
+    .location-header h2{
+      color:var(--dark);
+      font-family:'Poppins', sans-serif;
+      font-size:1.65rem;
+      line-height:1.2;
+      letter-spacing:-0.03em;
+      margin-bottom:8px;
+    }
+
+    .location-header p{
+      color:var(--muted);
+      line-height:1.7;
+      max-width:620px;
+      margin:0 auto;
+      font-size:0.98rem;
+    }
+
+    .location-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      padding:22px;
+    }
+
+    .info-card{
+      background:#fbfdfb;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:22px;
+    }
+
+    .info-card h3{
+      color:var(--dark);
+      font-family:'Poppins', sans-serif;
+      font-size:1.12rem;
+      margin-bottom:12px;
+      letter-spacing:-0.02em;
+    }
+
+    .info-card p{
+      color:var(--muted);
+      line-height:1.8;
+      font-size:0.98rem;
+    }
+
+    .map-button{
+      display:inline-block;
+      margin-top:16px;
+      padding:12px 18px;
+      background:var(--green);
+      color:white;
+      border-radius:14px;
+      text-decoration:none;
+      font-size:0.92rem;
+      font-weight:700;
+      box-shadow:0 10px 22px rgba(76,175,80,0.22);
+      transition:all 0.2s ease;
+    }
+
+    .map-button:hover{
+      background:#3d9441;
+      transform:translateY(-2px);
+    }
+
+    .map-wrap{
+      padding:0 22px 22px;
+    }
+
+    .map-wrap iframe{
+      width:100%;
+      height:320px;
+      border:0;
+      border-radius:22px;
+      display:block;
+    }
+
+    .review-section{
+      margin-top:24px;
+      padding:10px 0 5px;
+    }
+
+    .review-box{
+      background:linear-gradient(180deg, #edf7ee 0%, #ffffff 100%);
+      border-radius:26px;
+      padding:30px 26px;
+      text-align:center;
+      border:1px solid rgba(76,175,80,0.16);
+      box-shadow:0 14px 32px rgba(0,0,0,0.055);
+      max-width:900px;
+      margin:auto;
+    }
+
+    .review-stars{
+      font-size:1.55rem;
+      color:var(--green);
+      margin-bottom:12px;
+      letter-spacing:4px;
+    }
+
+    .review-box h3{
+      color:var(--dark);
+      font-family:'Poppins', sans-serif;
+      font-size:1.45rem;
+      line-height:1.25;
+      margin-bottom:12px;
+      letter-spacing:-0.02em;
+    }
+
+    .review-box p{
+      color:var(--muted);
+      font-size:0.98rem;
+      line-height:1.7;
+      max-width:560px;
+      margin:0 auto 10px;
+    }
+
+    .review-btn{
+      display:inline-block;
+      margin-top:14px;
+      padding:12px 20px;
+      background:var(--green);
+      color:white;
+      border-radius:14px;
+      text-decoration:none;
+      font-size:0.92rem;
+      font-weight:700;
+      box-shadow:0 10px 22px rgba(76,175,80,0.22);
+      transition:all 0.2s ease;
+    }
+
+    .review-btn:hover{
+      background:#3d9441;
+      transform:translateY(-2px);
+    }
+
+    footer{
+      text-align:center;
+      padding:34px 0 40px;
+      color:var(--muted);
+      font-size:0.94rem;
+    }
+
+    @media (max-width:800px){
+      .floating-logo{
+        top:55px;
+        left:1px;
+        transform:translateY(-10%) rotate(-5deg);
+        z-index:20;
+      }
+
+      .floating-logo img{
+        width:150px;
+      }
+
+      header{
+        padding:18px 16px;
+        margin-top:20px;
+        justify-content:center;
+      }
+
+      nav{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:14px 24px;
+        width:100%;
+      }
+
+      nav a{
+        font-size:0.9rem;
+      }
+
+      .hero-img{
+        height:340px;
+        margin-top:28px;
+      }
+
+      .overlay{
+        padding:16px 18px 8px;
+      }
+
+      .hero-bottom-logo{
+        right:5px;
+        top:3px;
+      }
+
+      .hero-bottom-logo img{
+        width:42px;
+      }
+
+      .summary-top h2{
+        font-size:1.55rem;
+      }
+
+      .summary-body p{
+        font-size:0.96rem;
+      }
+
+      .location-grid{
+        grid-template-columns:1fr;
+        padding:18px;
+      }
+
+      .location-header{
+        padding:22px 18px 10px;
+      }
+
+      .location-header h2{
+        font-size:1.35rem;
+      }
+
+      .info-card{
+        padding:20px;
+      }
+
+      .map-wrap{
+        padding:0 18px 18px;
+      }
+
+      .map-wrap iframe{
+        height:280px;
+      }
+
+      .review-box{
+        padding:26px 18px;
+      }
+
+      .review-stars{
+        font-size:1.35rem;
+        letter-spacing:3px;
+      }
+
+      .review-box h3{
+        font-size:1.25rem;
+      }
+
+      .review-box p{
+        font-size:0.94rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="floating-logo">
+      <img src="matcha-trailer.png" alt="Matcha Energy Logo" />
+    </div>
+
+    <header>
+      <nav>
+        <a href="powder.html">Matcha</a>
+        <a href="menu.html">Menu</a>
+        <a href="#standort">Standort</a>
+      </nav>
+    </header>
+
+    <div class="hero-img">
+      <img src="brush.png" class="hero-slide active" alt="Pure matcha" />
+     
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <div class="overlay-title" id="overlayText">Sanfte Energie. Klarer Fokus.</div>
+          <div class="overlay-subtitle" id="overlaySubtitle">
+            Langanhaltende Energie durch natürliches L-Theanin — für Fokus, Ruhe und Balance.
+          </div>
+        </div>
+
+        <div class="hero-bottom-logo">
+          <img src="logousenow-2.png" alt="Matcha Energy Logo" />
+        </div>
+      </div>
+    </div>
+
+
+    <section class="location-section" id="standort">
+      <div class="location-header">
+        <span>JETZT IN WINTERTHUR</span>
+        <h2>Besuchen Sie unseren Matcha Food Trailer</h2>
+        <p>
+          Frisch zubereitete Matcha-Getränke und Snacks direkt hinter dem Winterthur Hauptbahnhof.
+        </p>
+      </div>
+
+      <div class="location-grid">
+        <div class="info-card">
+          <h3>📍 Standort</h3>
+          <p>
+            Rudolfstrasse, 8400 Winterthur<br>
+            Hinter dem Winterthur Hauptbahnhof, Gleis 10<br>
+            Gegenüber der Migros Klubschule
+          </p>
+
+          <a
+            class="map-button"
+            href="https://www.google.com/maps/search/?api=1&query=Rudolfstrasse+8400+Winterthur+Matcha+Energy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Standort auf Google Maps ansehen →
+          </a>
+        </div>
+
+        <div class="info-card">
+          <h3>🕒 Öffnungszeiten</h3>
+          <p>
+            Montag – Samstag<br>
+            10:00 – 18:00 Uhr<br><br>
+            Sonntag geschlossen
+          </p>
+        </div>
+      </div>
+
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=Rudolfstrasse+8400+Winterthur+Matcha+Energy&output=embed"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+
+
+  </div>
+
+  <footer>
+    © 2026 Matcha Energy
+  </footer>
+
+  <script>
+    const images = document.querySelectorAll('.hero-slide');
+
+    const slideContent = [
+      {
+        title: 'Sanfte Energie - Klarer Fokus',
+        subtitle: 'Langanhaltende Energie — ruhig, klar und ausgeglichen.'
+      },
+     
+    ];
+
+    let index = 0;
+
+    setInterval(() => {
+      images[index].classList.remove('active');
+      index = (index + 1) % images.length;
+      images[index].classList.add('active');
+
+      document.getElementById('overlayText').innerHTML = slideContent[index].title;
+      document.getElementById('overlaySubtitle').innerHTML = slideContent[index].subtitle;
+    }, 10000);
+  </script>
+
+</body>
+</html>
