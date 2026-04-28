@@ -208,6 +208,83 @@
       font-size:1rem;
     }
 
+    .review-section{
+      margin-top:50px;
+      padding:30px 20px 10px;
+    }
+
+    .review-box{
+      background:linear-gradient(180deg, #edf7ee 0%, #ffffff 100%);
+      border-radius:26px;
+      padding:30px 26px;
+      text-align:center;
+      border:1px solid rgba(76,175,80,0.16);
+      box-shadow:0 14px 32px rgba(0,0,0,0.055);
+      max-width:680px;
+      margin:auto;
+    }
+
+    .review-badge{
+      display:inline-block;
+      background:white;
+      color:var(--green);
+      font-weight:800;
+      font-size:0.82rem;
+      padding:7px 14px;
+      border-radius:999px;
+      margin-bottom:14px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.06);
+      letter-spacing:0.02em;
+    }
+
+    .review-stars{
+      font-size:1.55rem;
+      color:var(--green);
+      margin-bottom:12px;
+      letter-spacing:4px;
+    }
+
+    .review-box h3{
+      color:var(--dark);
+      font-family:'Poppins', sans-serif;
+      font-size:1.45rem;
+      line-height:1.25;
+      margin-bottom:12px;
+      letter-spacing:-0.02em;
+    }
+
+    .review-box p{
+      color:var(--muted);
+      font-size:0.98rem;
+      line-height:1.7;
+      max-width:560px;
+      margin:0 auto 10px;
+    }
+
+    .review-highlight{
+      font-weight:700;
+      color:var(--green) !important;
+    }
+
+    .review-btn{
+      display:inline-block;
+      margin-top:14px;
+      padding:12px 20px;
+      background:var(--green);
+      color:white;
+      border-radius:14px;
+      text-decoration:none;
+      font-size:0.92rem;
+      font-weight:700;
+      box-shadow:0 10px 22px rgba(76,175,80,0.22);
+      transition:all 0.2s ease;
+    }
+
+    .review-btn:hover{
+      background:#3d9441;
+      transform:translateY(-2px);
+    }
+
     footer{
       text-align:center;
       padding:34px 0 40px;
@@ -270,6 +347,23 @@
       .summary-body p{
         font-size:0.96rem;
       }
+
+      .review-box{
+        padding:26px 18px;
+      }
+
+      .review-stars{
+        font-size:1.35rem;
+        letter-spacing:3px;
+      }
+
+      .review-box h3{
+        font-size:1.25rem;
+      }
+
+      .review-box p{
+        font-size:0.94rem;
+      }
     }
   </style>
 </head>
@@ -310,28 +404,54 @@
         </div>
       </div>
     </div>
-<div class="summary">
-  <div class="summary-top">
-    <h2>Frisch zubereitet - Reiner Matcha - Echte Zutaten.</h2>
-  </div>
 
-  <div class="summary-body">
-    <p>
-      Hochwertiger Matcha aus Japan, sorgfältig ausgewählt für beste Qualität und Geschmack. 
-      Zwei Ceremonial-Grade Varianten: traditionell pure oder als Matcha Latte. 
-      Eine natürliche Alternative zu Kaffee – mit ruhiger, gleichmäßiger Energie ohne Crash. 
-      EU-Bio-zertifiziert.
-    </p>
+    <div class="summary">
+      <div class="summary-top">
+        <h2>Frisch zubereitet - Reiner Matcha - Echte Zutaten.</h2>
+      </div>
 
-    <p>
-      Fruchtpürees werden täglich frisch aus echten Früchten hergestellt, und unsere Snacks werden täglich frisch zubereitet – ganz ohne Konservierungsstoffe oder künstliche Farbstoffe.
-      Getränke bereiten wir frisch vor Ihren Augen nach traditioneller japanischer Art zu.
-      Unsere Getränke sind auch in veganen Varianten erhältlich – mit Barista-Edition Hafermilch.
-      Dabei achten wir auf möglichst umweltfreundliche Verpackungen.
+      <div class="summary-body">
+        <p>
+          Hochwertiger Matcha aus Japan, sorgfältig ausgewählt für beste Qualität und Geschmack. 
+          Zwei Ceremonial-Grade Varianten: traditionell pure oder als Matcha Latte. 
+          Eine natürliche Alternative zu Kaffee – mit ruhiger, gleichmäßiger Energie ohne Crash. 
+          EU-Bio-zertifiziert.
+        </p>
 
-    </p>
-  </div>
-</div>
+        <p>
+          Fruchtpürees werden täglich frisch aus echten Früchten hergestellt, und unsere Snacks werden täglich frisch zubereitet – ganz ohne Konservierungsstoffe oder künstliche Farbstoffe.
+          Getränke bereiten wir frisch vor Ihren Augen nach traditioneller japanischer Art zu.
+          Unsere Getränke sind auch in veganen Varianten erhältlich – mit Barista-Edition Hafermilch.
+          Dabei achten wir auf möglichst umweltfreundliche Verpackungen.
+        </p>
+      </div>
+    </div>
+
+    <div class="review-section">
+      <div class="review-box">
+        <div class="review-badge">GOOGLE REVIEWS</div>
+        <div class="review-stars">★★★★★</div>
+
+        <h3>💚 Echte Energie. Echtes Feedback.</h3>
+
+        <p>
+          Seit dem Start am <strong>20. März 2026</strong> lieben unsere Kunden unseren Matcha –
+          viele kommen immer wieder zurück.
+        </p>
+
+        <p class="review-highlight">
+          Wir haben nur 5-Sterne-Bewertungen und sehr viel positives Feedback erhalten.
+        </p>
+
+        <p>
+          Lies, was unsere Kunden über unseren Matcha sagen.
+        </p>
+
+        <a href="https://g.page/r/CcTD-oH7Cu2XEAI/review" target="_blank" class="review-btn">
+          Bewertungen auf Google ansehen →
+        </a>
+      </div>
+    </div>
 
   </div>
 
@@ -351,10 +471,10 @@
         title: 'Natürlich wach - Ohne Crash.',
         subtitle: 'Premium Matcha aus Japan — EU-Bio-zertifiziert.'
       },
-    {
-  title: 'Auch vegan',
-  subtitle: 'Matcha-Optionen 100% pflanzlich erhältlich.'
-},
+      {
+        title: 'Auch vegan',
+        subtitle: 'Matcha-Optionen 100% pflanzlich erhältlich.'
+      },
       {
         title: 'Frisch - Natürlich',
         subtitle: 'Frisch zubereitete Matcha-Snacks, jeden Tag.'
