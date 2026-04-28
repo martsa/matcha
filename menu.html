@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matcha Energy Menu</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
+
+    :root{
+      --bg:#f7faf7;
+      --card:#ffffff;
+      --text:#1b1f1b;
+      --muted:#6b736b;
+      --green:#4CAF50;
+      --green-soft:#edf7ee;
+      --dark:#1e3d2b;
+      --line:rgba(76,175,80,0.14);
+      --shadow:0 12px 30px rgba(0,0,0,0.06);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+      background:linear-gradient(180deg,#f0f7f0 0%, #ffffff 100%);
+      color:var(--text);
+    }
+
+    .container{
+      width:90%;
+      max-width:940px;
+      margin:auto;
+      position:relative;
+    }
+
+    .floating-logo{
+      position:absolute;
+      top:12px;
+      left:0;
+      z-index:20;
+      opacity:0.95;
+    }
+
+    .floating-logo img{
+      width:210px;
+      height:auto;
+      display:block;
+    }
+
+    header{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:16px 20px;
+      background:rgba(76,175,80,0.18);
+      backdrop-filter:blur(10px);
+      border-radius:16px;
+      margin-top:20px;
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:24px;
+      flex-wrap:wrap;
+      width:100%;
+    }
+
+    nav a{
+      color:var(--dark);
+      font-weight:600;
+      font-size:0.96rem;
+      letter-spacing:0.01em;
+      opacity:0.85;
+      text-decoration:none;
+    }
+
+    nav a:hover{
+      opacity:1;
+      color:var(--green);
+    }
+
+    .hero-menu{
+      margin:28px auto 0;
+      min-height:360px;
+      border-radius:28px;
+      overflow:hidden;
+      position:relative;
+      background:
+        linear-gradient(135deg, rgba(30,61,43,0.82), rgba(76,175,80,0.58)),
+        url('menu-hero-dummy.jpg');
+      background-size:cover;
+      background-position:center;
+      box-shadow:var(--shadow);
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      padding:18px;
+    }
+
+    .hero-menu-content{
+      color:white;
+      text-align:center;
+      max-width:720px;
+      padding-top:120px;
+    }
+
+    .hero-menu h1{
+      font-family:'Poppins', sans-serif;
+      font-size:clamp(2rem,5vw,4.1rem);
+      line-height:0.95;
+      letter-spacing:-0.06em;
+      font-weight:800;
+      margin-bottom:12px;
+      text-shadow:0 8px 30px rgba(0,0,0,0.22);
+    }
+
+    .hero-menu p{
+      font-size:1rem;
+      line-height:1.7;
+      opacity:0.96;
+      text-shadow:0 6px 20px rgba(0,0,0,0.18);
+    }
+
+    .hero-bottom-logo{
+      position:absolute;
+      right:18px;
+      top:18px;
+      z-index:10;
+    }
+
+    .hero-bottom-logo img{
+      width:95px;
+      height:auto;
+      display:block;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,0.18));
+    }
+
+    .menu-section{
+      margin-top:18px;
+      background:var(--card);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section-head{
+      padding:14px 16px 10px;
+      background:linear-gradient(180deg, var(--green-soft) 0%, #ffffff 100%);
+      text-align:center;
+    }
+
+    .section-head h2{
+      font-family:'Poppins', sans-serif;
+      color:var(--dark);
+      font-size:clamp(1.5rem,3vw,2.2rem);
+      line-height:1.1;
+      letter-spacing:-0.03em;
+      margin-bottom:8px;
+    }
+
+    .section-head p{
+      color:var(--muted);
+      font-size:0.96rem;
+      line-height:1.6;
+    }
+
+    .menu-grid{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+      padding:10px;
+    }
+
+    .menu-card{
+      background:#ffffff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 8px 20px rgba(0,0,0,0.04);
+      transition:transform .25s ease, box-shadow .25s ease;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      flex:0 1 calc(33.333% - 14px);
+      max-width:140px;
+    }
+
+    .menu-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 14px 28px rgba(0,0,0,0.08);
+    }
+
+    .menu-img{
+      width:100%;
+      aspect-ratio:2/3;
+      background:linear-gradient(135deg, #dff3df, #ffffff);
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .menu-img img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      border-radius:22px 22px 0 0;
+    }
+
+    .dummy-art{
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 35% 35%, rgba(255,255,255,0.95) 0 18%, transparent 19%),
+        radial-gradient(circle at 62% 56%, rgba(76,175,80,0.34) 0 24%, transparent 25%),
+        linear-gradient(135deg, #edf7ee, #ffffff);
+    }
+
+    .dummy-cup{
+      width:88px;
+      height:104px;
+      border-radius:0 0 28px 28px;
+      background:linear-gradient(180deg,#ffffff 0%,#eef7ee 42%,#7fbe6d 100%);
+      box-shadow:0 14px 26px rgba(30,61,43,0.18);
+      position:relative;
+    }
+
+    .dummy-cup::before{
+      content:"";
+      position:absolute;
+      top:-14px;
+      left:-6px;
+      width:100px;
+      height:28px;
+      border-radius:50%;
+      background:#ffffff;
+      border:4px solid rgba(76,175,80,0.32);
+    }
+
+    .dummy-cookie{
+      width:108px;
+      height:108px;
+      border-radius:50%;
+      background:radial-gradient(circle at 35% 30%, #ffffff 0 6px, transparent 7px),
+                 radial-gradient(circle at 62% 58%, #406b42 0 5px, transparent 6px),
+                 radial-gradient(circle at 45% 70%, #406b42 0 4px, transparent 5px),
+                 #91c77d;
+      box-shadow:0 14px 26px rgba(30,61,43,0.18);
+    }
+
+    .menu-info{
+      padding:10px 10px 12px;
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    .menu-info h3{
+      color:var(--dark);
+      font-size:1.18rem;
+      line-height:1.25;
+      margin-bottom:8px;
+      letter-spacing:-0.01em;
+      text-align:center;
+    }
+
+    .menu-info p{
+      color:var(--muted);
+      font-size:0.94rem;
+      line-height:1.65;
+    }
+
+    .tag{
+      display:inline-block;
+      margin-bottom:10px;
+      padding:5px 10px;
+      border-radius:999px;
+      background:var(--green-soft);
+      color:var(--dark);
+      font-size:0.78rem;
+      font-weight:700;
+    }
+
+    .snack-note{
+      padding:0 12px 12px;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:0.96rem;
+      text-align:center;
+    }
+
+    footer{
+      text-align:center;
+      padding:34px 0 40px;
+      color:var(--muted);
+      font-size:0.94rem;
+    }
+
+    @media (max-width:800px){
+      .floating-logo{
+        top:55px;
+        left:1px;
+        transform:translateY(-10%) rotate(-5deg);
+        z-index:20;
+      }
+
+      .floating-logo img{
+        width:150px;
+      }
+
+      header{
+        padding:18px 16px;
+        margin-top:20px;
+      }
+
+      nav{
+        gap:14px 24px;
+      }
+
+      nav a{
+        font-size:0.9rem;
+      }
+
+      .hero-menu{
+        min-height:330px;
+        padding:24px 18px;
+      }
+
+      .hero-menu-content{
+        padding-top:110px;
+      }
+
+      .hero-bottom-logo{
+        right:5px;
+        top:3px;
+      }
+
+      .hero-bottom-logo img{
+        width:42px;
+      }
+
+      .menu-grid{
+        justify-content:center;
+      }
+
+      .menu-card{
+        flex:0 1 calc(50% - 14px);
+        max-width:none;
+      }
+    }
+
+      
+    }
+
+      
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="floating-logo">
+      <img src="matcha-trailer.png" alt="Matcha Energy Food Trailer" />
+    </div>
+
+    <header>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="powder.html">Matcha</a>
+        <a href="menu.html">Menu</a>
+        <a href="ingredients.html">Standort</a>
+      </nav>
+    </header>
+
+    <section class="hero-menu">
+      <div class="hero-menu-content">
+        <h1>Matcha Menu</h1>
+        <p>Reiner Matcha, kreative Lattes und frisch zubereitete Snacks — natürlich, bewusst und mit Liebe gemacht.</p>
+      </div>
+
+      <div class="hero-bottom-logo">
+        <img src="logousenow-2.png" alt="Matcha Energy Logo" />
+      </div>
+    </section>
+
+    <section class="menu-section">
+      <div class="section-head">
+        <h2>Pure Traditional Matcha</h2>
+        <p>Klassisch, klar und natürlich — für echten Matcha-Geschmack.</p>
+      </div>
+
+      <div class="menu-grid">
+        <article class="menu-card">
+          <div class="menu-img">
+  <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800" alt="Matcha Drink" />
+</div>
+          <div class="menu-info">
+            <span class="tag">Pure Matcha</span>
+            <h3>Matcha Espresso</h3>
+            
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="menu-img">
+  <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800" alt="Matcha Drink" />
+</div>
+          <div class="menu-info">
+            <span class="tag">Pure Matcha</span>
+            <h3>Matcha Americano</h3>
+            
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="menu-section">
+      <div class="section-head">
+        <h2>Matcha Latte</h2>
+        <p>Cremig, frisch und auch vegan mit Barista-Edition Hafermilch erhältlich.</p>
+      </div>
+
+      <div class="menu-grid">
+        <article class="menu-card">
+          <div class="menu-img">
+  <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800" alt="Matcha Drink" />
+</div>
+          <div class="menu-info">
+            <span class="tag">Hot / Cold</span>
+            <h3>Matcha Latte</h3>
+            
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="menu-img">
+  <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800" alt="Matcha Drink" />
+</div>
+          <div class="menu-info">
+            <span class="tag">Fruit Matcha</span>
+            <h3>Erdbeeren Matcha</h3>
+            
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="menu-img">
+  <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800" alt="Matcha Drink" />
+</div>
+          <div class="menu-info">
+            <span class="tag">Fruit Matcha</span>
+            <h3>Mango Matcha</h3>
+            
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="menu-img">
+  <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800" alt="Matcha Drink" />
+</div>
+          <div class="menu-info">
+            <span class="tag">Special Latte</span>
+            <h3>Ube Matcha</h3>
+            
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="menu-img">
+  <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800" alt="Matcha Drink" />
+</div>
+          <div class="menu-info">
+            <span class="tag">Signature</span>
+            <h3>Matcha Cloud</h3>
+            
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="menu-section">
+      <div class="section-head">
+        <h2>Matcha Snacks</h2>
+        <p>Täglich frisch zubereitet — mit drei verschiedenen Matcha-Sorten für besonderen Geschmack.</p>
+      </div>
+
+      <div class="menu-grid">
+        <article class="menu-card">
+          <div class="menu-img">
+  <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?q=80&w=800" alt="Matcha Snack" />
+</div>
+          <div class="menu-info">
+            <span class="tag">Dessert</span>
+            <h3>Matcha Chocolate</h3>
+            
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="menu-img">
+  <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?q=80&w=800" alt="Matcha Snack" />
+</div>
+          <div class="menu-info">
+            <span class="tag">Snack</span>
+            <h3>Matcha Cookies</h3>
+            
+          </div>
+        </article>
+      </div>
+
+      <p class="snack-note">
+        Für unsere Snacks verwenden wir drei verschiedene Matcha-Sorten, passend zu Geschmack, Farbe und Intensität.
+      </p>
+    </section>
+
+  </div>
+
+  <footer>
+    © 2026 Matcha Energy
+  </footer>
+
+</body>
+</html>
