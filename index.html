@@ -378,49 +378,66 @@
         font-size:0.94rem;
       }
 
-      .info-grid{
+   .info-grid{
   display:grid;
-  gap:20px;
+  gap:18px;
   margin-top:10px;
 }
 
 .info-card{
+  position:relative;
   background:linear-gradient(180deg,#ffffff 0%, #f8fcf8 100%);
   border:1px solid rgba(76,175,80,0.12);
   border-radius:20px;
-  padding:24px;
+  padding:20px 22px;
   box-shadow:0 8px 24px rgba(0,0,0,0.04);
-  transition:all .25s ease;
+  overflow:hidden;
 }
 
-.info-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 12px 28px rgba(0,0,0,0.08);
+.info-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:5px;
+  height:100%;
+  background:var(--green);
+}
+
+.info-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:12px;
 }
 
 .info-icon{
-  width:52px;
-  height:52px;
-  border-radius:14px;
+  width:42px;
+  height:42px;
+  border-radius:12px;
   background:#edf7ee;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:1.5rem;
-  margin-bottom:4px;
+  font-size:1.2rem;
+  flex-shrink:0;
 }
 
 .info-card h3{
+  margin:0;
   color:var(--dark);
-  margin-bottom:10px;
-  font-size:1.15rem;
+  font-size:1.1rem;
   font-weight:700;
 }
 
 .info-card p{
-  color:var(--muted);
-  line-height:1.75;
   margin:0;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.info-card strong{
+  color:var(--dark);
 }
     }
   </style>
@@ -471,17 +488,30 @@
       <div class="summary-body">
        <div class="info-grid">
 
-  <div class="info-card">
-    <div class="info-icon">🍵   
-</div> <h3>Ceremonial-Grade Matcha</h3>
+      <div class="info-card">
+
+    <div class="info-header">
+
+      <div class="info-icon">🍃</div>
+
+      <h3>Ceremonial-Grade Matcha</h3>
+
+    </div>
+    <h3>Ceremonial-Grade Matcha</h3>
     <p>
       Hochwertiger Ceremonial-Grade Matcha aus Japan, sorgfältig ausgewählt für außergewöhnliche Qualität und Geschmack. Erhältlich traditionell pur oder als Matcha Latte. Natürliche Energie ohne Kaffee-Crash. EU-Bio-zertifiziert.
     </p>
   </div>
 
   <div class="info-card">
-    <div class="info-icon">✈️    
-</div><h3>Frisch importiert</h3>
+
+    <div class="info-header">
+
+      <div class="info-icon">❄️</div>
+
+      <h3>Frisch importiert</h3>
+
+    </div>
     <p>
       Alle vier Monate importieren wir frischen Ceremonial-Grade Matcha direkt
       aus Japan. Unser Matcha stammt aus der ersten Ernte. Die Blätter werden in Japan entfeuchtet und tiefgekühlt gelagert. Erst nach Bestellung werden sie frisch vermahlen und per Luftfracht in die Schweiz versendet. Anschließend lagern wir den Matcha gekühlt bis zur Zubereitung. So bleiben Frische, Aroma und die leuchtend grüne Farbe optimal erhalten.
@@ -489,9 +519,15 @@
 
     </p>
   </div>
+ <div class="info-card">
 
-  <div class="info-card">
-    <div class="info-icon">🍓 </div><h3>Nur echte Zutaten</h3>
+    <div class="info-header">
+
+      <div class="info-icon">🍓</div>
+
+      <h3>Nur echte Zutaten</h3>
+
+    </div>
    
     <p>
       Unsere Fruchtpürees bestehen zu 100% aus frischen Früchten. Keine
