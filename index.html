@@ -377,6 +377,51 @@
       .review-box p{
         font-size:0.94rem;
       }
+
+      .info-grid{
+  display:grid;
+  gap:20px;
+  margin-top:10px;
+}
+
+.info-card{
+  background:linear-gradient(180deg,#ffffff 0%, #f8fcf8 100%);
+  border:1px solid rgba(76,175,80,0.12);
+  border-radius:20px;
+  padding:24px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.04);
+  transition:all .25s ease;
+}
+
+.info-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 28px rgba(0,0,0,0.08);
+}
+
+.info-icon{
+  width:52px;
+  height:52px;
+  border-radius:14px;
+  background:#edf7ee;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.5rem;
+  margin-bottom:14px;
+}
+
+.info-card h3{
+  color:var(--dark);
+  margin-bottom:10px;
+  font-size:1.15rem;
+  font-weight:700;
+}
+
+.info-card p{
+  color:var(--muted);
+  line-height:1.75;
+  margin:0;
+}
     }
   </style>
 </head>
@@ -424,21 +469,38 @@
       </div>
 
       <div class="summary-body">
-        <p>
-          Hochwertiger Matcha aus Japan, sorgfältig ausgewählt für beste Qualität und Geschmack. 
-          Zwei Ceremonial-Grade Varianten: traditionell pure oder als Matcha Latte. 
-          Eine natürliche Alternative zu Kaffee – mit ruhiger, gleichmäßiger Energie ohne Crash. 
-          EU-Bio-zertifiziert.
-        </p>
-<p>
-  Die außergewöhnlich leuchtend grüne Farbe und der intensive Geschmack unseres Matchas sind das Ergebnis eines konsequenten Frischekonzepts. Unser Ceremonial-Grade Matcha stammt direkt von einem spezialisierten Produzenten in Japan. Die Blätter der ersten Ernte werden nach der Verarbeitung unter optimalen Bedingungen gelagert und erst kurz vor dem Versand frisch vermahlen. Anschließend gelangt der Matcha per Luftfracht innerhalb weniger Tage in unser gekühltes Lager in der Schweiz. So können wir Ihnen Matcha anbieten, der besonders frisch, aromatisch und von außergewöhnlicher Qualität ist.
-</p>
-        <p>
-          Fruchtpürees werden täglich frisch aus echten Früchten hergestellt, und unsere Snacks werden täglich frisch zubereitet – ganz ohne Konservierungsstoffe oder künstliche Farbstoffe.
-          Getränke bereiten wir frisch vor Ihren Augen nach traditioneller japanischer Art zu.
-          Unsere Getränke sind auch in veganen Varianten erhältlich – mit Barista-Edition Hafermilch.
-          Dabei achten wir auf möglichst umweltfreundliche Verpackungen.
-        </p>
+       <div class="info-grid">
+
+  <div class="info-card">
+    <div class="info-icon">🍵</div>
+    <h3>Ceremonial-Grade Matcha</h3>
+    <p>
+      Premium Matcha aus Japan, traditionell pur oder als Matcha Latte.
+      EU-Bio-zertifiziert und bekannt für ruhige, langanhaltende Energie ohne
+      Kaffee-Crash.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <div class="info-icon">✈️</div>
+    <h3>Frisch importiert</h3>
+    <p>
+      Alle vier Monate importieren wir frischen Ceremonial-Grade Matcha direkt
+      aus Japan. Frisch vermahlen und per Luftfracht in die Schweiz geliefert.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <div class="info-icon">🍓</div>
+    <h3>Nur echte Zutaten</h3>
+    <p>
+      Unsere Fruchtpürees bestehen zu 100% aus frischen Früchten. Keine
+      Konzentrate, keine künstlichen Zusätze. Snacks werden täglich frisch
+      zubereitet und Getränke traditionell hergestellt.
+    </p>
+  </div>
+
+</div>
       </div>
     </div>
 
