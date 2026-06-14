@@ -385,30 +385,21 @@
 }
 
 .info-card{
-
-  position:relative;
-
-  background:linear-gradient(180deg,#ffffff 0%, #f8fcf8 100%);
-
-  border:1px solid rgba(76,175,80,0.12);
-
+  background:linear-gradient(180deg,#ffffff 0%, #fcfffc 100%);
+  border:1.5px solid rgba(76,175,80,0.20);
   border-radius:20px;
-
   padding:22px;
-
   box-shadow:0 8px 24px rgba(0,0,0,0.04);
-
+  transition:all .25s ease;
 }
 
-.info-card::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  width:5px;
-  height:100%;
-  background:var(--green);
+.info-card:hover{
+  border-color:rgba(76,175,80,0.35);
+  box-shadow:0 12px 28px rgba(76,175,80,0.08);
+  transform:translateY(-2px);
 }
+
+
 
 .info-header{
   display:flex;
