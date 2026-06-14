@@ -385,13 +385,19 @@
 }
 
 .info-card{
+
   position:relative;
+
   background:linear-gradient(180deg,#ffffff 0%, #f8fcf8 100%);
+
   border:1px solid rgba(76,175,80,0.12);
+
   border-radius:20px;
-  padding:20px 22px;
+
+  padding:22px;
+
   box-shadow:0 8px 24px rgba(0,0,0,0.04);
-  overflow:hidden;
+
 }
 
 .info-card::before{
@@ -412,28 +418,49 @@
 }
 
 .info-icon{
+
   width:42px;
+
   height:42px;
+
   border-radius:12px;
+
   background:#edf7ee;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   font-size:1.2rem;
+
   flex-shrink:0;
+
 }
 
 .info-card h3{
+
   margin:0;
+
   color:var(--dark);
-  font-size:1.1rem;
+
+  font-size:1.15rem;
+
   font-weight:700;
+
 }
 
 .info-card p{
+
   margin:0;
+
   color:var(--muted);
-  line-height:1.7;
+
+  line-height:1.8;
+
+  text-align:justify; /* distributes text nicely */
+
 }
 
 .info-card strong{
