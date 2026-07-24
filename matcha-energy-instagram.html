@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matcha Energy</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
+
+    :root{
+      --bg:#f7faf7;
+      --card:#ffffff;
+      --text:#1b1f1b;
+      --muted:#6b736b;
+      --green:#4CAF50;
+      --green-soft:#edf7ee;
+      --dark:#1e3d2b;
+      --line:rgba(76,175,80,0.12);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+      background:linear-gradient(180deg,#f0f7f0 0%, #ffffff 100%);
+      color:var(--text);
+    }
+
+    .container{
+      width:90%;
+      max-width:940px;
+      margin:auto;
+      position:relative;
+    }
+
+    .floating-logo{
+      position:absolute;
+      top:12px;
+      left:0px;
+      z-index:20;
+      transform:rotate(-0deg);
+      opacity:0.95;
+    }
+
+    .floating-logo img{
+      width:210px;
+      height:auto;
+      display:block;
+    }
+
+    header{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:16px 20px;
+      background:rgba(76,175,80,0.18);
+      backdrop-filter:blur(10px);
+      border-radius:16px;
+      margin-top:20px;
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:24px;
+      flex-wrap:wrap;
+      width:100%;
+    }
+
+    nav a{
+      color:var(--dark);
+      font-weight:600;
+      font-size:0.96rem;
+      letter-spacing:0.01em;
+      opacity:0.85;
+      text-decoration:none;
+    }
+
+    nav a:hover{
+      opacity:1;
+      color:var(--green);
+    }
+
+    .hero-img{
+      margin:28px auto 0;
+      height:520px;
+      width:100%;
+      border-radius:28px;
+      overflow:hidden;
+      position:relative;
+      border:none !important;
+      box-shadow:none !important;
+      outline:none !important;
+    }
+
+    .hero-slide{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transition:opacity 1s ease-in-out;
+      border:none !important;
+      box-shadow:none !important;
+      outline:none !important;
+    }
+
+    .hero-slide.active{
+      opacity:1;
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        180deg,
+        rgba(12,26,14,0.04) 0%,
+        rgba(12,26,14,0.14) 38%,
+        rgba(12,26,14,0.68) 100%
+      );
+      color:white;
+      padding:20px 34px 6px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      z-index:2;
+    }
+
+    .overlay-content{
+      max-width:760px;
+      width:100%;
+      text-align:center;
+      margin-bottom:0;
+    }
+
+    .overlay-title{
+      font-family:'Poppins', sans-serif;
+      font-size:clamp(1.4rem,3vw,2.6rem);
+      line-height:0.92;
+      letter-spacing:-0.05em;
+      font-weight:800;
+      margin-bottom:8px;
+      text-shadow:0 8px 30px rgba(0,0,0,0.22);
+    }
+
+    .overlay-subtitle{
+      font-size:.92rem;
+      line-height:1.6;
+      opacity:0.96;
+      margin:0 auto;
+      max-width:560px;
+      text-shadow:0 6px 20px rgba(0,0,0,0.18);
+    }
+     .map-button{
+      display:inline-block;
+      margin-top:16px;
+      padding:12px 18px;
+      background:var(--green);
+      color:white;
+      border-radius:14px;
+      text-decoration:none;
+      font-size:0.92rem;
+      font-weight:700;
+      box-shadow:0 10px 22px rgba(76,175,80,0.22);
+      transition:all 0.2s ease;
+    }
+
+    .hero-bottom-logo{
+      position:absolute;
+      right:18px;
+      top:18px;
+      z-index:10;
+    }
+
+    .hero-bottom-logo img{
+      width:95px;
+      height:auto;
+      display:block;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,0.18));
+    }
+
+    .summary{
+      margin-top:48px;
+      background:var(--card);
+      border-radius:24px;
+      box-shadow:0 10px 28px rgba(0,0,0,0.05);
+      border:1px solid var(--line);
+      text-align:left;
+      overflow:hidden;
+    }
+
+    .summary-top{
+      background:linear-gradient(180deg, var(--green-soft) 0%, #f7fbf7 58%, #ffffff 100%);
+      padding:8px 8px 10px;
+    }
+
+    .summary-top h2{
+      color:var(--dark);
+      font-size:2rem;
+      line-height:1.15;
+      margin-bottom:14px;
+      letter-spacing:-0.02em;
+    }
+
+    .summary-body{
+      padding:10px 10px 5px;
+    }
+
+    .summary-body p{
+      color:var(--muted);
+      line-height:1.85;
+      margin-bottom:16px;
+      font-size:1rem;
+    }
+
+    .review-section{
+      margin-top:5px;
+      padding:10px 10px 5px;
+    }
+
+    .social-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      max-width:900px;
+      margin:auto;
+    }
+
+    .review-box{
+      background:linear-gradient(180deg, #edf7ee 0%, #ffffff 100%);
+      border-radius:26px;
+      padding:30px 26px;
+      text-align:center;
+      border:1px solid rgba(76,175,80,0.16);
+      box-shadow:0 14px 32px rgba(0,0,0,0.055);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      height:100%;
+    }
+
+    .review-badge{
+      display:inline-block;
+      background:white;
+      color:var(--green);
+      font-weight:800;
+      font-size:0.82rem;
+      padding:7px 14px;
+      border-radius:999px;
+      margin-bottom:14px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.06);
+      letter-spacing:0.02em;
+    }
+
+    .review-stars{
+      font-size:1.55rem;
+      color:var(--green);
+      margin-bottom:12px;
+      letter-spacing:4px;
+    }
+
+    .review-box h3{
+      color:var(--dark);
+      font-family:'Poppins', sans-serif;
+      font-size:1.45rem;
+      line-height:1.25;
+      margin-bottom:12px;
+      letter-spacing:-0.02em;
+    }
+
+    .review-box p{
+      color:var(--muted);
+      font-size:0.98rem;
+      line-height:1.7;
+      max-width:560px;
+      margin:0 auto 10px;
+    }
+
+    .review-highlight{
+      font-weight:700;
+      color:var(--green) !important;
+    }
+
+    .review-btn{
+      display:inline-block;
+      margin-top:14px;
+      padding:12px 20px;
+      background:var(--green);
+      color:white;
+      border-radius:14px;
+      text-decoration:none;
+      font-size:0.92rem;
+      font-weight:700;
+      box-shadow:0 10px 22px rgba(76,175,80,0.22);
+      transition:all 0.2s ease;
+    }
+
+    .review-btn:hover{
+      background:#3d9441;
+      transform:translateY(-2px);
+    }
+
+    .review-btn{
+      margin-top:auto;
+    }
+
+    .instagram-box{
+      background:linear-gradient(180deg, #f7eef7 0%, #ffffff 100%);
+      border-color:rgba(193,53,132,0.15);
+    }
+
+    .instagram-box .review-badge{
+      color:#c13584;
+    }
+
+    .instagram-icon{
+      font-size:1.7rem;
+      line-height:1;
+      margin-bottom:12px;
+    }
+
+    .instagram-box .review-highlight{
+      color:#c13584 !important;
+    }
+
+    .instagram-btn{
+      background:linear-gradient(135deg, #833ab4, #c13584 55%, #e1306c);
+      box-shadow:0 10px 22px rgba(193,53,132,0.2);
+    }
+
+    .instagram-btn:hover{
+      background:linear-gradient(135deg, #6f3198, #aa2f73 55%, #c8275f);
+    }
+
+    footer{
+      text-align:center;
+      padding:34px 0 40px;
+      color:var(--muted);
+      font-size:0.94rem;
+    }
+
+    .info-grid{
+      display:grid;
+      gap:18px;
+      margin-top:10px;
+    }
+
+    .info-card{
+      background:linear-gradient(180deg,#ffffff 0%, #fcfffc 100%);
+      border:1.5px solid rgba(76,175,80,0.20);
+      border-radius:20px;
+      padding:22px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.04);
+      transition:all .25s ease;
+    }
+
+    .info-card:hover{
+      border-color:rgba(76,175,80,0.35);
+      box-shadow:0 12px 28px rgba(76,175,80,0.08);
+      transform:translateY(-2px);
+    }
+
+    .info-header{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .info-icon{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:#edf7ee;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.2rem;
+      flex-shrink:0;
+    }
+
+    .info-card h3{
+      margin:0;
+      color:var(--dark);
+      font-size:1.15rem;
+      font-weight:700;
+    }
+
+    .info-card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.8;
+      text-align:justify;
+    }
+
+    .info-card strong{
+      color:var(--dark);
+    }
+
+    @media (max-width:800px){
+      .floating-logo{
+        top:55px;
+        left:1px;
+        transform:translateY(-10%) rotate(-5deg);
+        z-index:20;
+      }
+
+      .floating-logo img{
+        width:150px;
+      }
+
+      header{
+        padding:18px 16px;
+        margin-top:20px;
+        justify-content:center;
+      }
+
+      nav{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:14px 24px;
+        width:100%;
+      }
+
+      nav a{
+        font-size:0.9rem;
+      }
+
+      .hero-img{
+        height:340px;
+        margin-top:28px;
+      }
+
+      .overlay{
+        padding:16px 18px 8px;
+      }
+
+      .hero-bottom-logo{
+        right:5px;
+        top:3px;
+      }
+
+      .hero-bottom-logo img{
+        width:42px;
+      }
+
+      .summary-top h2{
+        font-size:1.55rem;
+      }
+
+      .summary-body p{
+        font-size:0.96rem;
+      }
+
+      .review-box{
+        padding:26px 18px;
+      }
+
+      .review-stars{
+        font-size:1.35rem;
+        letter-spacing:3px;
+      }
+
+      .review-box h3{
+        font-size:1.25rem;
+      }
+
+      .review-box p{
+        font-size:0.94rem;
+      }
+
+      .social-grid{
+        grid-template-columns:1fr;
+      }
+
+   .info-grid{
+  display:grid;
+  gap:18px;
+  margin-top:10px;
+}
+
+.info-card{
+  background:linear-gradient(180deg,#ffffff 0%, #fcfffc 100%);
+  border:1.5px solid rgba(76,175,80,0.20);
+  border-radius:20px;
+  padding:22px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.04);
+  transition:all .25s ease;
+}
+
+.info-card:hover{
+  border-color:rgba(76,175,80,0.35);
+  box-shadow:0 12px 28px rgba(76,175,80,0.08);
+  transform:translateY(-2px);
+}
+
+
+
+.info-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.info-icon{
+
+  width:42px;
+
+  height:42px;
+
+  border-radius:12px;
+
+  background:#edf7ee;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  font-size:1.2rem;
+
+  flex-shrink:0;
+
+}
+
+.info-card h3{
+
+  margin:0;
+
+  color:var(--dark);
+
+  font-size:1.15rem;
+
+  font-weight:700;
+
+}
+
+.info-card p{
+
+  margin:0;
+
+  color:var(--muted);
+
+  line-height:1.8;
+
+  text-align:justify; /* distributes text nicely */
+
+}
+
+.info-card strong{
+  color:var(--dark);
+}
+    }
+
+    @supports (display: matcha-redesign-disabled) {
+    /* Premium Matcha Energy refresh — disabled to restore the original design */
+    :root{
+      --bg:#f5f3ea;
+      --card:#fffef9;
+      --text:#172019;
+      --muted:#657067;
+      --green:#688f3d;
+      --green-soft:#edf1df;
+      --dark:#183b2a;
+      --line:rgba(24,59,42,0.12);
+      --cream:#fbf8ee;
+      --gold:#c8a85a;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(166,190,108,0.20), transparent 28rem),
+        radial-gradient(circle at 92% 42%, rgba(222,209,158,0.20), transparent 25rem),
+        var(--bg);
+      color:var(--text);
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.22;
+      background-image:radial-gradient(rgba(24,59,42,.18) .55px, transparent .55px);
+      background-size:18px 18px;
+      mask-image:linear-gradient(to bottom, black, transparent 65%);
+    }
+
+    .container{
+      width:min(92%, 1120px);
+    }
+
+    header{
+      min-height:68px;
+      margin-top:18px;
+      padding:14px 28px;
+      background:rgba(255,254,249,.78);
+      border:1px solid rgba(255,255,255,.8);
+      border-radius:999px;
+      box-shadow:0 12px 40px rgba(24,59,42,.07);
+    }
+
+    nav{
+      gap:38px;
+    }
+
+    nav a{
+      position:relative;
+      color:var(--dark);
+      font-size:.8rem;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      transition:color .2s ease;
+    }
+
+    nav a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:100%;
+      bottom:-7px;
+      height:2px;
+      border-radius:2px;
+      background:var(--green);
+      transition:right .2s ease;
+    }
+
+    nav a:hover::after{
+      right:0;
+    }
+
+    .floating-logo{
+      top:5px;
+      left:24px;
+    }
+
+    .floating-logo img{
+      width:170px;
+    }
+
+    .hero-img{
+      height:600px;
+      margin-top:22px;
+      border-radius:38px;
+      background:linear-gradient(145deg, #b9cf83, #31583c);
+      box-shadow:0 28px 70px rgba(24,59,42,.18) !important;
+    }
+
+    .hero-slide{
+      transform:scale(1.01);
+    }
+
+    .overlay{
+      align-items:flex-end;
+      justify-content:flex-start;
+      padding:56px;
+      background:
+        linear-gradient(90deg, rgba(8,25,16,.72) 0%, rgba(8,25,16,.28) 55%, transparent 80%),
+        linear-gradient(0deg, rgba(8,25,16,.72) 0%, transparent 65%);
+    }
+
+    .overlay-content{
+      width:min(680px, 82%);
+      margin:0;
+      text-align:left;
+    }
+
+    .hero-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:18px;
+      padding:8px 13px;
+      border:1px solid rgba(255,255,255,.32);
+      border-radius:999px;
+      background:rgba(255,255,255,.12);
+      backdrop-filter:blur(12px);
+      font-size:.72rem;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .hero-kicker::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#b9d76e;
+      box-shadow:0 0 0 5px rgba(185,215,110,.18);
+    }
+
+    .overlay-title{
+      max-width:620px;
+      font-size:clamp(2.7rem,6vw,5.4rem);
+      line-height:.95;
+      letter-spacing:-.055em;
+      margin-bottom:18px;
+    }
+
+    .overlay-subtitle{
+      max-width:530px;
+      margin:0;
+      font-size:1.04rem;
+      line-height:1.7;
+    }
+
+    .hero-bottom-logo{
+      top:30px;
+      right:30px;
+      padding:11px;
+      border-radius:20px;
+      background:rgba(255,255,255,.14);
+      backdrop-filter:blur(10px);
+    }
+
+    .hero-bottom-logo img{
+      width:74px;
+    }
+
+    .summary{
+      margin-top:88px;
+      overflow:visible;
+      background:transparent;
+      border:0;
+      box-shadow:none;
+    }
+
+    .summary-top{
+      max-width:760px;
+      margin:0 auto 34px;
+      padding:0;
+      text-align:center;
+      background:transparent;
+    }
+
+    .section-eyebrow{
+      display:block;
+      margin-bottom:12px;
+      color:var(--green);
+      font-size:.74rem;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .summary-top h2{
+      margin:0;
+      color:var(--dark);
+      font-family:'Poppins', sans-serif;
+      font-size:clamp(2rem,4.2vw,3.45rem);
+      line-height:1.08;
+      letter-spacing:-.045em;
+    }
+
+    .summary-body{
+      padding:0;
+    }
+
+    .info-grid{
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      align-items:stretch;
+      gap:18px;
+      margin:0;
+    }
+
+    .info-card{
+      position:relative;
+      overflow:hidden;
+      padding:30px 28px;
+      border:1px solid rgba(24,59,42,.10);
+      border-radius:26px;
+      background:rgba(255,254,249,.88);
+      box-shadow:0 16px 45px rgba(24,59,42,.065);
+    }
+
+    .info-card::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:4px;
+      background:linear-gradient(90deg, var(--green), #b4c875);
+      opacity:.85;
+    }
+
+    .info-card:hover{
+      border-color:rgba(104,143,61,.30);
+      box-shadow:0 22px 55px rgba(24,59,42,.10);
+    }
+
+    .info-header{
+      align-items:center;
+      margin-bottom:20px;
+    }
+
+    .info-icon{
+      width:46px;
+      height:46px;
+      border-radius:15px;
+      background:linear-gradient(145deg, #eef3df, #e4ebce);
+      border:1px solid rgba(104,143,61,.14);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+    }
+
+    .info-card h3{
+      font-family:'Poppins', sans-serif;
+      font-size:1.08rem;
+      line-height:1.25;
+      letter-spacing:-.02em;
+    }
+
+    .info-card p,
+    .summary-body p{
+      margin:0;
+      color:var(--muted);
+      font-size:.93rem;
+      line-height:1.78;
+      text-align:left;
+    }
+
+    .review-section{
+      margin-top:28px;
+      padding:0;
+    }
+
+    .social-grid{
+      max-width:none;
+      gap:18px;
+    }
+
+    .review-box{
+      min-height:330px;
+      padding:38px 34px;
+      border-radius:28px;
+      background:linear-gradient(145deg, #1b432f, #244f39);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 18px 50px rgba(24,59,42,.13);
+    }
+
+    .review-badge{
+      margin-bottom:22px;
+      color:#e8f3cd;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:none;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .review-stars{
+      color:#d3be70;
+      margin-bottom:20px;
+      font-size:1.7rem;
+    }
+
+    .review-box p{
+      color:rgba(255,255,255,.76);
+    }
+
+    .review-highlight{
+      color:#dce9bb !important;
+    }
+
+    .review-btn{
+      margin-top:auto;
+      padding:13px 20px;
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:999px;
+      background:#f4f0de;
+      color:var(--dark);
+      box-shadow:none;
+    }
+
+    .review-btn:hover{
+      color:white;
+      background:var(--green);
+    }
+
+    .instagram-box{
+      background:
+        radial-gradient(circle at 85% 10%, rgba(229,185,107,.35), transparent 15rem),
+        linear-gradient(145deg, #694165, #3f365d);
+      border-color:rgba(255,255,255,.10);
+    }
+
+    .instagram-box .review-badge,
+    .instagram-box .review-highlight{
+      color:#f6d9e9 !important;
+    }
+
+    .instagram-icon{
+      color:white;
+      font-size:2rem;
+    }
+
+    .instagram-box h3{
+      color:white;
+      font-size:1.8rem;
+    }
+
+    .instagram-btn,
+    .instagram-btn:hover{
+      color:#4b3153;
+      background:#fff7fb;
+    }
+
+    footer{
+      width:min(92%, 1120px);
+      margin:54px auto 0;
+      padding:28px 0 38px;
+      border-top:1px solid rgba(24,59,42,.12);
+      font-size:.82rem;
+      letter-spacing:.04em;
+    }
+
+    @media (max-width:900px){
+      .info-grid{
+        grid-template-columns:1fr;
+      }
+
+      .info-card{
+        padding:26px;
+      }
+
+      .social-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:700px){
+      .container{
+        width:min(92%, 560px);
+      }
+
+      header{
+        min-height:58px;
+        padding:12px 16px;
+      }
+
+      nav{
+        justify-content:flex-end;
+        gap:15px;
+      }
+
+      nav a{
+        font-size:.68rem;
+      }
+
+      .floating-logo{
+        top:12px;
+        left:14px;
+        transform:none;
+      }
+
+      .floating-logo img{
+        width:112px;
+      }
+
+      .hero-img{
+        height:490px;
+        margin-top:16px;
+        border-radius:26px;
+      }
+
+      .overlay{
+        padding:28px 24px 34px;
+        background:linear-gradient(0deg, rgba(8,25,16,.80) 0%, rgba(8,25,16,.25) 74%);
+      }
+
+      .overlay-content{
+        width:100%;
+      }
+
+      .hero-kicker{
+        margin-bottom:14px;
+      }
+
+      .overlay-title{
+        font-size:clamp(2.4rem,12vw,3.5rem);
+      }
+
+      .overlay-subtitle{
+        font-size:.92rem;
+      }
+
+      .hero-bottom-logo{
+        top:16px;
+        right:16px;
+      }
+
+      .hero-bottom-logo img{
+        width:46px;
+      }
+
+      .summary{
+        margin-top:64px;
+      }
+
+      .summary-top{
+        margin-bottom:26px;
+      }
+
+      .summary-top h2{
+        font-size:2rem;
+      }
+
+      .review-box{
+        min-height:310px;
+        padding:32px 22px;
+      }
+    }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="floating-logo">
+      <img src="matcha-trailer.png" alt="Matcha Energy Logo" />
+    </div>
+
+    <header>
+      <nav>
+        <a href="powder.html">Matcha</a>
+        <a href="menu.html">Menu</a>
+        <a href="ingredients.html">Standort</a>
+      </nav>
+    </header>
+
+    <div class="hero-img">
+      <img src="brush.png" class="hero-slide active" alt="Pure matcha" />
+      <img src="japan01.png" class="hero-slide" alt="Japan inspiration" />
+      <img src="vegan.png" class="hero-slide" alt="Matcha poster" />
+      <img src="cookies.png" class="hero-slide" alt="Matcha baking" />
+      <img src="brightcolor.png" class="hero-slide" alt="Pure natural ingredients" />
+      <img src="colorsplasher.png" class="hero-slide" alt="Matcha poster" />
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <div class="overlay-title" id="overlayText">Sanfte Energie. Klarer Fokus.</div>
+          <div class="overlay-subtitle" id="overlaySubtitle">
+            Langanhaltende Energie durch natürliches L-Theanin — für Fokus, Ruhe und Balance.
+          </div>
+        </div>
+
+        <div class="hero-bottom-logo">
+          <img src="logousenow-2.png" alt="Matcha Energy Logo" />
+        </div>
+      </div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-top">
+        <h2>Frisch zubereitet - Reiner Matcha - Echte Zutaten.</h2>
+      </div>
+
+      <div class="summary-body">
+       <div class="info-grid">
+
+      <div class="info-card">
+
+    <div class="info-header">
+
+      <div class="info-icon">🍃</div>
+
+      <h3>Ceremonial-Grade Matcha</h3>
+    </div>
+    <p>
+      Hochwertiger Ceremonial-Grade Matcha aus Japan, sorgfältig ausgewählt für außergewöhnliche Qualität und Geschmack. Erhältlich traditionell pur oder als Matcha Latte. Natürliche Energie ohne Kaffee-Crash. EU-Bio-zertifiziert.
+    </p>
+  </div>
+
+  <div class="info-card">
+
+    <div class="info-header">
+
+      <div class="info-icon">❄️</div>
+
+      <h3>Frisch importiert</h3>
+
+    </div>
+    <p>
+      Alle drei Monate importieren wir frischen Ceremonial-Grade Matcha direkt
+      aus Japan. Unser Matcha stammt aus der ersten Ernte. Die Blätter werden in Japan entfeuchtet und tiefgekühlt gelagert. Erst nach Bestellung werden sie frisch vermahlen und per Luftfracht in die Schweiz versendet. Anschließend lagern wir den Matcha gekühlt bis zur Zubereitung. So bleiben Frische, Aroma und die leuchtend grüne Farbe optimal erhalten.
+
+
+    </p>
+  </div>
+ <div class="info-card">
+
+    <div class="info-header">
+
+      <div class="info-icon">🍓</div>
+
+      <h3>Nur echte Zutaten</h3>
+
+    </div>
+   
+    <p>
+     Fruchtpürees und Snacks werden täglich frisch zubereitet – ohne
+      Konservierungsstoffe oder künstliche Farbstoffe. Alle Getränke werden
+      traditionell zubereitet und sind auch mit Barista-Hafermilch als vegane
+      Variante erhältlich. Umweltfreundliche Verpackungen inklusive.
+    </p>
+  </div>
+
+</div>
+      </div>
+    </div>
+
+    <div class="review-section">
+      <div class="social-grid">
+        <div class="review-box">
+          <div class="review-badge">Über 150 5-Sterne-Google-Bewertungen</div>
+          <div class="review-stars">★★★★★</div>
+          <p>
+            Erfahre, warum uns bereits über 150 Kundinnen und Kunden auf Google
+            mit 5 Sternen bewertet haben.
+          </p>
+          <p class="review-highlight">Echter Matcha. Echte Qualität. Echtes Feedback.</p>
+
+          <a
+            class="review-btn"
+            href="https://www.google.com/maps/search/?api=1&query=Rudolfstrasse+8400+Winterthur+Matcha+Energy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google-Bewertungen ansehen →
+          </a>
+        </div>
+
+        <div class="review-box instagram-box">
+          <div class="review-badge">Neuigkeiten auf Instagram</div>
+          <div class="instagram-icon" aria-hidden="true">◎</div>
+          <h3>Besuche uns auf Instagram</h3>
+          <p>
+            Folge uns für die neuesten Updates, saisonale Matcha-Kreationen,
+            Angebote und Einblicke hinter die Kulissen.
+          </p>
+          <p class="review-highlight">Frisch. Kreativ. Immer aktuell.</p>
+
+          <a
+            class="review-btn instagram-btn"
+            href="https://www.instagram.com/matchaenergy.ch/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Matcha Energy auf Instagram besuchen"
+          >
+            Instagram besuchen →
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 Matcha Energy    | hello@matchaenergy.ch  |
+  </footer>
+
+  <script>
+    const images = document.querySelectorAll('.hero-slide');
+
+    const slideContent = [
+      {
+        title: 'Sanfte Energie - Klarer Fokus',
+        subtitle: 'Langanhaltende Energie — ruhig, klar und ausgeglichen.'
+      },
+      {
+        title: 'Natürlich wach - Ohne Crash.',
+        subtitle: 'Premium Matcha aus Japan — EU-Bio-zertifiziert.'
+      },
+      {
+        title: '',
+        subtitle: '100% pflanzlich erhältlich.'
+      },
+      {
+        title: 'Frisch - Natürlich',
+        subtitle: 'Frisch zubereitete Matcha-Snacks, jeden Tag.'
+      },
+      {
+        title: '100% Natürlich',
+        subtitle: 'Nur echtes Matcha und Früchte — keine künstlichen Zusätze.'
+      },
+      {
+        title: 'Frisch - Einzigartig.',
+        subtitle: 'Kreative Matcha-Drinks — bewusst und besonders.'
+      }
+    ];
+
+    let index = 0;
+
+    setInterval(() => {
+      images[index].classList.remove('active');
+      index = (index + 1) % images.length;
+      images[index].classList.add('active');
+
+      document.getElementById('overlayText').innerHTML = slideContent[index].title;
+      document.getElementById('overlaySubtitle').innerHTML = slideContent[index].subtitle;
+    }, 10000);
+  </script>
+
+</body>
+</html>
