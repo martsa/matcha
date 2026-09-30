@@ -159,7 +159,8 @@
       max-width:560px;
       text-shadow:0 6px 20px rgba(0,0,0,0.18);
     }
-     .map-button{
+
+    .map-button{
       display:inline-block;
       margin-top:16px;
       padding:12px 18px;
@@ -482,85 +483,63 @@
         grid-template-columns:1fr;
       }
 
-   .info-grid{
-  display:grid;
-  gap:18px;
-  margin-top:10px;
-}
+      .info-grid{
+        display:grid;
+        gap:18px;
+        margin-top:10px;
+      }
 
-.info-card{
-  background:linear-gradient(180deg,#ffffff 0%, #fcfffc 100%);
-  border:1.5px solid rgba(76,175,80,0.20);
-  border-radius:20px;
-  padding:22px;
-  box-shadow:0 8px 24px rgba(0,0,0,0.04);
-  transition:all .25s ease;
-}
+      .info-card{
+        background:linear-gradient(180deg,#ffffff 0%, #fcfffc 100%);
+        border:1.5px solid rgba(76,175,80,0.20);
+        border-radius:20px;
+        padding:22px;
+        box-shadow:0 8px 24px rgba(0,0,0,0.04);
+        transition:all .25s ease;
+      }
 
-.info-card:hover{
-  border-color:rgba(76,175,80,0.35);
-  box-shadow:0 12px 28px rgba(76,175,80,0.08);
-  transform:translateY(-2px);
-}
+      .info-card:hover{
+        border-color:rgba(76,175,80,0.35);
+        box-shadow:0 12px 28px rgba(76,175,80,0.08);
+        transform:translateY(-2px);
+      }
 
+      .info-header{
+        display:flex;
+        align-items:center;
+        gap:12px;
+        margin-bottom:12px;
+      }
 
+      .info-icon{
+        width:42px;
+        height:42px;
+        border-radius:12px;
+        background:#edf7ee;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:1.2rem;
+        flex-shrink:0;
+      }
 
-.info-header{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:12px;
-}
+      .info-card h3{
+        margin:0;
+        color:var(--dark);
+        font-size:1.15rem;
+        font-weight:700;
+      }
 
-.info-icon{
+      .info-card p{
+        margin:0;
+        color:var(--muted);
+        line-height:1.8;
+        text-align:justify;
+      }
 
-  width:42px;
-
-  height:42px;
-
-  border-radius:12px;
-
-  background:#edf7ee;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  font-size:1.2rem;
-
-  flex-shrink:0;
-
-}
-
-.info-card h3{
-
-  margin:0;
-
-  color:var(--dark);
-
-  font-size:1.15rem;
-
-  font-weight:700;
-
-}
-
-.info-card p{
-
-  margin:0;
-
-  color:var(--muted);
-
-  line-height:1.8;
-
-  text-align:justify; /* distributes text nicely */
-
-}
-
-.info-card strong{
-  color:var(--dark);
-}
+      .info-card strong{
+        color:var(--dark);
+      }
     }
 
     @supports (display: matcha-redesign-disabled) {
@@ -1073,56 +1052,42 @@
       </div>
 
       <div class="summary-body">
-       <div class="info-grid">
+        <div class="info-grid">
 
-      <div class="info-card">
+          <div class="info-card">
+            <div class="info-header">
+              <div class="info-icon">🍃</div>
+              <h3>Ceremonial-Grade Matcha</h3>
+            </div>
+            <p>
+              Hochwertiger Ceremonial-Grade Matcha aus Japan, sorgfältig ausgewählt für außergewöhnliche Qualität und Geschmack. Erhältlich traditionell pur oder als Matcha Latte. Natürliche Energie ohne Kaffee-Crash.
+            </p>
+          </div>
 
-    <div class="info-header">
+          <div class="info-card">
+            <div class="info-header">
+              <div class="info-icon">❄️</div>
+              <h3>Frisch importiert</h3>
+            </div>
+            <p>
+              Alle drei Monate beziehen wir frischen Ceremonial-Grade Matcha aus Japan. Unser Matcha stammt aus der ersten Ernte. Die Blätter werden in Japan entfeuchtet und tiefgekühlt gelagert. Erst nach Bestellung werden sie frisch vermahlen und per Luftfracht in die Schweiz versendet. Anschließend lagern wir den Matcha gekühlt bis zur Zubereitung. So bleiben Frische, Aroma und die leuchtend grüne Farbe optimal erhalten.
+            </p>
+          </div>
 
-      <div class="info-icon">🍃</div>
+          <div class="info-card">
+            <div class="info-header">
+              <div class="info-icon">🍓</div>
+              <h3>Nur echte Zutaten</h3>
+            </div>
+            <p>
+              Fruchtpürees und Snacks werden täglich frisch zubereitet – ohne
+              Konservierungsstoffe oder künstliche Farbstoffe. Alle Getränke werden
+              traditionell zubereitet und sind auch mit Barista-Hafermilch als vegane
+              Variante erhältlich. Umweltfreundliche Verpackungen inklusive.
+            </p>
+          </div>
 
-      <h3>Ceremonial-Grade Matcha</h3>
-    </div>
-    <p>
-      Hochwertiger Ceremonial-Grade Matcha aus Japan, sorgfältig ausgewählt für außergewöhnliche Qualität und Geschmack. Erhältlich traditionell pur oder als Matcha Latte. Natürliche Energie ohne Kaffee-Crash. EU-Bio-zertifiziert.
-    </p>
-  </div>
-
-  <div class="info-card">
-
-    <div class="info-header">
-
-      <div class="info-icon">❄️</div>
-
-      <h3>Frisch importiert</h3>
-
-    </div>
-    <p>
-      Alle drei Monate importieren wir frischen Ceremonial-Grade Matcha direkt
-      aus Japan. Unser Matcha stammt aus der ersten Ernte. Die Blätter werden in Japan entfeuchtet und tiefgekühlt gelagert. Erst nach Bestellung werden sie frisch vermahlen und per Luftfracht in die Schweiz versendet. Anschließend lagern wir den Matcha gekühlt bis zur Zubereitung. So bleiben Frische, Aroma und die leuchtend grüne Farbe optimal erhalten.
-
-
-    </p>
-  </div>
- <div class="info-card">
-
-    <div class="info-header">
-
-      <div class="info-icon">🍓</div>
-
-      <h3>Nur echte Zutaten</h3>
-
-    </div>
-   
-    <p>
-     Fruchtpürees und Snacks werden täglich frisch zubereitet – ohne
-      Konservierungsstoffe oder künstliche Farbstoffe. Alle Getränke werden
-      traditionell zubereitet und sind auch mit Barista-Hafermilch als vegane
-      Variante erhältlich. Umweltfreundliche Verpackungen inklusive.
-    </p>
-  </div>
-
-</div>
+        </div>
       </div>
     </div>
 
@@ -1131,7 +1096,7 @@
         <div class="review-box">
           <div class="review-badge">Über 200 5-Sterne-Google-Bewertungen</div>
           <div class="review-stars">★★★★★</div>
-         
+
           <p class="review-highlight">Echter Matcha. Echte Qualität. Echtes Feedback.</p>
 
           <a
@@ -1148,7 +1113,7 @@
           <div class="review-badge">Neuigkeiten auf Instagram</div>
           <div class="instagram-icon" aria-hidden="true">◎</div>
           <h3>Besuche uns auf Instagram</h3>
-         
+
           <p class="review-highlight">Frisch. Kreativ. Immer aktuell.</p>
 
           <a
@@ -1178,12 +1143,12 @@
         title: 'Sanfte Energie - Klarer Fokus',
         subtitle: 'Langanhaltende Energie — ruhig, klar und ausgeglichen.'
       },
-      
+
       {
         title: '',
         subtitle: '100% pflanzlich erhältlich.'
       },
-     
+
       {
         title: '100% Natürlich',
         subtitle: 'Nur echtes Matcha und Früchte — keine künstlichen Zusätze.'
