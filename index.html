@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matcha Energy | Matcha Take-away Café Winterthur</title>
+  <meta name="description" content="Matcha Energy – dein Matcha Take-away Café in Winterthur. Ceremonial-Grade Matcha aus Japan, frische Zutaten und kreative Matcha Drinks." />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
+
+    :root{
+      --bg:#f7faf7;
+      --card:#ffffff;
+      --text:#1b1f1b;
+      --muted:#6b736b;
+      --green:#4CAF50;
+      --green-soft:#edf7ee;
+      --dark:#1e3d2b;
+      --line:rgba(76,175,80,0.12);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+      background:linear-gradient(180deg,#f0f7f0 0%, #ffffff 100%);
+      color:var(--text);
+    }
+
+    .container{
+      width:90%;
+      max-width:940px;
+      margin:auto;
+      position:relative;
+    }
+
+    .floating-logo{
+      position:absolute;
+      top:12px;
+      left:0px;
+      z-index:20;
+      transform:rotate(-0deg);
+      opacity:0.95;
+    }
+
+    .floating-logo img{
+      width:210px;
+      height:auto;
+      display:block;
+    }
+
+    header{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:16px 20px;
+      background:rgba(76,175,80,0.18);
+      backdrop-filter:blur(10px);
+      border-radius:16px;
+      margin-top:20px;
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:24px;
+      flex-wrap:wrap;
+      width:100%;
+    }
+
+    nav a{
+      color:var(--dark);
+      font-weight:600;
+      font-size:0.96rem;
+      letter-spacing:0.01em;
+      opacity:0.85;
+      text-decoration:none;
+    }
+
+    nav a:hover{
+      opacity:1;
+      color:var(--green);
+    }
+
+    .hero-img{
+      margin:28px auto 0;
+      height:520px;
+      width:100%;
+      border-radius:28px;
+      overflow:hidden;
+      position:relative;
+      border:none !important;
+      box-shadow:none !important;
+      outline:none !important;
+    }
+
+    .hero-slide{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transition:opacity 1s ease-in-out;
+      border:none !important;
+      box-shadow:none !important;
+      outline:none !important;
+    }
+
+    .hero-slide.active{
+      opacity:1;
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        180deg,
+        rgba(12,26,14,0.04) 0%,
+        rgba(12,26,14,0.14) 38%,
+        rgba(12,26,14,0.68) 100%
+      );
+      color:white;
+      padding:20px 34px 6px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      z-index:2;
+    }
+
+    .overlay-content{
+      max-width:760px;
+      width:100%;
+      text-align:center;
+      margin-bottom:0;
+    }
+
+    .overlay-title{
+      font-family:'Poppins', sans-serif;
+      font-size:clamp(1.4rem,3vw,2.6rem);
+      line-height:0.92;
+      letter-spacing:-0.05em;
+      font-weight:800;
+      margin-bottom:8px;
+      text-shadow:0 8px 30px rgba(0,0,0,0.22);
+    }
+
+    .overlay-subtitle{
+      font-size:.92rem;
+      line-height:1.6;
+      opacity:0.96;
+      margin:0 auto;
+      max-width:560px;
+      text-shadow:0 6px 20px rgba(0,0,0,0.18);
+    }
+
+    .map-button{
+      display:inline-block;
+      margin-top:16px;
+      padding:12px 18px;
+      background:var(--green);
+      color:white;
+      border-radius:14px;
+      text-decoration:none;
+      font-size:0.92rem;
+      font-weight:700;
+      box-shadow:0 10px 22px rgba(76,175,80,0.22);
+      transition:all 0.2s ease;
+    }
+
+    .hero-bottom-logo{
+      position:absolute;
+      right:18px;
+      top:18px;
+      z-index:10;
+    }
+
+    .hero-bottom-logo img{
+      width:95px;
+      height:auto;
+      display:block;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,0.18));
+    }
+
+    .summary{
+      margin-top:48px;
+      background:var(--card);
+      border-radius:24px;
+      box-shadow:0 10px 28px rgba(0,0,0,0.05);
+      border:1px solid var(--line);
+      text-align:left;
+      overflow:hidden;
+    }
+
+    .summary-top{
+      background:linear-gradient(180deg, var(--green-soft) 0%, #f7fbf7 58%, #ffffff 100%);
+      padding:8px 8px 10px;
+    }
+
+    .summary-top h2{
+      color:var(--dark);
+      font-size:2rem;
+      line-height:1.15;
+      margin-bottom:14px;
+      letter-spacing:-0.02em;
+    }
+
+    .summary-body{
+      padding:10px 10px 5px;
+    }
+
+    .summary-body p{
+      color:var(--muted);
+      line-height:1.85;
+      margin-bottom:16px;
+      font-size:1rem;
+    }
+
+    .review-section{
+      margin-top:5px;
+      padding:10px 10px 5px;
+    }
+
+    .social-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      max-width:900px;
+      margin:auto;
+    }
+
+    .review-box{
+      background:linear-gradient(180deg, #edf7ee 0%, #ffffff 100%);
+      border-radius:26px;
+      padding:30px 26px;
+      text-align:center;
+      border:1px solid rgba(76,175,80,0.16);
+      box-shadow:0 14px 32px rgba(0,0,0,0.055);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      height:100%;
+    }
+
+    .review-badge{
+      display:inline-block;
+      background:white;
+      color:var(--green);
+      font-weight:800;
+      font-size:0.82rem;
+      padding:7px 14px;
+      border-radius:999px;
+      margin-bottom:14px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.06);
+      letter-spacing:0.02em;
+    }
+
+    .review-stars{
+      font-size:1.55rem;
+      color:var(--green);
+      margin-bottom:12px;
+      letter-spacing:4px;
+    }
+
+    .review-box h3{
+      color:var(--dark);
+      font-family:'Poppins', sans-serif;
+      font-size:1.45rem;
+      line-height:1.25;
+      margin-bottom:12px;
+      letter-spacing:-0.02em;
+    }
+
+    .review-box p{
+      color:var(--muted);
+      font-size:0.98rem;
+      line-height:1.7;
+      max-width:560px;
+      margin:0 auto 10px;
+    }
+
+    .review-highlight{
+      font-weight:700;
+      color:var(--green) !important;
+    }
+
+    .review-btn{
+      display:inline-block;
+      margin-top:14px;
+      padding:12px 20px;
+      background:var(--green);
+      color:white;
+      border-radius:14px;
+      text-decoration:none;
+      font-size:0.92rem;
+      font-weight:700;
+      box-shadow:0 10px 22px rgba(76,175,80,0.22);
+      transition:all 0.2s ease;
+    }
+
+    .review-btn:hover{
+      background:#3d9441;
+      transform:translateY(-2px);
+    }
+
+    .review-btn{
+      margin-top:auto;
+    }
+
+    .instagram-box{
+      background:linear-gradient(180deg, #f7eef7 0%, #ffffff 100%);
+      border-color:rgba(193,53,132,0.15);
+    }
+
+    .instagram-box .review-badge{
+      color:#c13584;
+    }
+
+    .instagram-icon{
+      font-size:1.7rem;
+      line-height:1;
+      margin-bottom:12px;
+    }
+
+    .instagram-box .review-highlight{
+      color:#c13584 !important;
+    }
+
+    .instagram-btn{
+      background:linear-gradient(135deg, #833ab4, #c13584 55%, #e1306c);
+      box-shadow:0 10px 22px rgba(193,53,132,0.2);
+    }
+
+    .instagram-btn:hover{
+      background:linear-gradient(135deg, #6f3198, #aa2f73 55%, #c8275f);
+    }
+
+    footer{
+      text-align:center;
+      padding:34px 0 40px;
+      color:var(--muted);
+      font-size:0.94rem;
+    }
+
+    .info-grid{
+      display:grid;
+      gap:18px;
+      margin-top:10px;
+    }
+
+    .info-card{
+      background:linear-gradient(180deg,#ffffff 0%, #fcfffc 100%);
+      border:1.5px solid rgba(76,175,80,0.20);
+      border-radius:20px;
+      padding:22px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.04);
+      transition:all .25s ease;
+    }
+
+    .info-card:hover{
+      border-color:rgba(76,175,80,0.35);
+      box-shadow:0 12px 28px rgba(76,175,80,0.08);
+      transform:translateY(-2px);
+    }
+
+    .info-header{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .info-icon{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:#edf7ee;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.2rem;
+      flex-shrink:0;
+    }
+
+    .info-card h3{
+      margin:0;
+      color:var(--dark);
+      font-size:1.15rem;
+      font-weight:700;
+    }
+
+    .info-card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.8;
+      text-align:justify;
+    }
+
+    .info-card strong{
+      color:var(--dark);
+    }
+
+    @media (max-width:800px){
+      .floating-logo{
+        top:55px;
+        left:1px;
+        transform:translateY(-10%) rotate(-5deg);
+        z-index:20;
+      }
+
+      .floating-logo img{
+        width:150px;
+      }
+
+      header{
+        padding:18px 16px;
+        margin-top:20px;
+        justify-content:center;
+      }
+
+      nav{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:14px 24px;
+        width:100%;
+      }
+
+      nav a{
+        font-size:0.9rem;
+      }
+
+      .hero-img{
+        height:340px;
+        margin-top:28px;
+      }
+
+      .overlay{
+        padding:16px 18px 8px;
+      }
+
+      .hero-bottom-logo{
+        right:5px;
+        top:3px;
+      }
+
+      .hero-bottom-logo img{
+        width:42px;
+      }
+
+      .summary-top h2{
+        font-size:1.55rem;
+      }
+
+      .summary-body p{
+        font-size:0.96rem;
+      }
+
+      .review-box{
+        padding:26px 18px;
+      }
+
+      .review-stars{
+        font-size:1.35rem;
+        letter-spacing:3px;
+      }
+
+      .review-box h3{
+        font-size:1.25rem;
+      }
+
+      .review-box p{
+        font-size:0.94rem;
+      }
+
+      .social-grid{
+        grid-template-columns:1fr;
+      }
+
+      .info-grid{
+        display:grid;
+        gap:18px;
+        margin-top:10px;
+      }
+
+      .info-card{
+        background:linear-gradient(180deg,#ffffff 0%, #fcfffc 100%);
+        border:1.5px solid rgba(76,175,80,0.20);
+        border-radius:20px;
+        padding:22px;
+        box-shadow:0 8px 24px rgba(0,0,0,0.04);
+        transition:all .25s ease;
+      }
+
+      .info-card:hover{
+        border-color:rgba(76,175,80,0.35);
+        box-shadow:0 12px 28px rgba(76,175,80,0.08);
+        transform:translateY(-2px);
+      }
+
+      .info-header{
+        display:flex;
+        align-items:center;
+        gap:12px;
+        margin-bottom:12px;
+      }
+
+      .info-icon{
+        width:42px;
+        height:42px;
+        border-radius:12px;
+        background:#edf7ee;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:1.2rem;
+        flex-shrink:0;
+      }
+
+      .info-card h3{
+        margin:0;
+        color:var(--dark);
+        font-size:1.15rem;
+        font-weight:700;
+      }
+
+      .info-card p{
+        margin:0;
+        color:var(--muted);
+        line-height:1.8;
+        text-align:justify;
+      }
+
+      .info-card strong{
+        color:var(--dark);
+      }
+    }
+
+
+    /* Refined homepage: original green palette and original navigation retained */
+    html{scroll-behavior:smooth}
+    body{background:linear-gradient(180deg,#f0f7f0 0%,#fff 52%,#f7faf7 100%)}
+    .container{max-width:1100px;width:min(92%,1100px)}
+    header{position:relative;min-height:64px;border:1px solid rgba(76,175,80,.10);box-shadow:0 8px 30px rgba(30,61,43,.045)}
+    nav a{transition:color .2s,opacity .2s}
+    .floating-logo{top:9px;left:0}.floating-logo img{width:185px}
+    .hero-img{height:clamp(430px,53vw,590px);margin-top:24px;border-radius:28px;background:#dcebdd}
+    .hero-slide{object-position:center}
+    .overlay{padding:38px 35px 42px;background:linear-gradient(180deg,transparent 20%,rgba(12,26,14,.18) 48%,rgba(12,26,14,.78) 100%)}
+    .overlay-title{font-size:clamp(2rem,4.3vw,3.6rem);line-height:1.08;letter-spacing:-.045em;margin-bottom:13px}
+    .overlay-subtitle{font-size:clamp(.95rem,1.5vw,1.08rem);line-height:1.65}
+    .hero-bottom-logo{top:22px;right:22px}.hero-bottom-logo img{width:76px}
+    .hero-dots{position:absolute;bottom:17px;left:50%;transform:translateX(-50%);z-index:5;display:flex;gap:9px}
+    .hero-dot{width:8px;height:8px;border:0;border-radius:100px;background:rgba(255,255,255,.55);cursor:pointer;transition:all .25s}
+    .hero-dot.active{width:27px;background:#fff}
+    .intro{text-align:center;padding:62px 15px 6px;max-width:750px;margin:auto}
+    .eyebrow{display:block;font-size:.76rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:13px}
+    .intro h1{font-family:Poppins,sans-serif;color:var(--dark);font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.2;letter-spacing:-.035em}
+    .intro p{margin:16px auto 0;max-width:650px;color:var(--muted);line-height:1.75;font-size:1.02rem}
+    .quick-links{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:23px}
+    .quick-link{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:13px;background:var(--green);color:#fff;text-decoration:none;font-weight:700;font-size:.92rem;transition:transform .2s,background .2s}
+    .quick-link:hover{transform:translateY(-2px);background:#3d9441}
+    .quick-link.secondary{background:#fff;color:var(--dark);border:1px solid rgba(76,175,80,.25)}
+    .summary{margin-top:55px;background:transparent;border:0;box-shadow:none;overflow:visible}
+    .summary-top{text-align:center;background:transparent;padding:0 12px 26px}
+    .summary-top h2{font-family:Poppins,sans-serif;font-size:clamp(1.45rem,2.5vw,2.15rem);line-height:1.3;margin:0}
+    .summary-body{padding:0}
+    .info-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:0}
+    .info-card{padding:27px 24px;border-radius:22px;background:#fff;box-shadow:0 10px 30px rgba(30,61,43,.055);height:100%}
+    .info-header{align-items:flex-start;gap:12px;margin-bottom:16px}
+    .info-icon{width:46px;height:46px;border-radius:14px;font-size:1.3rem}
+    .info-card h3{font-family:Poppins,sans-serif;font-size:1.05rem;line-height:1.4;padding-top:9px}
+    .info-card p{text-align:left;font-size:.94rem;line-height:1.8}
+    .review-section{margin-top:28px;padding:0}
+    .social-grid{max-width:none;gap:18px}
+    .review-box{min-height:285px;padding:34px 25px;border-radius:22px}
+    .review-box h3{font-size:1.35rem}
+    .review-btn{margin-top:auto}
+    footer{max-width:1100px;width:92%;margin:55px auto 0;border-top:1px solid var(--line)}
+    @media(max-width:800px){.info-grid{grid-template-columns:1fr}.floating-logo{top:55px;left:0}.floating-logo img{width:135px}.hero-img{height:420px}.overlay{padding:25px 20px 36px}.hero-bottom-logo img{width:48px}.intro{padding-top:48px}.summary{margin-top:42px}.info-card{padding:24px}.social-grid{grid-template-columns:1fr}}
+    @media(max-width:480px){.container{width:94%}header{padding:14px 10px}nav{gap:10px 16px}nav a{font-size:.83rem}.floating-logo img{width:105px}.hero-img{height:390px;border-radius:20px}.overlay-title{font-size:1.85rem}.overlay-subtitle{font-size:.88rem}.hero-bottom-logo{top:10px;right:10px}.hero-bottom-logo img{width:40px}.review-box{min-height:260px}}
+    @media(prefers-reduced-motion:reduce){.hero-slide,.quick-link,.hero-dot{transition:none}}
+
+    /* Editorial refresh: same original green palette and navigation links */
+    html{scroll-behavior:smooth}
+    body{background:#f7faf7;overflow-x:hidden}
+    .container{max-width:1120px;width:min(92%,1120px)}
+    header{position:relative;z-index:5;min-height:66px;border:1px solid rgba(76,175,80,.16);background:rgba(237,247,238,.92);box-shadow:0 8px 28px rgba(30,61,43,.05)}
+    nav a{transition:color .2s ease,opacity .2s ease}
+    nav a:focus-visible,.quick-link:focus-visible,.review-btn:focus-visible,.hero-dot:focus-visible{outline:3px solid var(--green);outline-offset:4px}
+    .floating-logo{z-index:6}
+    .hero-img{height:570px;margin-top:26px;border-radius:26px;box-shadow:0 28px 65px rgba(22,52,29,.13)!important}
+    .overlay{justify-content:flex-start;align-items:flex-end;padding:clamp(25px,5vw,62px);background:linear-gradient(90deg,rgba(12,31,18,.70),rgba(12,31,18,.14) 83%),linear-gradient(0deg,rgba(12,31,18,.42),transparent 70%)}
+    .overlay-content{text-align:left;max-width:700px;margin:0 0 30px}
+    .hero-label{display:inline-block;color:#e7f9df;font-size:.75rem;font-weight:800;letter-spacing:.16em;margin-bottom:22px}
+    .overlay-title{font-size:clamp(2.7rem,6.4vw,5.3rem);line-height:1.02;letter-spacing:-.055em;margin-bottom:18px}
+    .overlay-subtitle{margin:0;max-width:470px;font-size:1.03rem}
+    .hero-dots{bottom:20px}
+    .intro{padding:84px 20px 65px;max-width:880px;margin:auto;text-align:center}
+    .intro .eyebrow,.visit-banner .eyebrow{color:#4CAF50;font-size:.74rem;font-weight:800;letter-spacing:.18em}
+    .intro h1{font-family:Poppins,sans-serif;color:var(--dark);font-size:clamp(2.4rem,5vw,4.4rem);letter-spacing:-.055em;line-height:1.12;margin:16px 0 18px}
+    .intro p{font-size:1.1rem;line-height:1.85;color:var(--muted);max-width:690px;margin:0 auto}
+    .quick-links{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:30px}
+    .quick-link{padding:15px 24px;border-radius:14px;background:var(--green);color:white;text-decoration:none;font-weight:700;transition:transform .2s,box-shadow .2s}
+    .quick-link:hover,.visit-link:hover{transform:translateY(-3px)}
+    .quick-link.secondary{background:white;color:var(--dark);border:1px solid rgba(76,175,80,.24)}
+    .signature-bar{display:flex;justify-content:center;align-items:center;gap:22px;flex-wrap:wrap;background:#eaf5ea;border:1px solid rgba(76,175,80,.13);padding:18px 24px;border-radius:18px;color:var(--dark);font-size:.83rem;font-weight:700;text-align:center}
+    .signature-separator{color:var(--green)}
+    .summary{margin-top:85px;background:transparent;border:0;box-shadow:none;overflow:visible}
+    .summary-top{background:transparent;padding:0 0 30px;text-align:center;max-width:770px;margin:auto}
+    .summary-top h2{font-family:Poppins,sans-serif;font-size:clamp(1.8rem,3.7vw,3rem);letter-spacing:-.045em;line-height:1.18}
+    .summary-body{padding:0}
+    .info-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .info-card{padding:30px 26px;border-radius:22px;background:white;box-shadow:0 12px 35px rgba(30,61,43,.055)}
+    .info-card p{text-align:left;font-size:.94rem;line-height:1.8}
+    .info-header{align-items:flex-start;flex-direction:column;gap:15px}
+    .info-icon{width:52px;height:52px;font-size:1.5rem}
+    .info-card h3{font-family:Poppins,sans-serif;font-size:1.16rem;line-height:1.35}
+    .visit-banner{margin-top:72px;padding:45px 50px;border-radius:26px;background:#1e3d2b;color:white;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .visit-banner h2{font-family:Poppins,sans-serif;font-size:clamp(1.6rem,3vw,2.5rem);margin:10px 0;letter-spacing:-.04em}
+    .visit-banner p{color:#d8e8d9;line-height:1.6}
+    .visit-link{flex-shrink:0;display:inline-block;background:#fff;color:#1e3d2b;padding:16px 22px;border-radius:13px;text-decoration:none;font-weight:800;transition:transform .2s}
+    .review-section{margin-top:24px;padding:0}
+    .social-grid{max-width:none}
+    .review-box{border-radius:22px;box-shadow:0 12px 35px rgba(30,61,43,.05)}
+    footer{margin-top:60px;border-top:1px solid rgba(76,175,80,.15)}
+    @media(max-width:800px){.hero-img{height:470px}.info-grid{grid-template-columns:1fr}.info-header{flex-direction:row;align-items:center}.visit-banner{flex-direction:column;align-items:flex-start}.signature-separator{display:none}}
+    @media(max-width:600px){.container{width:92%}.floating-logo{top:54px;left:0}.floating-logo img{width:118px}header{padding:15px 10px}nav{gap:12px 18px}nav a{font-size:.82rem}.hero-img{height:450px;margin-top:22px}.overlay{padding:25px 22px 48px;background:linear-gradient(0deg,rgba(12,31,18,.86),rgba(12,31,18,.05) 85%)}.overlay-content{margin:0}.hero-label{font-size:.62rem;letter-spacing:.08em}.overlay-title{font-size:clamp(2.2rem,10vw,3.4rem)}.overlay-subtitle{font-size:.9rem}.intro{padding:62px 5px 45px}.intro p{font-size:1rem}.signature-bar{gap:9px;padding:20px}.signature-bar span:not(.signature-separator){width:100%}.summary{margin-top:60px}.info-card{padding:25px 20px}.visit-banner{padding:30px 25px;margin-top:50px}.review-box{padding:26px 20px}}
+    .intro h1.single-line-slogan{white-space:nowrap;font-size:clamp(1.05rem, 4.6vw, 3.7rem);letter-spacing:-.055em}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+    /* One unified, single-line quality statement on all screen sizes */
+    .combined-promise{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:clamp(3px,.8vw,14px);padding:clamp(11px,1.6vw,20px) clamp(4px,1vw,18px);white-space:nowrap;font-size:clamp(7px,1.18vw,14px);letter-spacing:-.015em}
+    .combined-promise span:not(.signature-separator){width:auto!important;flex:0 0 auto}
+    .combined-promise .signature-separator{flex:0 0 auto}
+    .summary{margin-top:30px}
+    @media(max-width:600px){.combined-promise{gap:3px;padding:12px 3px;font-size:clamp(6px,1.72vw,10px);border-radius:12px}.summary{margin-top:30px}}
+
+    /* Final UX refinements: balanced actions, compact mobile layout, clear location */
+    .quick-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:900px;margin:25px auto 0}
+    .quick-link,.quick-link.secondary{width:100%;min-height:58px;padding:13px 15px;background:var(--green);border:1px solid var(--green);color:#fff;text-align:center;line-height:1.35;box-shadow:0 6px 18px rgba(76,175,80,.12)}
+    .quick-link:hover,.quick-link.secondary:hover{background:#3d9441;color:#fff}
+    .intro-location{display:inline-flex;gap:8px;align-items:center;justify-content:center;margin-top:19px;color:var(--dark);font-weight:700;font-size:.9rem;text-decoration:underline;text-decoration-color:rgba(76,175,80,.45);text-underline-offset:5px}
+    .intro-location:hover{color:var(--green)}
+    .intro-location:focus-visible,.visit-link:focus-visible{outline:3px solid var(--green);outline-offset:4px}
+    .intro{padding-top:52px;padding-bottom:38px}
+    .intro h1{margin-top:9px;margin-bottom:12px}
+    .intro p{line-height:1.55}
+    .summary{margin-top:25px}
+    .visit-banner{margin-top:45px}
+    @media(max-width:800px){.intro{padding-top:38px;padding-bottom:26px}.quick-links{gap:9px}.quick-link{font-size:.83rem}}
+    @media(max-width:600px){
+      .hero-img{height:350px;margin-top:16px}
+      .intro{padding:30px 2px 22px}
+      .intro .eyebrow{font-size:.62rem;letter-spacing:.1em;margin-bottom:7px}
+      .intro h1.single-line-slogan{font-size:clamp(1.05rem,5.1vw,2rem);margin:7px 0 9px}
+      .intro p{font-size:.87rem;line-height:1.45}
+      .quick-links{grid-template-columns:1fr;gap:9px;margin-top:19px}
+      .quick-link,.quick-link.secondary{min-height:46px;padding:11px 13px;font-size:.91rem}
+      .intro-location{margin-top:15px;font-size:.86rem}
+      .signature-bar.combined-promise{margin-top:4px}
+      .summary{margin-top:21px}
+      .info-grid{gap:12px}
+      .info-card{padding:19px}
+      .info-header{margin-bottom:9px}
+      .info-card p{font-size:.9rem;line-height:1.65}
+      .visit-banner{margin-top:29px;padding:24px 20px;gap:17px}
+      .review-section{margin-top:16px}
+    }
+    /* Slideshow proportions: compact on desktop, tablet and mobile */
+  @media (min-width: 801px) { .hero-img { height: 440px; } }
+  @media (min-width: 601px) and (max-width: 800px) { .hero-img { height: 350px; } }
+  @media (max-width: 600px) { .hero-img { height: 300px; } .overlay { padding: 18px 20px 35px; } .overlay-title { font-size: clamp(1.7rem, 7vw, 2.4rem); } .hero-label { margin-bottom: 10px; } }
+  .hero-slide { object-fit: cover; object-position: center center; }
+
+/* Refined mobile offer links and quality statement */
+@media (max-width: 600px) {
+  .quick-links { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:22px; }
+  .quick-link, .quick-link.secondary { min-height:56px; padding:12px 9px; border-radius:13px; font-size:.82rem; line-height:1.25; box-shadow:none; background:#fff; color:var(--dark); border:1px solid rgba(76,175,80,.30); }
+  .quick-link:first-child { grid-column:1 / -1; background:var(--green); color:#fff; border-color:var(--green); font-size:.92rem; }
+  .quick-link:hover,.quick-link.secondary:hover { background:#edf7ee; color:var(--dark); }
+  .quick-link:first-child:hover { background:#3d9441; color:white; }
+  .signature-bar.combined-promise { display:flex; flex-wrap:wrap; justify-content:center; gap:7px 10px; padding:13px 12px; font-size:.72rem; line-height:1.5; white-space:normal; overflow-wrap:normal; margin-top:12px; }
+  .signature-bar.combined-promise span:not(.signature-separator) { flex:0 1 auto; width:auto!important; white-space:normal; }
+  .signature-bar.combined-promise .signature-separator { display:none; }
+  .signature-bar.combined-promise span:not(.signature-separator):not(:last-child)::after { content:' ·'; color:var(--green); }
+}
+  /* Keep first slide headline on one line, including phones. */
+  .hero-img:has(.hero-slide:first-child.active) .overlay-title { white-space: nowrap; font-size: clamp(1.05rem, 4.1vw, 2.8rem); letter-spacing: -.045em; }
+  @media (max-width: 600px) { .hero-img:has(.hero-slide:first-child.active) .overlay-title { font-size: clamp(1rem, 4.3vw, 1.7rem); } }
+  /* Only the central title appears on slides 1, 3 and 4. The vegan poster stays image-only. */
+  .overlay.image-only-slide { background: transparent; pointer-events: none; }
+  .overlay.image-only-slide .overlay-content { display: none; }
+
+/* Mobile-first premium navigation; changes are limited to header and submenu. */
+.site-header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 24px;min-height:74px;margin-top:20px;background:#fff;border:1px solid #e2ece3;border-radius:20px;box-shadow:0 8px 28px rgba(30,61,43,.07)}
+.site-wordmark{display:inline-flex;align-items:center;gap:0;text-decoration:none;color:#1e3d2b;font-family:Poppins,sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.04em;white-space:nowrap}
+.site-wordmark strong{color:#4CAF50}
+.brand-mark{width:36px;height:36px;display:grid;place-items:center;border-radius:12px;background:#edf7ee;color:#4CAF50;font-size:1.45rem}
+.site-header nav{width:auto;display:flex;align-items:center;justify-content:flex-end;gap:clamp(12px,2.4vw,30px);flex-wrap:nowrap}
+.site-header nav a{font-size:.9rem;font-weight:700;letter-spacing:0;color:#25432e;opacity:1;white-space:nowrap;text-decoration:none;padding:11px 2px}
+.site-header nav a:hover{color:#4CAF50}
+.site-header nav .nav-shop{background:#4CAF50;color:#fff;padding:11px 20px;border-radius:12px}
+.site-header nav .nav-shop:hover{background:#3c9440;color:#fff}
+.nav-icon{display:none}
+.site-tagline{display:block;width:100%;font-family:system-ui,sans-serif;font-size:.59rem;font-weight:750;letter-spacing:.14em;color:#6a7e6c;margin-top:5px;text-align:center;line-height:1.2}
+@media(max-width:700px){
+ .site-header{display:flex;flex-direction:column;align-items:stretch;gap:0;padding:0;border-radius:20px;overflow:hidden;min-height:0}
+ .site-brand-row{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;gap:12px}
+ .site-wordmark{font-size:1.08rem;line-height:1.05}
+ .brand-mark{width:39px;height:39px;flex-shrink:0}
+ .site-tagline{display:block;font-family:system-ui,sans-serif;font-size:.58rem;font-weight:750;letter-spacing:.16em;color:#6a7e6c;margin-top:5px}
+ .site-header nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%;gap:0;border-top:1px solid #e6efe7;padding:4px 6px 0}
+ .site-header nav a,.site-header nav .nav-shop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;padding:10px 2px 11px;border-radius:0;background:transparent;color:#25432e;font-size:clamp(.65rem,2.7vw,.83rem);line-height:1.1}
+ .site-header nav a:hover,.site-header nav .nav-shop:hover{background:#f1f8f1;color:#25432e}
+ .site-header nav a:first-child{border-bottom:3px solid #4CAF50;color:#2d8738}
+ .nav-icon{display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px}
+ .nav-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+ .nav-shop-arrow{display:none}
+}
+
+/* Illustrated call-to-action buttons are shown only on mobile */
+@media(min-width:601px){.quick-links .cta-icon,.quick-links .cta-arrow{display:none!important}}
+.quick-links .quick-link {display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;padding:14px 17px}
+.quick-link .cta-icon {width:27px;height:27px;flex:0 0 27px}
+.quick-link span {flex:1;min-width:0}
+.quick-link .cta-arrow {width:18px;height:18px;flex:0 0 18px}
+@media(max-width:600px){
+ .quick-links .quick-link{padding:13px 11px;gap:7px}
+ .quick-link .cta-icon{width:24px;height:24px;flex-basis:24px}
+ .quick-link .cta-arrow{width:16px;height:16px;flex-basis:16px}
+ .quick-links .quick-link:first-child{justify-content:center;gap:14px}
+ .quick-links .quick-link:first-child span{flex:0 1 auto}
+}
+</style>
+</head>
+<body>
+
+  <div class="container">
+<header class="site-header">
+ <div class="site-brand-row"><a class="site-wordmark" href="index.html" aria-label="Matcha Energy Startseite"><span>MATCHA <strong>ENERGY</strong><span class="site-tagline">TAKE-AWAY CAFÉ</span></span></a></div>
+ <nav aria-label="Hauptnavigation"><a href="powder.html"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 4C11 4 5 9 5 16c0 2 2 4 4 4 7 0 12-7 11-16Z"/><path d="M4 21c3-6 7-9 12-12"/></svg></span><span>Matcha</span></a><a href="menu.html"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9h13v5a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6V9Z"/><path d="M17 10h2a3 3 0 0 1 0 6h-2M3 22h16"/></svg></span><span>Menu</span></a><a class="nav-shop" href="shop.html"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 9h14l1 12H4L5 9Z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg></span><span>Shop</span></a><a href="ingredients.html"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span>Standort</span></a></nav>
+</header>
+
+    <div class="hero-img" aria-label="Matcha Energy Impressionen">
+      <img src="brush.png" class="hero-slide active" alt="Pure matcha" />
+      <img src="vegan.png" class="hero-slide" alt="Matcha poster" />
+      <img src="brightcolor.png" class="hero-slide" alt="Pure natural ingredients" />
+      <img src="colorsplasher.png" class="hero-slide" alt="Matcha poster" />
+
+      <div class="overlay image-only-slide">
+        <div class="overlay-content">
+          
+        </div>
+        <div class="hero-bottom-logo">
+          <img src="logousenow-2.png" alt="Matcha Energy Logo" />
+        </div>
+      </div>
+      <div class="hero-dots" aria-label="Slideshow auswählen">
+        <button class="hero-dot active" type="button" aria-label="Bild 1"></button>
+        <button class="hero-dot" type="button" aria-label="Bild 2"></button>
+        <button class="hero-dot" type="button" aria-label="Bild 3"></button>
+        <button class="hero-dot" type="button" aria-label="Bild 4"></button>
+      </div>
+    </div>
+
+    <section class="intro">
+      <span class="eyebrow">MATCHA ENERGY · TAKE-AWAY CAFÉ · WINTERTHUR</span>
+      <h1 class="single-line-slogan">Dein Matcha. Dein Moment.</h1>
+      <p>Premium Matcha aus Japan. Frisch zubereitet. Mit Liebe serviert.</p>
+      <div class="quick-links" aria-label="Unsere Angebote"><a class="quick-link" href="menu.html"><svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h13v8a6 6 0 0 1-6 6H10a6 6 0 0 1-6-6V5Z"/><path d="M17 7h2a3 3 0 0 1 0 6h-2M3 22h16"/></svg><span>Unsere Getränke entdecken</span><svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a><a class="quick-link" href="shop.html"><svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 3C11 3 5 6 5 13c0 4 3 7 7 7 7 0 9-8 8-17Z"/><path d="M4 21c3-7 8-11 14-14"/></svg><span>Matcha für Zuhause</span><svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a><a class="quick-link" href="accessory.html"><svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 22h4M11 22v-7m2 0v7M6 4c-1 4 0 8 6 11 6-3 7-7 6-11M8 3c-1 5 1 9 4 12 3-3 5-7 4-12M10 3c0 5 1 9 2 12 1-3 2-7 2-12M5 5c0 5 3 8 7 10 4-2 7-5 7-10M7 5l5 10 5-10"/></svg><span>Matcha-Zubehör entdecken</span><svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a></div>
+    </section>
+
+    <div class="signature-bar combined-promise" aria-label="Unsere Qualität">
+      <span>Aus Japan sorgfältig ausgewählt</span><span class="signature-separator">✳</span><span>Frisch zubereitet</span><span class="signature-separator">✳</span><span>Reiner Matcha</span><span class="signature-separator">✳</span><span>Echte Zutaten</span><span class="signature-separator">✳</span><span>Zum Mitnehmen &amp; Geniessen</span>
+    </div>
+
+    <div class="summary">
+      <div class="summary-body">
+        <div class="info-grid">
+
+          <div class="info-card">
+            <div class="info-header">
+              <div class="info-icon">🍃</div>
+              <h3>Ceremonial-Grade Matcha</h3>
+            </div>
+            <p>
+              Hochwertiger Matcha aus Japan, sorgfältig ausgewählt für seine leuchtend grüne Farbe, sein feines Aroma und seinen ausgewogenen Geschmack. Frisch zubereitet, traditionell pur oder als cremiger Matcha Latte – für sanfte, natürliche Energie.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <div class="info-header">
+              <div class="info-icon">❄️</div>
+              <h3>Frisch aus Japan</h3>
+            </div>
+            <p>
+Unser Matcha stammt aus der ersten Ernte Japans. Die Teeblätter werden sorgfältig gelagert und erst auf Bestellung frisch vermahlen. Alle drei bis vier Monate beziehen wir eine neue Lieferung und lagern den Matcha gekühlt, um Frische, Aroma und Qualität zu bewahren.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <div class="info-header">
+              <div class="info-icon">🍓</div>
+              <h3>Nur echte Zutaten</h3>
+            </div>
+            <p>
+              Wir verwenden echte Früchte und bereiten unsere Fruchtpürees täglich frisch zu – ohne künstliche Farb- oder Konservierungsstoffe. Alle Getränke werden frisch zubereitet und sind auch mit Barista-Hafermilch als vegane Variante erhältlich.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <section class="visit-banner"><div><span class="eyebrow">BESUCH UNS</span><h2>Dein nächster Matcha wartet.</h2><p>Direkt beim Bahnhof Winterthur · Rudolfstrasse 19</p></div><a href="ingredients.html" class="visit-link">Standort &amp; Öffnungszeiten <span aria-hidden="true">↗</span></a></section>
+
+    <div class="review-section">
+      <div class="social-grid">
+        <div class="review-box">
+          <div class="review-badge">Über 240 5-Sterne-Google-Bewertungen</div>
+          <div class="review-stars">★★★★★</div>
+
+          <p class="review-highlight">Dein Matcha. Dein Moment </p>
+
+          <a
+            class="review-btn"
+            href="https://www.google.com/maps/search/?api=1&query=Rudolfstrasse+8400+Winterthur+Matcha+Energy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google-Bewertungen ansehen →
+          </a>
+        </div>
+
+        <div class="review-box instagram-box">
+          <div class="review-badge">Neuigkeiten auf Instagram</div>
+          <div class="instagram-icon" aria-hidden="true">◎</div>
+          <h3>Besuche uns auf Instagram</h3>
+
+          <p class="review-highlight">Frisch. Kreativ. Immer aktuell.</p>
+
+          <a
+            class="review-btn instagram-btn"
+            href="https://www.instagram.com/matchaenergy.ch/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Matcha Energy auf Instagram besuchen"
+          >
+            Instagram besuchen →
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 Matcha Energy    | hello@matchaenergy.ch  |
+  </footer>
+
+  <script>
+    const images = document.querySelectorAll('.hero-slide');
+
+    let index = 0;
+    const dots = document.querySelectorAll('.hero-dot');
+    function showSlide(next){
+      images[index].classList.remove('active');
+      dots[index].classList.remove('active');
+      index = next;
+      images[index].classList.add('active');
+      dots[index].classList.add('active');
+
+
+    }
+    dots.forEach((dot,i)=>dot.addEventListener('click',()=>showSlide(i)));
+    setInterval(()=>showSlide((index+1)%images.length),10000);
+  </script>
+
+</body>
+</html>
